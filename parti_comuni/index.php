@@ -8,6 +8,7 @@ require "conti.php";
 require "contratti_acea.php";
 require "f24.php";
 require "fatt_multiple_dett.php";
+require "fatture.php";
 
 function dbCreate($dbc){
   $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
@@ -73,37 +74,5 @@ f24Create($ds, $dd);
 f24Copy($ds,$dd);
 fattMultipleDettCreate($ds, $dd);
 fattMultipleDettCopy($ds, $dd);
-
-echo "index.php";
-?>
-<!--
-/*
-"Affitti"
-"Amministratore"
-"Bonifici"
-"Conti"
-"Contratti_ACEA"
-"F24"
-"Fatt_Multiple_dett"
-"Fatture"
-"Fatture_amministratore"
-"fatture_provvisorie"
-"fitti_dovuti"
-"Fitti_impostaz"
-"Fitti_pagamenti"
-"fonts_firma"
-"Fornitori"
-"Frasi_pronte"
-"Gruppi"
-"Inc_reg_glo"
-"Interventi"
-"operaz_ammin"
-"Scadenze"
-"Sistema"
-"Stabili"
-"Taiffe_ACEA_2011"
-"Tariffe_ACEA_Standard"
-"ut_p"
-"Utenti"
-*/
--->
+fattureCreate($ds, $dd);
+fattureCopy($ds, $dd);
