@@ -1,39 +1,12 @@
 <?php
-/*
-"Affitti"
-"[SmallInt] Cod_appartamento",
-"[Integer] Cod_stabile",
-"[VarWChar] Proprietario_nome",
-"[VarWChar] Proprietario_intesta",
-"[VarWChar] Desriz_immobile",
-"[VarWChar] Indirizzo_immob",
-"[VarWChar] Cap",
-"[VarWChar] Citta",
-"[VarWChar] Pr",
-"[VarWChar] Nome_inquilino",
-"[Single] Rendita_catastale",
-"[Double] Importo_fitto",
-"[VarWChar] Particella",
-"[VarWChar] Destinazione_d_uso",
-"[Date] Inizio_contratto",
-"[Date] Ultimo_Rinnovo",
-"[Date] Prossima_scadenza",
-"[Date] Prossima_registrazione",
-"[LongVarWChar] Note",
-"[VarWChar] Def_ammin",
-"[VarWChar] Descr_1_voce",
-"[VarWChar] tipo_riga",
-"[VarWChar] Inte_cc",
-"[VarWChar] IBAN"
-*/
+function affittiCreate($ds, $dd)
+{
+    echo "Creazione affiti; \r\n";
 
-function affittiCreate($ds, $dd) {
-        echo "Creazione affiti; \r\n";
+    $dbstring = 'drop table `affitti`;';
+    $dd->query($dbstring);
 
-        $dbstring = "drop table `affitti`;";
-        $dd->query($dbstring);
-
-        $dbstring = "
+    $dbstring = '
                 CREATE TABLE `affitti` (
                   `id` int(11) DEFAULT NULL,
                   `appartamento_id` int(3) DEFAULT NULL,
@@ -64,53 +37,52 @@ function affittiCreate($ds, $dd) {
 
                 -- ALTER TABLE `affitti` ADD PRIMARY KEY (`id`);
                 -- ALTER TABLE `affitti` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-                 ";
+                 ';
 
     $dd->query($dbstring);
-    echo "<br/>";
+    echo '<br/>';
     echo $dbstring;
-    echo "<br/>";
+    echo '<br/>';
 }
 
-function affittiCopy($ds, $dd){
-  $tableSource="affitti";
+function affittiCopy($ds, $dd)
+{
+    $tableSource = 'affitti';
 
-  $sql="SELECT ";
-  $sql.="Cod_appartamento       AS appartamento_id, ";
-  $sql.="Cod_stabile            AS stabile_id, ";
-  $sql.="Proprietario_nome      AS proprietario, ";
-  $sql.="Proprietario_intesta   AS proprietario_intestazione, ";
-  $sql.="Desriz_immobile        AS immobile_descrizione, ";
-  $sql.="Indirizzo_immob        AS immobile_indirizzo, ";
-  $sql.="cap, ";
-  $sql.="Citta                  AS comune, ";
-  $sql.="Pr                     AS provincia, ";
-  $sql.="Nome_inquilino         AS inquilino, ";
-  $sql.="Importo_fitto          AS affitto_importo, ";
-  $sql.="Rendita_catastale      AS catasto_rendita, ";
-  $sql.="Particella             AS catasto_particella, ";
-  $sql.="Destinazione_d_uso     AS catasto_destinazione, ";
-  $sql.="Inizio_contratto       AS contratto_del, ";
-  $sql.="Ultimo_Rinnovo         AS contratto_rinnovo_del, ";
-  $sql.="Prossima_scadenza      AS contratto_scadenza_del, ";
-  $sql.="Prossima_registrazione AS contratto_scadenza_registrazione_del, ";
-  $sql.="note, ";
-  $sql.="Def_ammin, ";
-  $sql.="Descr_1_voce           AS descrizione_1_voce, ";
-  $sql.="tipo_riga, ";
-  $sql.="Inte_cc                AS intestazione_cc, ";
-  $sql.="iban ";
-  $sql.="FROM affitti ";
-  $sql.="WHERE 1";
+    $sql = 'SELECT ';
+    $sql .= 'Cod_appartamento       AS appartamento_id, ';
+    $sql .= 'Cod_stabile            AS stabile_id, ';
+    $sql .= 'Proprietario_nome      AS proprietario, ';
+    $sql .= 'Proprietario_intesta   AS proprietario_intestazione, ';
+    $sql .= 'Desriz_immobile        AS immobile_descrizione, ';
+    $sql .= 'Indirizzo_immob        AS immobile_indirizzo, ';
+    $sql .= 'cap, ';
+    $sql .= 'Citta                  AS comune, ';
+    $sql .= 'Pr                     AS provincia, ';
+    $sql .= 'Nome_inquilino         AS inquilino, ';
+    $sql .= 'Importo_fitto          AS affitto_importo, ';
+    $sql .= 'Rendita_catastale      AS catasto_rendita, ';
+    $sql .= 'Particella             AS catasto_particella, ';
+    $sql .= 'Destinazione_d_uso     AS catasto_destinazione, ';
+    $sql .= 'Inizio_contratto       AS contratto_del, ';
+    $sql .= 'Ultimo_Rinnovo         AS contratto_rinnovo_del, ';
+    $sql .= 'Prossima_scadenza      AS contratto_scadenza_del, ';
+    $sql .= 'Prossima_registrazione AS contratto_scadenza_registrazione_del, ';
+    $sql .= 'note, ';
+    $sql .= 'Def_ammin, ';
+    $sql .= 'Descr_1_voce           AS descrizione_1_voce, ';
+    $sql .= 'tipo_riga, ';
+    $sql .= 'Inte_cc                AS intestazione_cc, ';
+    $sql .= 'iban ';
+    $sql .= 'FROM affitti ';
+    $sql .= 'WHERE 1';
 
-  echo "<br/>";
-  echo $sql;
-  echo "<br/>";
+        echo '<br/>';
+        echo $sql;
+        echo '<br/>';
 
-  $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-  foreach ($rows as $row) {
-    $dd->insert("affitti", $row);
-  }
-}
-
-?>
+        $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+        foreach ($rows as $row) {
+            $dd->insert('affitti', $row);
+        }
+    }

@@ -1,12 +1,13 @@
 <?php
 
-function contrattiAceaCreate($ds, $dd) {
-        echo "Creazione contratti_acea; \r\n";
+function contrattiAceaCreate($ds, $dd)
+{
+    echo "Creazione contratti_acea; \r\n";
 
-        $dbstring = "drop table `contratti_acea`;";
-        $dd->query($dbstring);
+    $dbstring = 'drop table `contratti_acea`;';
+    $dd->query($dbstring);
 
-        $dbstring = "
+    $dbstring = '
                 CREATE TABLE `contratti_acea` (
                   `id` int(11) DEFAULT NULL,
                   `id_contratto` int(11) DEFAULT NULL,
@@ -35,52 +36,51 @@ function contrattiAceaCreate($ds, $dd) {
 
                   -- ALTER TABLE `affitti` ADD PRIMARY KEY (`id`);
                   -- ALTER TABLE `affitti` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-                   ";
+                   ';
 
-      $dd->query($dbstring);
-      echo "<br/>";
-      echo $dbstring;
-      echo "<br/>";
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
+}
+
+  function contrattiAceaCopy($ds, $dd)
+  {
+      $tableSource = 'contratti_acea';
+
+      $sql = 'SELECT ';
+
+      $sql .= 'id_contratto, ';
+      $sql .= 'codice, ';
+      $sql .= 'Descrizione, ';
+      $sql .= 'mc_agevolati, ';
+      $sql .= 'tariffa_agevolata, ';
+      $sql .= 'tariffa_agevolata_euro, ';
+      $sql .= 'mc_base, ';
+      $sql .= 'tariffa_base, ';
+      $sql .= 'tariffa_base_euro, ';
+      $sql .= 'mc_1, ';
+      $sql .= 'tariffa_1, ';
+      $sql .= 'tariffa_1_euro, ';
+      $sql .= 'mc_2, ';
+      $sql .= 'tariffa_2, ';
+      $sql .= 'tariffa_2_euro, ';
+      $sql .= 'tariffa_3, ';
+      $sql .= 'tariffa_3_euro, ';
+      $sql .= 'tariffa_depurazione, ';
+      $sql .= 'tariffa_depurazione_euro, ';
+      $sql .= 'tariffa_fognature, ';
+      $sql .= 'tariffa_fognature_euro, ';
+      $sql .= 'tipo_riga ';
+      $sql .= 'FROM contratti_acea ';
+      $sql .= 'WHERE 1';
+
+      echo '<br/>';
+      echo $sql;
+      echo '<br/>';
+
+      $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+      foreach ($rows as $row) {
+          $dd->insert('contratti_acea', $row);
+      }
   }
-
-  function contrattiAceaCopy($ds, $dd){
-    $tableSource="contratti_acea";
-
-    $sql="SELECT ";
-
-    $sql.="id_contratto, ";
-    $sql.="codice, ";
-    $sql.="Descrizione, ";
-    $sql.="mc_agevolati, ";
-    $sql.="tariffa_agevolata, ";
-    $sql.="tariffa_agevolata_euro, ";
-    $sql.="mc_base, ";
-    $sql.="tariffa_base, ";
-    $sql.="tariffa_base_euro, ";
-    $sql.="mc_1, ";
-    $sql.="tariffa_1, ";
-    $sql.="tariffa_1_euro, ";
-    $sql.="mc_2, ";
-    $sql.="tariffa_2, ";
-    $sql.="tariffa_2_euro, ";
-    $sql.="tariffa_3, ";
-    $sql.="tariffa_3_euro, ";
-    $sql.="tariffa_depurazione, ";
-    $sql.="tariffa_depurazione_euro, ";
-    $sql.="tariffa_fognature, ";
-    $sql.="tariffa_fognature_euro, ";
-    $sql.="tipo_riga ";
-    $sql.="FROM contratti_acea ";
-    $sql.="WHERE 1";
-
-    echo "<br/>";
-    echo $sql;
-    echo "<br/>";
-
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-    foreach ($rows as $row) {
-      $dd->insert("contratti_acea", $row);
-    }
-  }
-
-  ?>
