@@ -113,7 +113,7 @@ function fattureCopy($ds, $dd)
     echo '<br/>';
     echo $sql;
     echo '<br/>';
-      $row s = $ds->query($sql, PDO::FETCH_ASSOC);
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('fatture', $row);
       }
