@@ -20,14 +20,21 @@ Public Function FieldNames() As String
     sResult = sResult & "   echo ""Creazione " & sTable & "; \r\n"";" & vbCrLf
     sResult = sResult & "   $dd->query($dbstring);" & vbCrLf
     sResult = sResult & "   $dbstring = '" & vbCrLf
+    sResult = sResult & "      CREATE TABLE `" & sTable & "` (" & vbCrLf
     With rs
         For n = 0 To .Fields.Count - 1
-            sResult = sResult & "      `" & LCase(.Fields(n).Name) & "` "
-            sResult = sResult & GetType(.Fields(n).Type, .Fields(n).size) & " DEFAULT NULL, " & vbCrLf
+            sResult = sResult & "         `" & LCase(.Fields(n).Name) & "` "
+            sResult = sResult & GetType(.Fields(n).Type, .Fields(n).size)
+            If n = (.Fields.Count - 1) Then
+                sResult = sResult & " DEFAULT NULL " & vbCrLf
+            Else
+                sResult = sResult & " DEFAULT NULL, " & vbCrLf
+            End If
         Next 'n
         .Close
     End With
-    sResult = sResult & " "") ENGINE=InnoDB DEFAULT CHARSET=latin1; ';" & vbCrLf
+    sResult = sResult & "       ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';" & vbCrLf
+    sResult = sResult & "$dd->query($dbstring);" & vbCrLf
     sResult = sResult & "}" & vbCrLf
     sResult = sResult & vbCrLf
 
@@ -37,7 +44,13 @@ Public Function FieldNames() As String
     sResult = sResult & "{" & vbCrLf
     sResult = sResult & "   $sql=""SELECT "";" & vbCrLf
     For x = 0 To rs.Fields.Count - 1
-        sResult = sResult & "   $sql.=""" & rs.Fields(x).Name & " AS " & LCase(rs.Fields(x).Name) & ", "";" & vbCrLf
+        sResult = sResult & "   $sql.=""" & LCase(rs.Fields(x).Name)
+        If x = (rs.Fields.Count - 1) Then
+            sResult = sResult & " "";" & vbCrLf
+        Else
+            sResult = sResult & ", "";" & vbCrLf
+        End If
+
     Next
     sResult = sResult & "   $sql.=""FROM " & sTable & " "";" & vbCrLf
     sResult = sResult & "   $sql.=""WHERE 1"";" & vbCrLf

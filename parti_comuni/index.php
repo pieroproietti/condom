@@ -1,14 +1,14 @@
 <?php
 
 require "../medoo.php";
-require "affitti.php";
-require "amministratore.php";
+require "test.php";
+/*require "amministratore.php";
 require "bonifici.php";
 require "conti.php";
 require "contratti_acea.php";
 require "f24.php";
 require "fatt_multiple_dett.php";
-require "fatture.php";
+require "fatture.php"; */
 
 function dbCreate($dbc){
   $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
@@ -28,19 +28,9 @@ function dbCreate($dbc){
   }
 }
 
-
-/**
-*
+/*
+* main
 */
-$dbName = "E:\Gescon\parti_comuni.mdb";
-if (!file_exists($dbName)) {
-    die("Could not find database file.");
-  }else{
-    echo "$dbName trovato!<br/>";
-  }
-$ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
-// database destinazione
-
 $dbc = [
   'server' => 'localhost',
   'username' => 'condom',
@@ -48,8 +38,21 @@ $dbc = [
   'name' => 'condom',
 ];
 
-// creazione del database budget-importing
+// creazione del database condom
 dbCreate($dbc);
+
+/**
+*
+*/
+$dbName = "E:\Gescon\parti_comuni.mdb";
+if (!file_exists($dbName)) {
+    die("Could not find database file. Uffa!");
+  }else{
+    echo "$dbName trovato!<br/>";
+  }
+$ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
+// database destinazione
+
 
 $dd = new medoo([
     'database_type' => 'mysql',
@@ -62,6 +65,7 @@ $dd = new medoo([
 
 affittiCreate($ds, $dd);
 affittiCopy($ds,$dd);
+/*
 amministratoreCreate($ds, $dd);
 amministratoreCopy($ds, $dd);
 bonificiCreate($ds, $dd);
@@ -76,3 +80,4 @@ fattMultipleDettCreate($ds, $dd);
 fattMultipleDettCopy($ds, $dd);
 fattureCreate($ds, $dd);
 fattureCopy($ds, $dd);
+*/
