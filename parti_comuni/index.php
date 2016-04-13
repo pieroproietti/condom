@@ -2,9 +2,9 @@
 
 require "../medoo.php";
 require "test.php";
-/*require "amministratore.php";
+require "amministratore.php";
 require "bonifici.php";
-require "conti.php";
+/*require "conti.php";
 require "contratti_acea.php";
 require "f24.php";
 require "fatt_multiple_dett.php";
@@ -65,12 +65,11 @@ $dd = new medoo([
 
 affittiCreate($ds, $dd);
 affittiCopy($ds,$dd);
-/*
 amministratoreCreate($ds, $dd);
 amministratoreCopy($ds, $dd);
 bonificiCreate($ds, $dd);
 bonificiCopy($ds,$dd);
-contiCreate($ds, $dd);
+/*contiCreate($ds, $dd);
 contiCopy($ds,$dd);
 contrattiAceaCreate($ds, $dd);
 contrattiAceaCopy($ds,$dd);

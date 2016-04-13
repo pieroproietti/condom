@@ -34,7 +34,10 @@ Public Function FieldNames() As String
         .Close
     End With
     sResult = sResult & "       ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';" & vbCrLf
-    sResult = sResult & "$dd->query($dbstring);" & vbCrLf
+    sResult = sResult & "   $dd->query($dbstring);" & vbCrLf
+    sResult = sResult & "   echo '<br/>';" & vbCrLf
+    sResult = sResult & "   echo $dbstring;" & vbCrLf
+    sResult = sResult & "   echo '<br/>';" & vbCrLf
     sResult = sResult & "}" & vbCrLf
     sResult = sResult & vbCrLf
 
@@ -93,6 +96,10 @@ Function GetType(i, size)
 
 
 Select Case i
+
+    Case dbBoolean
+    GetType = "smallint"
+
     '----------------------------------------
     ' numeric
     '----------------------------------------
