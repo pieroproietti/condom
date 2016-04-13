@@ -2,6 +2,15 @@
 
 require "../medoo.php";
 require "amministratore.php";
+require "anagr_casse.php";
+require "assemblee.php";
+require "comproprietari.php";
+require "condomin.php";
+require "condomini_totali.php";
+require "consiglieri.php";
+require "cre_deb_preced.php";
+require "creaz_prev_stra.php";
+require "descriz_rate.php";
 
 
 
@@ -59,5 +68,23 @@ $dd = new medoo([
     'charset' => 'utf8'
         ]);
 
-amministratoreCreate($ds, $dd);
-amministratoreCopy($ds, $dd);
+//amministratoreCreate($ds, $dd);
+//amministratoreCopy($ds, $dd);
+//anagr_casseCreate($ds, $dd);
+//anagr_casseCopy($ds, $dd);
+//assembleeCreate($ds, $dd);
+//assembleeCopy($ds, $dd);
+//comproprietariCreate($ds, $dd);
+//comproprietariCopy($ds, $dd);
+//condominCreate($ds, $dd);
+//condominCopy($ds, $dd);
+//condomini_totaliCreate($ds, $dd);
+//condomini_totaliCopy($ds, $dd);
+//consiglieriCreate($ds, $dd);
+//consiglieriCopy($ds, $dd);
+//cre_deb_precedCreate($ds, $dd);
+//cre_deb_precedCopy($ds, $dd);
+//creaz_prev_straCreate($ds, $dd);
+//creaz_prev_straCopy($ds, $dd);
+descriz_rateCreate($ds, $dd);
+descriz_rateCopy($ds, $dd);
