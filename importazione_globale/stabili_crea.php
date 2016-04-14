@@ -5,6 +5,7 @@ function stabiliCrea($dd){
 $sql="
 CREATE TABLE `stabili` (
   `id` int(11) NOT NULL,
+  `uuid` varchar(36) NOT NULL,
   `codice` int(2) NOT NULL,
   `denominazione` varchar(40) DEFAULT NULL,
   `indirizzo` varchar(40) DEFAULT NULL,
@@ -109,7 +110,7 @@ CREATE TABLE `stabili` (
   -- `not_used_banca_ca` varchar(150) DEFAULT NULL,
   `indirizzo_autorizzazione` varchar(50) DEFAULT NULL,
   `catasto_terreni_urbano` varchar(1) DEFAULT NULL,
-  `ac_ip` varchar(1) DEFAULT NULL,
+  `catasto_ip` varchar(1) DEFAULT NULL,
   `catasto_codice` varchar(10) DEFAULT NULL,
   `catasto_foglio` varchar(10) DEFAULT NULL,
   `catasto_particella` varchar(5) DEFAULT NULL,
@@ -141,7 +142,8 @@ CREATE TABLE `stabili` (
   -- `not_used_inc_glo_dt_inc_acc` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-ALTER TABLE `stabili` ADD PRIMARY KEY (`id`);
+ALTER TABLE `stabili` ADD PRIMARY KEY (`id`),  ADD UNIQUE KEY `uuid` (`uuid`);
+;
 ALTER TABLE `stabili` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ";

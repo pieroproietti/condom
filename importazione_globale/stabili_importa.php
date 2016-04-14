@@ -110,7 +110,7 @@ function stabiliImporta($ds, $dd){
     "indir_autorizzazione     (indirizzo_autorizzazione)",
     "f24_iban                 (f24_iban)",
     "ac_tu                    (catasto_terreni_urbano)",
-    "ac_ip                    (ac_ip)",
+    "ac_ip                    (catasto_ip)",
     "ac_urb_cat               (catasto_codice)",
     "ac_foglio                (catasto_foglio)",
     "ac_partic1               (catasto_particella)",
@@ -144,15 +144,13 @@ function stabiliImporta($ds, $dd){
     //"inc_glo_dt_inc_acc       (not_used_inc_glo_dt_inc_acc)"
   ];
 
-  echo "<br/>";
-  print_r($columns);
-  echo "<br/>";
-
   $stabili = $ds->select($table, $columns);
 
-
+  require "uuid.php";
   if (!empty($stabili)) {
       foreach ($stabili as &$stabile) {
+        $uuid= UUID::v4();
+        $stabile['uuid'] = $uuid;
         $dd->insert("stabili", $stabile);
       }
   }else{
