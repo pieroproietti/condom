@@ -1,11 +1,11 @@
 <?php
 // Importazione stabili di parti comuni
-require "../meedoo.php";
+require "../medoo.php";
 require "../parti_comuni/stabili.php";
 
 
 function dbCreate($dbc){
-  $db = new mysqli($aDbCondom['server'], $aDbCondom['username'], $aDbCondom['password']);
+  $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
   if ($db->connect_errno) {
       echo 'Il sito sta avendo problemi...\n';
       echo "Errore: connessione MySQL fallita: \n";
@@ -28,7 +28,8 @@ $aDbCondom = [
   'server' => 'localhost',
   'username' => 'condom',
   'password' => 'condom',
-  'name' => 'condom'
+  'name' => 'condom',
+  'charset' => 'utf8'
 ];
 
 $aDbPartiComuni = [
@@ -57,7 +58,7 @@ $aDbSingoloAnno = [
 
 
 // creazione del database condom
-dbCreate($dbc);
+dbCreate($aDbCondom);
 
 
 // Database di destinazione
@@ -80,6 +81,11 @@ $dbPartiComuni = new medoo([
     'charset' => $aDbPartiComuni['charset']
         ]);
 
+require "stabili_importa.php";
+require "stabili_crea.php";
+
+stabiliCrea($dbCondom);
+stabiliImporta($dbPartiComuni,$dbCondom);
 
 
 
