@@ -1,7 +1,7 @@
 <?php
 
 require "../medoo.php";
-require "test.php";
+require "affitti.php";
 require "amministratore.php";
 require "bonifici.php";
 require "conti.php";
@@ -55,7 +55,7 @@ $dbc = [
   'server' => 'localhost',
   'username' => 'condom',
   'password' => 'condom',
-  'name' => 'condom',
+  'name' => 'parti_comuni',
 ];
 
 // creazione del database condom
