@@ -1,63 +1,63 @@
 <?php
 
-require "../medoo.php";
-require "amministratore.php";
-require "anagr_casse.php";
-require "assemblee.php";
-require "comproprietari.php";
-require "condomin.php";
-require "condomini_totali.php";
-require "consiglieri.php";
-require "cre_deb_preced.php";
-require "creaz_prev_stra.php";
-require "descriz_rate.php";
-require "dett_pers.php";
-require "dett_tab.php";
-require "foglio_riscossioni.php";
-require "fraz_dett.php";
-require "fraz_gen.php";
-require "giri_conti.php";
-require "incassi.php";
-require "note.php";
-require "operazioni.php";
-require "pertinenze.php";
-require "preced_dovuto.php";
-require "preced_pagato.php";
-require "pres_assemblee.php";
-require "prevent_straordinari.php";
-require "rate.php";
-require "rate_percentuali.php";
-require "rendite_condominiali.php";
-require "rendite_condominiali1.php";
-require "ripartizione.php";
-require "rubrica.php";
-require "s_cassa.php";
-require "sistema.php";
-require "straordinarie.php";
-require "tabelle.php";
-require "temp_anteprima.php";
-require "temp_cassa.php";
-require "voc_spe.php";
-require "votazioni_dett.php";
-require "votazioni_gen.php";
+require '../medoo.php';
+require 'amministratore.php';
+require 'anagr_casse.php';
+require 'assemblee.php';
+require 'comproprietari.php';
+require 'condomin.php';
+require 'condomini_totali.php';
+require 'consiglieri.php';
+require 'cre_deb_preced.php';
+require 'creaz_prev_stra.php';
+require 'descriz_rate.php';
+require 'dett_pers.php';
+require 'dett_tab.php';
+require 'foglio_riscossioni.php';
+require 'fraz_dett.php';
+require 'fraz_gen.php';
+require 'giri_conti.php';
+require 'incassi.php';
+require 'note.php';
+require 'operazioni.php';
+require 'pertinenze.php';
+require 'preced_dovuto.php';
+require 'preced_pagato.php';
+require 'pres_assemblee.php';
+require 'prevent_straordinari.php';
+require 'rate.php';
+require 'rate_percentuali.php';
+require 'rendite_condominiali.php';
+require 'rendite_condominiali1.php';
+require 'ripartizione.php';
+require 'rubrica.php';
+require 's_cassa.php';
+require 'sistema.php';
+require 'straordinarie.php';
+require 'tabelle.php';
+require 'temp_anteprima.php';
+require 'temp_cassa.php';
+require 'voc_spe.php';
+require 'votazioni_dett.php';
+require 'votazioni_gen.php';
 
+function dbCreate($dbc)
+{
+    $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
 
-function dbCreate($dbc){
-  $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
-
-  if ($db->connect_errno) {
-      echo 'Il sito sta avendo problemi...\n';
-      echo "Errore: connessione MySQL fallita: \n";
-      echo 'Errno: '.$db->connect_errno."\n";
-      echo 'Error: '.$db->connect_error."\n";
-      exit;
-  } else {
-      echo "connessi a: ".$db->host_info."\n";
-      $db->query("DROP DATABASE `".$dbc['name'].";");
-      $db->query("CREATE DATABASE IF NOT EXISTS `".$dbc['name']."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
-      $db->query("USE `".$dbc['name']."`;");
-      $db->close();
-  }
+    if ($db->connect_errno) {
+        echo 'Il sito sta avendo problemi...\n';
+        echo "Errore: connessione MySQL fallita: \n";
+        echo 'Errno: '.$db->connect_errno."\n";
+        echo 'Error: '.$db->connect_error."\n";
+        exit;
+    } else {
+        echo 'connessi a: '.$db->host_info."\n";
+        $db->query('DROP DATABASE `'.$dbc['name'].';');
+        $db->query('CREATE DATABASE IF NOT EXISTS `'.$dbc['name'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;');
+        $db->query('USE `'.$dbc['name'].'`;');
+        $db->close();
+    }
 }
 
 /*
@@ -74,35 +74,35 @@ $dbc = [
 dbCreate($dbc);
 
 // in anni nome_dir è la directory per singolo_anno
-$cartella='';
+$cartella = '';
 if (isset($_GET['cartella'])) {
-  $cartella=$_GET['cartella'];
+    $cartella = $_GET['cartella'];
 }
-$anno='';
+$anno = '';
 if (isset($_GET['anno'])) {
-  $anno=$_GET['anno'];
+    $anno = $_GET['anno'];
 }
 
-if ($cartella==''){
-  echo "<br/>ATTENZIONE:";
-  die("devi passare il parametro cartella!");
+if ($cartella == '') {
+    echo '<br/>ATTENZIONE:';
+    die('devi passare il parametro cartella!');
 }
-if ($anno==''){
-  echo "<br/>ATTENZIONE:";
-  die("devi passare il parametro anno!");
+if ($anno == '') {
+    echo '<br/>ATTENZIONE:';
+    die('devi passare il parametro anno!');
 }
 
-$dbPath="E:\\gescon";
-$dbFolder=$_GET['cartella']."\\".$_GET['anno'];
-$dbFile="singolo_anno.mdb";
-$dbName = $dbPath."\\".$dbFolder."\\".$dbFile;
+$dbPath = 'E:\\gescon';
+$dbFolder = $_GET['cartella'].'\\'.$_GET['anno'];
+$dbFile = 'singolo_anno.mdb';
+$dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
 
 if (!file_exists($dbName)) {
-  echo "<br/>ATTENZIONE:";
+    echo '<br/>ATTENZIONE:';
     die("Non riesco a trovare il database: $dbName");
-  }else{
+} else {
     echo "$dbName trovato!<br/>";
-  }
+}
 $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
 // database destinazione
@@ -112,7 +112,7 @@ $dd = new medoo([
     'server' => $dbc['server'],
     'username' => $dbc['username'],
     'password' => $dbc['password'],
-    'charset' => 'utf8'
+    'charset' => 'utf8',
         ]);
 
 amministratoreCreate($ds, $dd);

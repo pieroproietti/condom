@@ -1,10 +1,11 @@
 <?php
+
 function acqua_dett_parzCreate($ds, $dd)
 {
-   $dbstring = 'drop table `acqua_dett_parz`;';
-   echo "Creazione acqua_dett_parz; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `acqua_dett_parz`;';
+    echo "Creazione acqua_dett_parz; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `acqua_dett_parz` (
          `rif_ute` int(2) DEFAULT NULL,
          `id_cond` int(4) DEFAULT NULL,
@@ -29,44 +30,44 @@ function acqua_dett_parzCreate($ds, $dd)
          `alt2_personali` int(4) DEFAULT NULL,
          `alt2_personali_euro` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function acqua_dett_parzCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="rif_ute, ";
-   $sql.="id_cond, ";
-   $sql.="cond_inquil, ";
-   $sql.="t_cod_cond, ";
-   $sql.="t_scala, ";
-   $sql.="t_interno, ";
-   $sql.="t_nome, ";
-   $sql.="tipo_utenza, ";
-   $sql.="num_utenze, ";
-   $sql.="lett_vecchia_1, ";
-   $sql.="lett_nuova_1, ";
-   $sql.="lett_vecchia_2, ";
-   $sql.="lett_nuova_2, ";
-   $sql.="lett_vecchia_3, ";
-   $sql.="lett_nuova_3, ";
-   $sql.="consumo, ";
-   $sql.="acq_personali, ";
-   $sql.="acq_personali_euro, ";
-   $sql.="alt1_personali, ";
-   $sql.="alt1_personali_euro, ";
-   $sql.="alt2_personali, ";
-   $sql.="alt2_personali_euro ";
-   $sql.="FROM acqua_dett_parz ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('acqua_dett_parz', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'rif_ute, ';
+    $sql .= 'id_cond, ';
+    $sql .= 'cond_inquil, ';
+    $sql .= 't_cod_cond, ';
+    $sql .= 't_scala, ';
+    $sql .= 't_interno, ';
+    $sql .= 't_nome, ';
+    $sql .= 'tipo_utenza, ';
+    $sql .= 'num_utenze, ';
+    $sql .= 'lett_vecchia_1, ';
+    $sql .= 'lett_nuova_1, ';
+    $sql .= 'lett_vecchia_2, ';
+    $sql .= 'lett_nuova_2, ';
+    $sql .= 'lett_vecchia_3, ';
+    $sql .= 'lett_nuova_3, ';
+    $sql .= 'consumo, ';
+    $sql .= 'acq_personali, ';
+    $sql .= 'acq_personali_euro, ';
+    $sql .= 'alt1_personali, ';
+    $sql .= 'alt1_personali_euro, ';
+    $sql .= 'alt2_personali, ';
+    $sql .= 'alt2_personali_euro ';
+    $sql .= 'FROM acqua_dett_parz ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('acqua_dett_parz', $row);
+    }
 }

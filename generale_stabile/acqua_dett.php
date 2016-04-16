@@ -1,10 +1,11 @@
-<?php 
+<?php
+
 function acqua_dettCreate($ds, $dd)
 {
-   $dbstring = 'drop table `acqua_dett`;';
-   echo "Creazione acqua_dett; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `acqua_dett`;';
+    echo "Creazione acqua_dett; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `acqua_dett` (
          `rif_ute` int(2) DEFAULT NULL,
          `id_cond` int(4) DEFAULT NULL,
@@ -54,69 +55,69 @@ function acqua_dettCreate($ds, $dd)
          `quota_letture` int(4) DEFAULT NULL,
          `tipo_lettura` varchar(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function acqua_dettCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="rif_ute, ";
-   $sql.="id_cond, ";
-   $sql.="cond_inquil, ";
-   $sql.="t_cod_cond, ";
-   $sql.="t_scala, ";
-   $sql.="t_interno, ";
-   $sql.="t_nome, ";
-   $sql.="tipo_utenza, ";
-   $sql.="num_utenze, ";
-   $sql.="lett_vecchia_1, ";
-   $sql.="lett_nuova_1, ";
-   $sql.="lett_vecchia_2, ";
-   $sql.="lett_nuova_2, ";
-   $sql.="lett_vecchia_3, ";
-   $sql.="lett_nuova_3, ";
-   $sql.="consumo, ";
-   $sql.="acq_personali, ";
-   $sql.="acq_personali_euro, ";
-   $sql.="alt1_personali, ";
-   $sql.="alt1_personali_euro, ";
-   $sql.="alt2_personali, ";
-   $sql.="alt2_personali_euro, ";
-   $sql.="cons_1, ";
-   $sql.="cons_2, ";
-   $sql.="cons_3, ";
-   $sql.="cons_4, ";
-   $sql.="cons_5, ";
-   $sql.="importo_1, ";
-   $sql.="importo_2, ";
-   $sql.="importo_3, ";
-   $sql.="importo_4, ";
-   $sql.="importo_5, ";
-   $sql.="acq_a_consumo, ";
-   $sql.="alt1_a_consumo, ";
-   $sql.="alt2_a_consumo, ";
-   $sql.="acq_a_millesimi, ";
-   $sql.="alt1_a_millesimi, ";
-   $sql.="alt2_a_millesimi, ";
-   $sql.="importo_depurazione, ";
-   $sql.="importo_fognature, ";
-   $sql.="acq_uguali, ";
-   $sql.="alt1_uguali, ";
-   $sql.="alt2_uguali, ";
-   $sql.="differenza_acqua, ";
-   $sql.="iva, ";
-   $sql.="quota_letture, ";
-   $sql.="tipo_lettura ";
-   $sql.="FROM acqua_dett ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('acqua_dett', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'rif_ute, ';
+    $sql .= 'id_cond, ';
+    $sql .= 'cond_inquil, ';
+    $sql .= 't_cod_cond, ';
+    $sql .= 't_scala, ';
+    $sql .= 't_interno, ';
+    $sql .= 't_nome, ';
+    $sql .= 'tipo_utenza, ';
+    $sql .= 'num_utenze, ';
+    $sql .= 'lett_vecchia_1, ';
+    $sql .= 'lett_nuova_1, ';
+    $sql .= 'lett_vecchia_2, ';
+    $sql .= 'lett_nuova_2, ';
+    $sql .= 'lett_vecchia_3, ';
+    $sql .= 'lett_nuova_3, ';
+    $sql .= 'consumo, ';
+    $sql .= 'acq_personali, ';
+    $sql .= 'acq_personali_euro, ';
+    $sql .= 'alt1_personali, ';
+    $sql .= 'alt1_personali_euro, ';
+    $sql .= 'alt2_personali, ';
+    $sql .= 'alt2_personali_euro, ';
+    $sql .= 'cons_1, ';
+    $sql .= 'cons_2, ';
+    $sql .= 'cons_3, ';
+    $sql .= 'cons_4, ';
+    $sql .= 'cons_5, ';
+    $sql .= 'importo_1, ';
+    $sql .= 'importo_2, ';
+    $sql .= 'importo_3, ';
+    $sql .= 'importo_4, ';
+    $sql .= 'importo_5, ';
+    $sql .= 'acq_a_consumo, ';
+    $sql .= 'alt1_a_consumo, ';
+    $sql .= 'alt2_a_consumo, ';
+    $sql .= 'acq_a_millesimi, ';
+    $sql .= 'alt1_a_millesimi, ';
+    $sql .= 'alt2_a_millesimi, ';
+    $sql .= 'importo_depurazione, ';
+    $sql .= 'importo_fognature, ';
+    $sql .= 'acq_uguali, ';
+    $sql .= 'alt1_uguali, ';
+    $sql .= 'alt2_uguali, ';
+    $sql .= 'differenza_acqua, ';
+    $sql .= 'iva, ';
+    $sql .= 'quota_letture, ';
+    $sql .= 'tipo_lettura ';
+    $sql .= 'FROM acqua_dett ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('acqua_dett', $row);
+    }
 }

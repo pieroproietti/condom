@@ -25,27 +25,26 @@ function dbCreate($dbc)
 * main
 */
 
-$linuxCondomAddress="127.0.0.1";
-$linuxCondomUser="root";
-$linuxCondomPass="evoluzione";
+$linuxCondomAddress = '127.0.0.1';
+$linuxCondomUser = 'root';
+$linuxCondomPass = 'evoluzione';
 $aDbCondom = [
   'server' => $linuxCondomAddress,
   'username' => $linuxCondomUser,
   'password' => $linuxCondomPass,
   'name' => 'condom',
-  'charset' => 'utf8'
+  'charset' => 'utf8',
 ];
 
-
-$windowsCondomAddress="192.168.1.203";
-$windowsCondomUser="condom";
-$windowsCondomPass="condom";
+$windowsCondomAddress = '192.168.1.203';
+$windowsCondomUser = 'condom';
+$windowsCondomPass = 'condom';
 $aDbPartiComuni = [
   'server' => $windowsCondomAddress,
   'username' => $windowsCondomUser,
   'password' => $windowsCondomPass,
   'name' => 'parti_comuni',
-  'charset' => 'utf8'
+  'charset' => 'utf8',
 ];
 
 $aDbGeneraleStabile = [
@@ -53,7 +52,7 @@ $aDbGeneraleStabile = [
   'username' => $windowsCondomUser,
   'password' => $windowsCondomPass,
   'name' => 'generale_stabile',
-  'charset' => 'utf8'
+  'charset' => 'utf8',
 ];
 
 $aDbSingoloAnno = [
@@ -61,7 +60,7 @@ $aDbSingoloAnno = [
   'username' => $windowsCondomUser,
   'password' => $windowsCondomPass,
   'name' => 'singolo_anno',
-  'charset' => 'utf8'
+  'charset' => 'utf8',
 ];
 
 // creazione del database condom
@@ -74,7 +73,7 @@ $dbCondom = new medoo([
     'server' => $aDbCondom['server'],
     'username' => $aDbCondom['username'],
     'password' => $aDbCondom['password'],
-    'charset' => $aDbCondom['charset']
+    'charset' => $aDbCondom['charset'],
         ]);
 
 // Apertura parti_comuni
@@ -84,7 +83,7 @@ $dbPartiComuni = new medoo([
     'server' => $aDbPartiComuni['server'],
     'username' => $aDbPartiComuni['username'],
     'password' => $aDbPartiComuni['password'],
-    'charset' => $aDbPartiComuni['charset']
+    'charset' => $aDbPartiComuni['charset'],
         ]);
 
 require 'stabili_importa.php';
@@ -93,13 +92,13 @@ require 'stabili_crea.php';
 stabiliCrea($dbCondom);
 stabiliImporta($dbPartiComuni, $dbCondom);
 
-$stabili=$dbCondom->select("stabili",["id","uuid","codice","denominazione","cartella"]);
+$stabili = $dbCondom->select('stabili', ['id', 'uuid', 'codice', 'denominazione', 'cartella']);
 foreach ($stabili as &$stabile) {
-  // importo generale_stabile
-  echo "<li><a href='http://" . $aDbGeneraleStabile['server'];
-  echo ":8080/generale_stabile/index.php?";
-  echo "id=".$stabile['id']."&";
-  echo "cartella=".$stabile['cartella']."&";
-  echo "uuid=".$stabile['uuid'];
-  echo "'>".$stabile['denominazione']."</a></li>"."\n";
+    // importo generale_stabile
+  echo "<li><a href='http://".$aDbGeneraleStabile['server'];
+    echo ':8080/generale_stabile/index.php?';
+    echo 'id='.$stabile['id'].'&';
+    echo 'cartella='.$stabile['cartella'].'&';
+    echo 'uuid='.$stabile['uuid'];
+    echo "'>".$stabile['denominazione'].'</a></li>'."\n";
 }

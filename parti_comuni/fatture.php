@@ -1,10 +1,11 @@
-<?php 
+<?php
+
 function fattureCreate($ds, $dd)
 {
-   $dbstring = 'drop table `fatture`;';
-   echo "Creazione fatture; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `fatture`;';
+    echo "Creazione fatture; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `fatture` (
          `id_fatture` int(4) DEFAULT NULL,
          `id_stabile` int(4) DEFAULT NULL,
@@ -51,66 +52,66 @@ function fattureCreate($ds, $dd)
          `etic_axivar` varchar(50) DEFAULT NULL,
          `singola_multipla` varchar(1) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function fattureCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="id_fatture, ";
-   $sql.="id_stabile, ";
-   $sql.="riferimento, ";
-   $sql.="cod_fornitore, ";
-   $sql.="data_fattura, ";
-   $sql.="data_pagamento, ";
-   $sql.="num_fattura, ";
-   $sql.="descrizione_sintetica, ";
-   $sql.="descriz_corpo, ";
-   $sql.="conteggi_a_m, ";
-   $sql.="onorario, ";
-   $sql.="aliq_4perc, ";
-   $sql.="importo_4perc, ";
-   $sql.="aliq_cassa, ";
-   $sql.="importo_cassa, ";
-   $sql.="imponibile, ";
-   $sql.="aliq_inps, ";
-   $sql.="importo_inps, ";
-   $sql.="aliq_iva, ";
-   $sql.="importo_iva, ";
-   $sql.="totale_fattura, ";
-   $sql.="aliq_rda, ";
-   $sql.="importo_rda, ";
-   $sql.="rimborsi, ";
-   $sql.="importo_netto, ";
-   $sql.="prof_occas, ";
-   $sql.="id_anno, ";
-   $sql.="voce_compenso, ";
-   $sql.="voce_rda, ";
-   $sql.="reg_compenso, ";
-   $sql.="reg_rda, ";
-   $sql.="reg_gestione, ";
-   $sql.="reg_nstra, ";
-   $sql.="cassa_compenso, ";
-   $sql.="cassa_rda, ";
-   $sql.="rif_f24, ";
-   $sql.="note, ";
-   $sql.="rif_fatt_mio, ";
-   $sql.="compet_compenso, ";
-   $sql.="compet_rda, ";
-   $sql.="bonifico_diretto, ";
-   $sql.="file_bonifico_telematico, ";
-   $sql.="etic_axivar, ";
-   $sql.="singola_multipla ";
-   $sql.="FROM fatture ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('fatture', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'id_fatture, ';
+    $sql .= 'id_stabile, ';
+    $sql .= 'riferimento, ';
+    $sql .= 'cod_fornitore, ';
+    $sql .= 'data_fattura, ';
+    $sql .= 'data_pagamento, ';
+    $sql .= 'num_fattura, ';
+    $sql .= 'descrizione_sintetica, ';
+    $sql .= 'descriz_corpo, ';
+    $sql .= 'conteggi_a_m, ';
+    $sql .= 'onorario, ';
+    $sql .= 'aliq_4perc, ';
+    $sql .= 'importo_4perc, ';
+    $sql .= 'aliq_cassa, ';
+    $sql .= 'importo_cassa, ';
+    $sql .= 'imponibile, ';
+    $sql .= 'aliq_inps, ';
+    $sql .= 'importo_inps, ';
+    $sql .= 'aliq_iva, ';
+    $sql .= 'importo_iva, ';
+    $sql .= 'totale_fattura, ';
+    $sql .= 'aliq_rda, ';
+    $sql .= 'importo_rda, ';
+    $sql .= 'rimborsi, ';
+    $sql .= 'importo_netto, ';
+    $sql .= 'prof_occas, ';
+    $sql .= 'id_anno, ';
+    $sql .= 'voce_compenso, ';
+    $sql .= 'voce_rda, ';
+    $sql .= 'reg_compenso, ';
+    $sql .= 'reg_rda, ';
+    $sql .= 'reg_gestione, ';
+    $sql .= 'reg_nstra, ';
+    $sql .= 'cassa_compenso, ';
+    $sql .= 'cassa_rda, ';
+    $sql .= 'rif_f24, ';
+    $sql .= 'note, ';
+    $sql .= 'rif_fatt_mio, ';
+    $sql .= 'compet_compenso, ';
+    $sql .= 'compet_rda, ';
+    $sql .= 'bonifico_diretto, ';
+    $sql .= 'file_bonifico_telematico, ';
+    $sql .= 'etic_axivar, ';
+    $sql .= 'singola_multipla ';
+    $sql .= 'FROM fatture ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('fatture', $row);
+    }
 }

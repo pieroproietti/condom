@@ -1,10 +1,11 @@
 <?php
+
 function elenco_destinatari_rolCreate($ds, $dd)
 {
-   $dbstring = 'drop table `elenco_destinatari_rol`;';
-   echo "Creazione elenco_destinatari_rol; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `elenco_destinatari_rol`;';
+    echo "Creazione elenco_destinatari_rol; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `elenco_destinatari_rol` (
          `rif_lettera` int(4) DEFAULT NULL,
          `codice` int(4) DEFAULT NULL,
@@ -20,35 +21,35 @@ function elenco_destinatari_rolCreate($ds, $dd)
          `selezionato` varchar(2) DEFAULT NULL,
          `inviato` varchar(100) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function elenco_destinatari_rolCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="rif_lettera, ";
-   $sql.="codice, ";
-   $sql.="scala, ";
-   $sql.="interno, ";
-   $sql.="nome_destinatario, ";
-   $sql.="destinatario_riga1, ";
-   $sql.="destinatario_riga2, ";
-   $sql.="indir_destinatario, ";
-   $sql.="civ_destinatario, ";
-   $sql.="cap_destinartario, ";
-   $sql.="citta_destinatario, ";
-   $sql.="selezionato, ";
-   $sql.="inviato ";
-   $sql.="FROM elenco_destinatari_rol ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('elenco_destinatari_rol', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'rif_lettera, ';
+    $sql .= 'codice, ';
+    $sql .= 'scala, ';
+    $sql .= 'interno, ';
+    $sql .= 'nome_destinatario, ';
+    $sql .= 'destinatario_riga1, ';
+    $sql .= 'destinatario_riga2, ';
+    $sql .= 'indir_destinatario, ';
+    $sql .= 'civ_destinatario, ';
+    $sql .= 'cap_destinartario, ';
+    $sql .= 'citta_destinatario, ';
+    $sql .= 'selezionato, ';
+    $sql .= 'inviato ';
+    $sql .= 'FROM elenco_destinatari_rol ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('elenco_destinatari_rol', $row);
+    }
 }

@@ -1,51 +1,51 @@
 <?php
 
-require "../medoo.php";
-require "affitti.php";
-require "amministratore.php";
-require "bonifici.php";
-require "conti.php";
-require "contratti_acea.php";
-require "f24.php";
-require "fatt_multiple_dett.php";
-require "fatture.php";
-require "fatture_amministratore.php";
-require "fatture_provvisorie.php";
-require "fitti_dovuti.php";
-require "fitti_impostaz.php";
-require "fitti_pagamenti.php";
-require "fonts_firma.php";
-require "fornitori.php";
-require "frasi_pronte.php";
-require "gruppi.php";
-require "inc_reg_glo.php";
-require "interventi.php";
-require "operaz_ammin.php";
-require "scadenze.php";
-require "sistema.php";
-require "stabili.php";
-require "taiffe_acea_2011.php";
-require "tariffe_acea_standard.php";
-require "ut_p.php";
-require "utenti.php";
+require '../medoo.php';
+require 'affitti.php';
+require 'amministratore.php';
+require 'bonifici.php';
+require 'conti.php';
+require 'contratti_acea.php';
+require 'f24.php';
+require 'fatt_multiple_dett.php';
+require 'fatture.php';
+require 'fatture_amministratore.php';
+require 'fatture_provvisorie.php';
+require 'fitti_dovuti.php';
+require 'fitti_impostaz.php';
+require 'fitti_pagamenti.php';
+require 'fonts_firma.php';
+require 'fornitori.php';
+require 'frasi_pronte.php';
+require 'gruppi.php';
+require 'inc_reg_glo.php';
+require 'interventi.php';
+require 'operaz_ammin.php';
+require 'scadenze.php';
+require 'sistema.php';
+require 'stabili.php';
+require 'taiffe_acea_2011.php';
+require 'tariffe_acea_standard.php';
+require 'ut_p.php';
+require 'utenti.php';
 
+function dbCreate($dbc)
+{
+    $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
 
-function dbCreate($dbc){
-  $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
-
-  if ($db->connect_errno) {
-      echo 'Il sito sta avendo problemi...\n';
-      echo "Errore: connessione MySQL fallita: \n";
-      echo 'Errno: '.$db->connect_errno."\n";
-      echo 'Error: '.$db->connect_error."\n";
-      exit;
-  } else {
-      echo "connessi a: ".$db->host_info."\n";
-      $db->query("DROP DATABASE `".$dbc['name'].";");
-      $db->query("CREATE DATABASE IF NOT EXISTS `".$dbc['name']."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
-      $db->query("USE `".$dbc['name']."`;");
-      $db->close();
-  }
+    if ($db->connect_errno) {
+        echo 'Il sito sta avendo problemi...\n';
+        echo "Errore: connessione MySQL fallita: \n";
+        echo 'Errno: '.$db->connect_errno."\n";
+        echo 'Error: '.$db->connect_error."\n";
+        exit;
+    } else {
+        echo 'connessi a: '.$db->host_info."\n";
+        $db->query('DROP DATABASE `'.$dbc['name'].';');
+        $db->query('CREATE DATABASE IF NOT EXISTS `'.$dbc['name'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;');
+        $db->query('USE `'.$dbc['name'].'`;');
+        $db->close();
+    }
 }
 
 /*
@@ -61,18 +61,17 @@ $dbc = [
 // creazione del database condom
 dbCreate($dbc);
 
-/**
+/*
 *
 */
 $dbName = "E:\Gescon\parti_comuni.mdb";
 if (!file_exists($dbName)) {
-    die("Could not find database file. Uffa!");
-  }else{
+    die('Could not find database file. Uffa!');
+} else {
     echo "$dbName trovato!<br/>";
-  }
+}
 $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 // database destinazione
-
 
 $dd = new medoo([
     'database_type' => 'mysql',
@@ -80,21 +79,21 @@ $dd = new medoo([
     'server' => $dbc['server'],
     'username' => $dbc['username'],
     'password' => $dbc['password'],
-    'charset' => 'utf8'
+    'charset' => 'utf8',
         ]);
 
 affittiCreate($ds, $dd);
-affittiCopy($ds,$dd);
+affittiCopy($ds, $dd);
 amministratoreCreate($ds, $dd);
 amministratoreCopy($ds, $dd);
 bonificiCreate($ds, $dd);
-bonificiCopy($ds,$dd);
+bonificiCopy($ds, $dd);
 contiCreate($ds, $dd);
-contiCopy($ds,$dd);
+contiCopy($ds, $dd);
 contratti_aceaCreate($ds, $dd);
-contratti_aceaCopy($ds,$dd);
+contratti_aceaCopy($ds, $dd);
 f24Create($ds, $dd);
-f24Copy($ds,$dd);
+f24Copy($ds, $dd);
 fatt_multiple_dettCreate($ds, $dd);
 fatt_multiple_dettCopy($ds, $dd);
 fattureCreate($ds, $dd);

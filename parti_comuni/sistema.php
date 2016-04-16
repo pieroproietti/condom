@@ -1,10 +1,11 @@
 <?php
+
 function sistemaCreate($ds, $dd)
 {
-   $dbstring = 'drop table `sistema`;';
-   echo "Creazione sistema; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `sistema`;';
+    echo "Creazione sistema; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `sistema` (
          `acqua` varchar(1) DEFAULT NULL,
          `licenza_num` varchar(50) DEFAULT NULL,
@@ -54,69 +55,69 @@ function sistemaCreate($ds, $dd)
          `percorso_invio_mail` int(2) DEFAULT NULL,
          `cu_dest_852` varchar(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function sistemaCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="acqua, ";
-   $sql.="licenza_num, ";
-   $sql.="licenza_nome, ";
-   $sql.="dt_registraz_acqua, ";
-   $sql.="codice_abilitazione, ";
-   $sql.="dt_registraz_gescon, ";
-   $sql.="codice_abilitazione_gescon, ";
-   $sql.="dt_registraz_rda, ";
-   $sql.="codice_abilitazione_rda, ";
-   $sql.="data_installazione, ";
-   $sql.="aperture, ";
-   $sql.="logo, ";
-   $sql.="nma, ";
-   $sql.="f24_modello_abit, ";
-   $sql.="ind_mail_per_sms_fax, ";
-   $sql.="indirzzo_e_mail_sender, ";
-   $sql.="server_smtp, ";
-   $sql.="porta_comunicazione, ";
-   $sql.="password, ";
-   $sql.="modalita_invio_mail, ";
-   $sql.="dt_ult_copia, ";
-   $sql.="dt_ult_organizza, ";
-   $sql.="organizza_controlla_64bit, ";
-   $sql.="f24_st_chiaro_scuro, ";
-   $sql.="f24_st_nome_f_telem, ";
-   $sql.="filtri_scad_stab, ";
-   $sql.="filtri_scad_dal, ";
-   $sql.="filtri_scad_al, ";
-   $sql.="filtri_scad_emisrate, ";
-   $sql.="filtri_scad_ass, ";
-   $sql.="filtri_scad_f24, ";
-   $sql.="filtri_scad_altre, ";
-   $sql.="filtri_scad_fatte, ";
-   $sql.="filtri_interv_stabile, ";
-   $sql.="filtri_interv_fornitore, ";
-   $sql.="filtri_interv_dal, ";
-   $sql.="filtri_interv_al, ";
-   $sql.="filtri_interv_ordin, ";
-   $sql.="filtri_interv_fatte, ";
-   $sql.="agg_utilizzo_forn, ";
-   $sql.="agg_scad_f24, ";
-   $sql.="contrasto_770, ";
-   $sql.="filtri_forn_u, ";
-   $sql.="filtri_forn_i, ";
-   $sql.="filtri_forn_m, ";
-   $sql.="percorso_invio_mail, ";
-   $sql.="cu_dest_852 ";
-   $sql.="FROM sistema ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('sistema', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'acqua, ';
+    $sql .= 'licenza_num, ';
+    $sql .= 'licenza_nome, ';
+    $sql .= 'dt_registraz_acqua, ';
+    $sql .= 'codice_abilitazione, ';
+    $sql .= 'dt_registraz_gescon, ';
+    $sql .= 'codice_abilitazione_gescon, ';
+    $sql .= 'dt_registraz_rda, ';
+    $sql .= 'codice_abilitazione_rda, ';
+    $sql .= 'data_installazione, ';
+    $sql .= 'aperture, ';
+    $sql .= 'logo, ';
+    $sql .= 'nma, ';
+    $sql .= 'f24_modello_abit, ';
+    $sql .= 'ind_mail_per_sms_fax, ';
+    $sql .= 'indirzzo_e_mail_sender, ';
+    $sql .= 'server_smtp, ';
+    $sql .= 'porta_comunicazione, ';
+    $sql .= 'password, ';
+    $sql .= 'modalita_invio_mail, ';
+    $sql .= 'dt_ult_copia, ';
+    $sql .= 'dt_ult_organizza, ';
+    $sql .= 'organizza_controlla_64bit, ';
+    $sql .= 'f24_st_chiaro_scuro, ';
+    $sql .= 'f24_st_nome_f_telem, ';
+    $sql .= 'filtri_scad_stab, ';
+    $sql .= 'filtri_scad_dal, ';
+    $sql .= 'filtri_scad_al, ';
+    $sql .= 'filtri_scad_emisrate, ';
+    $sql .= 'filtri_scad_ass, ';
+    $sql .= 'filtri_scad_f24, ';
+    $sql .= 'filtri_scad_altre, ';
+    $sql .= 'filtri_scad_fatte, ';
+    $sql .= 'filtri_interv_stabile, ';
+    $sql .= 'filtri_interv_fornitore, ';
+    $sql .= 'filtri_interv_dal, ';
+    $sql .= 'filtri_interv_al, ';
+    $sql .= 'filtri_interv_ordin, ';
+    $sql .= 'filtri_interv_fatte, ';
+    $sql .= 'agg_utilizzo_forn, ';
+    $sql .= 'agg_scad_f24, ';
+    $sql .= 'contrasto_770, ';
+    $sql .= 'filtri_forn_u, ';
+    $sql .= 'filtri_forn_i, ';
+    $sql .= 'filtri_forn_m, ';
+    $sql .= 'percorso_invio_mail, ';
+    $sql .= 'cu_dest_852 ';
+    $sql .= 'FROM sistema ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('sistema', $row);
+    }
 }

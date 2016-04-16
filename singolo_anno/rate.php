@@ -1,10 +1,11 @@
 <?php
+
 function rateCreate($ds, $dd)
 {
-   $dbstring = 'drop table `rate`;';
-   echo "Creazione rate; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `rate`;';
+    echo "Creazione rate; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `rate` (
          `id_rate` int(4) DEFAULT NULL,
          `id_condomino` int(4) DEFAULT NULL,
@@ -22,37 +23,37 @@ function rateCreate($ds, $dd)
          `dt1_da` datetime DEFAULT NULL,
          `dt2_a` datetime DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function rateCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="id_rate, ";
-   $sql.="id_condomino, ";
-   $sql.="propr_inquil, ";
-   $sql.="n_mese, ";
-   $sql.="o_r_s, ";
-   $sql.="importo_dovuto, ";
-   $sql.="importo_dovuto_euro, ";
-   $sql.="d_p_e, ";
-   $sql.="dt_empag, ";
-   $sql.="descrizione, ";
-   $sql.="n_stra, ";
-   $sql.="str_mese, ";
-   $sql.="str_anno, ";
-   $sql.="dt1_da, ";
-   $sql.="dt2_a ";
-   $sql.="FROM rate ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('rate', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'id_rate, ';
+    $sql .= 'id_condomino, ';
+    $sql .= 'propr_inquil, ';
+    $sql .= 'n_mese, ';
+    $sql .= 'o_r_s, ';
+    $sql .= 'importo_dovuto, ';
+    $sql .= 'importo_dovuto_euro, ';
+    $sql .= 'd_p_e, ';
+    $sql .= 'dt_empag, ';
+    $sql .= 'descrizione, ';
+    $sql .= 'n_stra, ';
+    $sql .= 'str_mese, ';
+    $sql .= 'str_anno, ';
+    $sql .= 'dt1_da, ';
+    $sql .= 'dt2_a ';
+    $sql .= 'FROM rate ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('rate', $row);
+    }
 }

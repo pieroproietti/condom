@@ -1,10 +1,11 @@
 <?php
+
 function fatture_provvisorieCreate($ds, $dd)
 {
-   $dbstring = 'drop table `fatture_provvisorie`;';
-   echo "Creazione fatture_provvisorie; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `fatture_provvisorie`;';
+    echo "Creazione fatture_provvisorie; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `fatture_provvisorie` (
          `id_fattura` int(4) DEFAULT NULL,
          `id_stabile` int(4) DEFAULT NULL,
@@ -45,60 +46,60 @@ function fatture_provvisorieCreate($ds, $dd)
          `appoggio` varchar(100) DEFAULT NULL,
          `tipo_riga` varchar(50) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function fatture_provvisorieCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="id_fattura, ";
-   $sql.="id_stabile, ";
-   $sql.="cartella_anni, ";
-   $sql.="id_anno, ";
-   $sql.="cod_stabile, ";
-   $sql.="cliente_nome, ";
-   $sql.="cliente_indirizzo, ";
-   $sql.="cliente_cap, ";
-   $sql.="cliente_citta, ";
-   $sql.="cliente_pr, ";
-   $sql.="cliente_cf, ";
-   $sql.="cliente_pi, ";
-   $sql.="cod_fornitore, ";
-   $sql.="data_fattura, ";
-   $sql.="anno, ";
-   $sql.="data_pagamento, ";
-   $sql.="num_fattura, ";
-   $sql.="descrizione_sintetica, ";
-   $sql.="descriz_corpo, ";
-   $sql.="conteggi_a_m, ";
-   $sql.="onorario, ";
-   $sql.="aliq_4perc, ";
-   $sql.="importo_4perc, ";
-   $sql.="aliq_cassa, ";
-   $sql.="importo_cassa, ";
-   $sql.="imponibile, ";
-   $sql.="aliq_inps, ";
-   $sql.="importo_inps, ";
-   $sql.="aliq_iva, ";
-   $sql.="importo_iva, ";
-   $sql.="totale_fattura, ";
-   $sql.="aliq_rda, ";
-   $sql.="importo_rda, ";
-   $sql.="rimborsi, ";
-   $sql.="importo_netto, ";
-   $sql.="prof_occas, ";
-   $sql.="appoggio, ";
-   $sql.="tipo_riga ";
-   $sql.="FROM fatture_provvisorie ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('fatture_provvisorie', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'id_fattura, ';
+    $sql .= 'id_stabile, ';
+    $sql .= 'cartella_anni, ';
+    $sql .= 'id_anno, ';
+    $sql .= 'cod_stabile, ';
+    $sql .= 'cliente_nome, ';
+    $sql .= 'cliente_indirizzo, ';
+    $sql .= 'cliente_cap, ';
+    $sql .= 'cliente_citta, ';
+    $sql .= 'cliente_pr, ';
+    $sql .= 'cliente_cf, ';
+    $sql .= 'cliente_pi, ';
+    $sql .= 'cod_fornitore, ';
+    $sql .= 'data_fattura, ';
+    $sql .= 'anno, ';
+    $sql .= 'data_pagamento, ';
+    $sql .= 'num_fattura, ';
+    $sql .= 'descrizione_sintetica, ';
+    $sql .= 'descriz_corpo, ';
+    $sql .= 'conteggi_a_m, ';
+    $sql .= 'onorario, ';
+    $sql .= 'aliq_4perc, ';
+    $sql .= 'importo_4perc, ';
+    $sql .= 'aliq_cassa, ';
+    $sql .= 'importo_cassa, ';
+    $sql .= 'imponibile, ';
+    $sql .= 'aliq_inps, ';
+    $sql .= 'importo_inps, ';
+    $sql .= 'aliq_iva, ';
+    $sql .= 'importo_iva, ';
+    $sql .= 'totale_fattura, ';
+    $sql .= 'aliq_rda, ';
+    $sql .= 'importo_rda, ';
+    $sql .= 'rimborsi, ';
+    $sql .= 'importo_netto, ';
+    $sql .= 'prof_occas, ';
+    $sql .= 'appoggio, ';
+    $sql .= 'tipo_riga ';
+    $sql .= 'FROM fatture_provvisorie ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('fatture_provvisorie', $row);
+    }
 }

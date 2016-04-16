@@ -1,10 +1,11 @@
 <?php
+
 function rendite_condominialiCreate($ds, $dd)
 {
-   $dbstring = 'drop table `rendite_condominiali`;';
-   echo "Creazione rendite_condominiali; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `rendite_condominiali`;';
+    echo "Creazione rendite_condominiali; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `rendite_condominiali` (
          `cod` int(4) DEFAULT NULL,
          `descrizione` varchar(50) DEFAULT NULL,
@@ -85,100 +86,100 @@ function rendite_condominialiCreate($ds, $dd)
          `eli2_importo3` decimal(10,2) DEFAULT NULL,
          `eli2_dt_pagam` datetime DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function rendite_condominialiCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="cod, ";
-   $sql.="descrizione, ";
-   $sql.="indirizzo, ";
-   $sql.="cap, ";
-   $sql.="citta, ";
-   $sql.="pr, ";
-   $sql.="particella, ";
-   $sql.="rendita_catastale, ";
-   $sql.="rendita_effettiva, ";
-   $sql.="tabella, ";
-   $sql.="anno_fiscale, ";
-   $sql.="cod_catastale_comune, ";
-   $sql.="importo_ici_eserc_prec, ";
-   $sql.="rendita_catastale_orig, ";
-   $sql.="assogett_imu, ";
-   $sql.="assogett_tasi, ";
-   $sql.="categoria, ";
-   $sql.="coefficiente, ";
-   $sql.="aliquota_imu, ";
-   $sql.="aliquota_tasi, ";
-   $sql.="detraz_tasi, ";
-   $sql.="rli_ufficio_terr, ";
-   $sql.="rli_tipo_contratto, ";
-   $sql.="rli_num_pag, ";
-   $sql.="rli_num_copie, ";
-   $sql.="rli_imp_canone, ";
-   $sql.="rli_dal, ";
-   $sql.="rli_al, ";
-   $sql.="rli_stipula, ";
-   $sql.="rli_annualita, ";
-   $sql.="rli_cod_ufficio, ";
-   $sql.="rli_anno, ";
-   $sql.="rli_serie, ";
-   $sql.="rli_numero, ";
-   $sql.="rli_sottonum, ";
-   $sql.="rli_cod_id_contratto, ";
-   $sql.="rli_cf_conduttore, ";
-   $sql.="rli_cognome_cond, ";
-   $sql.="rli_nome_cond, ";
-   $sql.="rli_dt_nas_cond, ";
-   $sql.="rli_sesso_cond, ";
-   $sql.="rli_comune_nas_cond, ";
-   $sql.="rli_pr_nas_cond, ";
-   $sql.="rli_tu, ";
-   $sql.="rli_ip, ";
-   $sql.="rli_sez, ";
-   $sql.="rli_foglio, ";
-   $sql.="rli_partic, ";
-   $sql.="rli_partic2, ";
-   $sql.="rli_sub, ";
-   $sql.="rli_in_accatast, ";
-   $sql.="rli_categ_catast, ";
-   $sql.="eli1_des1, ";
-   $sql.="eli1_cod1, ";
-   $sql.="eli1_anno1, ";
-   $sql.="eli1_importo1, ";
-   $sql.="eli1_des2, ";
-   $sql.="eli1_cod2, ";
-   $sql.="eli1_anno2, ";
-   $sql.="eli1_importo2, ";
-   $sql.="eli1_des3, ";
-   $sql.="eli1_cod3, ";
-   $sql.="eli1_anno3, ";
-   $sql.="eli1_importo3, ";
-   $sql.="eli1_dt_pagam, ";
-   $sql.="eli2_des1, ";
-   $sql.="eli2_cod1, ";
-   $sql.="eli2_anno1, ";
-   $sql.="eli2_importo1, ";
-   $sql.="eli2_des2, ";
-   $sql.="eli2_cod2, ";
-   $sql.="eli2_anno2, ";
-   $sql.="eli2_importo2, ";
-   $sql.="eli2_des3, ";
-   $sql.="eli2_cod3, ";
-   $sql.="eli2_anno3, ";
-   $sql.="eli2_importo3, ";
-   $sql.="eli2_dt_pagam ";
-   $sql.="FROM rendite_condominiali ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('rendite_condominiali', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'cod, ';
+    $sql .= 'descrizione, ';
+    $sql .= 'indirizzo, ';
+    $sql .= 'cap, ';
+    $sql .= 'citta, ';
+    $sql .= 'pr, ';
+    $sql .= 'particella, ';
+    $sql .= 'rendita_catastale, ';
+    $sql .= 'rendita_effettiva, ';
+    $sql .= 'tabella, ';
+    $sql .= 'anno_fiscale, ';
+    $sql .= 'cod_catastale_comune, ';
+    $sql .= 'importo_ici_eserc_prec, ';
+    $sql .= 'rendita_catastale_orig, ';
+    $sql .= 'assogett_imu, ';
+    $sql .= 'assogett_tasi, ';
+    $sql .= 'categoria, ';
+    $sql .= 'coefficiente, ';
+    $sql .= 'aliquota_imu, ';
+    $sql .= 'aliquota_tasi, ';
+    $sql .= 'detraz_tasi, ';
+    $sql .= 'rli_ufficio_terr, ';
+    $sql .= 'rli_tipo_contratto, ';
+    $sql .= 'rli_num_pag, ';
+    $sql .= 'rli_num_copie, ';
+    $sql .= 'rli_imp_canone, ';
+    $sql .= 'rli_dal, ';
+    $sql .= 'rli_al, ';
+    $sql .= 'rli_stipula, ';
+    $sql .= 'rli_annualita, ';
+    $sql .= 'rli_cod_ufficio, ';
+    $sql .= 'rli_anno, ';
+    $sql .= 'rli_serie, ';
+    $sql .= 'rli_numero, ';
+    $sql .= 'rli_sottonum, ';
+    $sql .= 'rli_cod_id_contratto, ';
+    $sql .= 'rli_cf_conduttore, ';
+    $sql .= 'rli_cognome_cond, ';
+    $sql .= 'rli_nome_cond, ';
+    $sql .= 'rli_dt_nas_cond, ';
+    $sql .= 'rli_sesso_cond, ';
+    $sql .= 'rli_comune_nas_cond, ';
+    $sql .= 'rli_pr_nas_cond, ';
+    $sql .= 'rli_tu, ';
+    $sql .= 'rli_ip, ';
+    $sql .= 'rli_sez, ';
+    $sql .= 'rli_foglio, ';
+    $sql .= 'rli_partic, ';
+    $sql .= 'rli_partic2, ';
+    $sql .= 'rli_sub, ';
+    $sql .= 'rli_in_accatast, ';
+    $sql .= 'rli_categ_catast, ';
+    $sql .= 'eli1_des1, ';
+    $sql .= 'eli1_cod1, ';
+    $sql .= 'eli1_anno1, ';
+    $sql .= 'eli1_importo1, ';
+    $sql .= 'eli1_des2, ';
+    $sql .= 'eli1_cod2, ';
+    $sql .= 'eli1_anno2, ';
+    $sql .= 'eli1_importo2, ';
+    $sql .= 'eli1_des3, ';
+    $sql .= 'eli1_cod3, ';
+    $sql .= 'eli1_anno3, ';
+    $sql .= 'eli1_importo3, ';
+    $sql .= 'eli1_dt_pagam, ';
+    $sql .= 'eli2_des1, ';
+    $sql .= 'eli2_cod1, ';
+    $sql .= 'eli2_anno1, ';
+    $sql .= 'eli2_importo1, ';
+    $sql .= 'eli2_des2, ';
+    $sql .= 'eli2_cod2, ';
+    $sql .= 'eli2_anno2, ';
+    $sql .= 'eli2_importo2, ';
+    $sql .= 'eli2_des3, ';
+    $sql .= 'eli2_cod3, ';
+    $sql .= 'eli2_anno3, ';
+    $sql .= 'eli2_importo3, ';
+    $sql .= 'eli2_dt_pagam ';
+    $sql .= 'FROM rendite_condominiali ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('rendite_condominiali', $row);
+    }
 }

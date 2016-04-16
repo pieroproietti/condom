@@ -1,10 +1,11 @@
 <?php
+
 function inc_reg_gloCreate($ds, $dd)
 {
-   $dbstring = 'drop table `inc_reg_glo`;';
-   echo "Creazione inc_reg_glo; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `inc_reg_glo`;';
+    echo "Creazione inc_reg_glo; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `inc_reg_glo` (
          `protocollo` int(4) DEFAULT NULL,
          `data_pag` datetime DEFAULT NULL,
@@ -16,31 +17,31 @@ function inc_reg_gloCreate($ds, $dd)
          `importo_totale` decimal(10,2) DEFAULT NULL,
          `nome_file_pdf` varchar(50) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function inc_reg_gloCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="protocollo, ";
-   $sql.="data_pag, ";
-   $sql.="cod_stab, ";
-   $sql.="descr_stab, ";
-   $sql.="num_incasso_dal, ";
-   $sql.="num_incasso_al, ";
-   $sql.="anno_incasso, ";
-   $sql.="importo_totale, ";
-   $sql.="nome_file_pdf ";
-   $sql.="FROM inc_reg_glo ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('inc_reg_glo', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'protocollo, ';
+    $sql .= 'data_pag, ';
+    $sql .= 'cod_stab, ';
+    $sql .= 'descr_stab, ';
+    $sql .= 'num_incasso_dal, ';
+    $sql .= 'num_incasso_al, ';
+    $sql .= 'anno_incasso, ';
+    $sql .= 'importo_totale, ';
+    $sql .= 'nome_file_pdf ';
+    $sql .= 'FROM inc_reg_glo ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('inc_reg_glo', $row);
+    }
 }

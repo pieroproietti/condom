@@ -1,48 +1,47 @@
 <?php
 
-require "../medoo.php";
-require "acqua_dett.php";
-require "acqua_dett_parz.php";
-require "acqua_fatture.php";
-require "acqua_gen.php";
-require "anagr_casse.php";
-require "anni.php";
-require "corrisp_inviata.php";
-require "elenco_destinatari_email.php";
-require "elenco_destinatari_email1.php";
-require "elenco_destinatari_fax.php";
-require "elenco_destinatari_rol.php";
-require "elenco_destinatari_sms.php";
-require "emes_det.php";
-require "emes_gen.php";
-require "inc_da_ec.php";
-require "protoc_ec.php";
-require "protoc_email.php";
-require "protoc_fax.php";
-require "protoc_rol.php";
-require "protoc_sms.php";
-require "registro_nomina_revoca_amm.php";
-require "temp_dov.php";
-require "temp_ricev.php";
+require '../medoo.php';
+require 'acqua_dett.php';
+require 'acqua_dett_parz.php';
+require 'acqua_fatture.php';
+require 'acqua_gen.php';
+require 'anagr_casse.php';
+require 'anni.php';
+require 'corrisp_inviata.php';
+require 'elenco_destinatari_email.php';
+require 'elenco_destinatari_email1.php';
+require 'elenco_destinatari_fax.php';
+require 'elenco_destinatari_rol.php';
+require 'elenco_destinatari_sms.php';
+require 'emes_det.php';
+require 'emes_gen.php';
+require 'inc_da_ec.php';
+require 'protoc_ec.php';
+require 'protoc_email.php';
+require 'protoc_fax.php';
+require 'protoc_rol.php';
+require 'protoc_sms.php';
+require 'registro_nomina_revoca_amm.php';
+require 'temp_dov.php';
+require 'temp_ricev.php';
 
+function dbCreate($dbc)
+{
+    $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
 
-
-function dbCreate($dbc){
-  $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
-
-  if ($db->connect_errno) {
-      echo 'Il sito sta avendo problemi...\n';
-      echo "Errore: connessione MySQL fallita: \n";
-      echo 'Errno: '.$db->connect_errno."\n";
-      echo 'Error: '.$db->connect_error."\n";
-      exit;
-  } else {
-      echo "connessi a: ".$db->host_info."\n";
-      $db->query("DROP DATABASE `".$dbc['name'].";");
-      $db->query("CREATE DATABASE IF NOT EXISTS `".$dbc['name']."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
-      $db->query("USE `".$dbc['name']."`;");
-      $db->close();
-  }
+    if ($db->connect_errno) {
+        echo 'Il sito sta avendo problemi...\n';
+        echo "Errore: connessione MySQL fallita: \n";
+        echo 'Errno: '.$db->connect_errno."\n";
+        echo 'Error: '.$db->connect_error."\n";
+        exit;
+    } else {
+        echo 'connessi a: '.$db->host_info."\n";
+        $db->query('DROP DATABASE `'.$dbc['name'].';');
+        $db->query('CREATE DATABASE IF NOT EXISTS `'.$dbc['name'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;');
+        $db->query('USE `'.$dbc['name'].'`;');
+        $db->close();
+    }
 }
 
 /*
@@ -58,27 +57,26 @@ $dbc = [
 // creazione del database condom
 dbCreate($dbc);
 
-/**
+/*
 *
 */
 // in anni nome_dir è la directory per singolo_anno
-if ($_GET['cartella']==''){
-  die("devi passare il parametro cartella!");
+if ($_GET['cartella'] == '') {
+    die('devi passare il parametro cartella!');
 }
 
-$dbPath="E:\\gescon";
-$dbFolder=$_GET['cartella'];
-$dbFile="generale_stabile.mdb";
-$dbName = $dbPath."\\".$dbFolder."\\".$dbFile;
+$dbPath = 'E:\\gescon';
+$dbFolder = $_GET['cartella'];
+$dbFile = 'generale_stabile.mdb';
+$dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
 
 if (!file_exists($dbName)) {
     die("Non riesco a trovare il database: $dbname");
-  }else{
+} else {
     echo "$dbName trovato!<br/>";
-  }
+}
 $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 // database destinazione
-
 
 $dd = new medoo([
     'database_type' => 'mysql',
@@ -86,11 +84,11 @@ $dd = new medoo([
     'server' => $dbc['server'],
     'username' => $dbc['username'],
     'password' => $dbc['password'],
-    'charset' => 'utf8'
+    'charset' => 'utf8',
         ]);
 
 acqua_dettCreate($ds, $dd);
-acqua_dettCopy($ds,$dd);
+acqua_dettCopy($ds, $dd);
 acqua_dett_parzCreate($ds, $dd);
 acqua_dett_parzCopy($ds, $dd);
 acqua_fattureCreate($ds, $dd);

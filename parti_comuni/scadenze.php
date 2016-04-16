@@ -1,10 +1,11 @@
 <?php
+
 function scadenzeCreate($ds, $dd)
 {
-   $dbstring = 'drop table `scadenze`;';
-   echo "Creazione scadenze; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `scadenze`;';
+    echo "Creazione scadenze; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `scadenze` (
          `id_scadenza` int(4) DEFAULT NULL,
          `dt_scadenza` datetime DEFAULT NULL,
@@ -26,41 +27,41 @@ function scadenzeCreate($ds, $dd)
          `gg_anticipo` int(2) DEFAULT NULL,
          `pop_up_dal` datetime DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function scadenzeCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="id_scadenza, ";
-   $sql.="dt_scadenza, ";
-   $sql.="ora_scadenza, ";
-   $sql.="cod_stabile, ";
-   $sql.="descriz_sintetica, ";
-   $sql.="descriz_lunga, ";
-   $sql.="num_assemblea, ";
-   $sql.="gest_ors, ";
-   $sql.="n_stra, ";
-   $sql.="anno, ";
-   $sql.="rata, ";
-   $sql.="fatto, ";
-   $sql.="tipo_riga, ";
-   $sql.="natura, ";
-   $sql.="rif_f24, ";
-   $sql.="importo_f24, ";
-   $sql.="richiede_pop_up, ";
-   $sql.="gg_anticipo, ";
-   $sql.="pop_up_dal ";
-   $sql.="FROM scadenze ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('scadenze', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'id_scadenza, ';
+    $sql .= 'dt_scadenza, ';
+    $sql .= 'ora_scadenza, ';
+    $sql .= 'cod_stabile, ';
+    $sql .= 'descriz_sintetica, ';
+    $sql .= 'descriz_lunga, ';
+    $sql .= 'num_assemblea, ';
+    $sql .= 'gest_ors, ';
+    $sql .= 'n_stra, ';
+    $sql .= 'anno, ';
+    $sql .= 'rata, ';
+    $sql .= 'fatto, ';
+    $sql .= 'tipo_riga, ';
+    $sql .= 'natura, ';
+    $sql .= 'rif_f24, ';
+    $sql .= 'importo_f24, ';
+    $sql .= 'richiede_pop_up, ';
+    $sql .= 'gg_anticipo, ';
+    $sql .= 'pop_up_dal ';
+    $sql .= 'FROM scadenze ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('scadenze', $row);
+    }
 }

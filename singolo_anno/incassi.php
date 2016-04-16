@@ -1,10 +1,11 @@
 <?php
+
 function incassiCreate($ds, $dd)
 {
-   $dbstring = 'drop table `incassi`;';
-   echo "Creazione incassi; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `incassi`;';
+    echo "Creazione incassi; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `incassi` (
          `id_incasso` int(4) DEFAULT NULL,
          `cod_cond` int(4) DEFAULT NULL,
@@ -27,42 +28,42 @@ function incassiCreate($ds, $dd)
          `totale` decimal(10,2) DEFAULT NULL,
          `str_orig` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function incassiCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="id_incasso, ";
-   $sql.="cod_cond, ";
-   $sql.="cond_inquil, ";
-   $sql.="n_riferimento, ";
-   $sql.="anno_rif, ";
-   $sql.="da_ricev_diretto, ";
-   $sql.="n_ricevuta, ";
-   $sql.="posiz_riga, ";
-   $sql.="anno_ricev, ";
-   $sql.="n_mese, ";
-   $sql.="o_r_s, ";
-   $sql.="importo_pagato, ";
-   $sql.="importo_pagato_euro, ";
-   $sql.="d_p_e, ";
-   $sql.="dt_empag, ";
-   $sql.="descrizione, ";
-   $sql.="n_stra, ";
-   $sql.="cod_cassa, ";
-   $sql.="totale, ";
-   $sql.="str_orig ";
-   $sql.="FROM incassi ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('incassi', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'id_incasso, ';
+    $sql .= 'cod_cond, ';
+    $sql .= 'cond_inquil, ';
+    $sql .= 'n_riferimento, ';
+    $sql .= 'anno_rif, ';
+    $sql .= 'da_ricev_diretto, ';
+    $sql .= 'n_ricevuta, ';
+    $sql .= 'posiz_riga, ';
+    $sql .= 'anno_ricev, ';
+    $sql .= 'n_mese, ';
+    $sql .= 'o_r_s, ';
+    $sql .= 'importo_pagato, ';
+    $sql .= 'importo_pagato_euro, ';
+    $sql .= 'd_p_e, ';
+    $sql .= 'dt_empag, ';
+    $sql .= 'descrizione, ';
+    $sql .= 'n_stra, ';
+    $sql .= 'cod_cassa, ';
+    $sql .= 'totale, ';
+    $sql .= 'str_orig ';
+    $sql .= 'FROM incassi ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('incassi', $row);
+    }
 }

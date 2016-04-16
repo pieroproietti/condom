@@ -1,10 +1,11 @@
 <?php
+
 function temp_cassaCreate($ds, $dd)
 {
-   $dbstring = 'drop table `temp_cassa`;';
-   echo "Creazione temp_cassa; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `temp_cassa`;';
+    echo "Creazione temp_cassa; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `temp_cassa` (
          `c_tab` varchar(6) DEFAULT NULL,
          `natura` varchar(1) DEFAULT NULL,
@@ -20,35 +21,35 @@ function temp_cassaCreate($ds, $dd)
          `n_stra` int(2) DEFAULT NULL,
          `anno` varchar(9) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function temp_cassaCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="c_tab, ";
-   $sql.="natura, ";
-   $sql.="n_rif, ";
-   $sql.="n_mese, ";
-   $sql.="data_cassa, ";
-   $sql.="descrizione, ";
-   $sql.="importo, ";
-   $sql.="entrate, ";
-   $sql.="uscite, ";
-   $sql.="saldo, ";
-   $sql.="cod_cassa, ";
-   $sql.="n_stra, ";
-   $sql.="anno ";
-   $sql.="FROM temp_cassa ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('temp_cassa', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'c_tab, ';
+    $sql .= 'natura, ';
+    $sql .= 'n_rif, ';
+    $sql .= 'n_mese, ';
+    $sql .= 'data_cassa, ';
+    $sql .= 'descrizione, ';
+    $sql .= 'importo, ';
+    $sql .= 'entrate, ';
+    $sql .= 'uscite, ';
+    $sql .= 'saldo, ';
+    $sql .= 'cod_cassa, ';
+    $sql .= 'n_stra, ';
+    $sql .= 'anno ';
+    $sql .= 'FROM temp_cassa ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('temp_cassa', $row);
+    }
 }

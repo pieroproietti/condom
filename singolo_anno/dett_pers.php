@@ -1,10 +1,11 @@
 <?php
+
 function dett_persCreate($ds, $dd)
 {
-   $dbstring = 'drop table `dett_pers`;';
-   echo "Creazione dett_pers; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `dett_pers`;';
+    echo "Creazione dett_pers; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `dett_pers` (
          `tipo_gestione` varchar(1) DEFAULT NULL,
          `n_stra` int(2) DEFAULT NULL,
@@ -17,32 +18,32 @@ function dett_persCreate($ds, $dd)
          `tabella` varchar(6) DEFAULT NULL,
          `natura2` varchar(7) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function dett_persCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="tipo_gestione, ";
-   $sql.="n_stra, ";
-   $sql.="n_spe, ";
-   $sql.="id_cond, ";
-   $sql.="cond_inq, ";
-   $sql.="importo, ";
-   $sql.="importo_euro, ";
-   $sql.="unico, ";
-   $sql.="tabella, ";
-   $sql.="natura2 ";
-   $sql.="FROM dett_pers ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('dett_pers', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'tipo_gestione, ';
+    $sql .= 'n_stra, ';
+    $sql .= 'n_spe, ';
+    $sql .= 'id_cond, ';
+    $sql .= 'cond_inq, ';
+    $sql .= 'importo, ';
+    $sql .= 'importo_euro, ';
+    $sql .= 'unico, ';
+    $sql .= 'tabella, ';
+    $sql .= 'natura2 ';
+    $sql .= 'FROM dett_pers ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('dett_pers', $row);
+    }
 }

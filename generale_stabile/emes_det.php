@@ -1,10 +1,11 @@
 <?php
+
 function emes_detCreate($ds, $dd)
 {
-   $dbstring = 'drop table `emes_det`;';
-   echo "Creazione emes_det; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `emes_det`;';
+    echo "Creazione emes_det; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `emes_det` (
          `cod_cond` int(4) DEFAULT NULL,
          `cond_inq` varchar(1) DEFAULT NULL,
@@ -24,39 +25,39 @@ function emes_detCreate($ds, $dd)
          `resta_da_compensare` decimal(10,2) DEFAULT NULL,
          `str_orig` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function emes_detCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="cod_cond, ";
-   $sql.="cond_inq, ";
-   $sql.="raggruppamento, ";
-   $sql.="n_emissione, ";
-   $sql.="anno_emissione, ";
-   $sql.="n_ricevuta, ";
-   $sql.="n_mese, ";
-   $sql.="o_r_s, ";
-   $sql.="importo_dovuto, ";
-   $sql.="importo_dovuto_euro, ";
-   $sql.="dt_emissione_pagamento, ";
-   $sql.="descrizione, ";
-   $sql.="n_stra, ";
-   $sql.="anno_gestione, ";
-   $sql.="d_e_p, ";
-   $sql.="resta_da_compensare, ";
-   $sql.="str_orig ";
-   $sql.="FROM emes_det ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('emes_det', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'cod_cond, ';
+    $sql .= 'cond_inq, ';
+    $sql .= 'raggruppamento, ';
+    $sql .= 'n_emissione, ';
+    $sql .= 'anno_emissione, ';
+    $sql .= 'n_ricevuta, ';
+    $sql .= 'n_mese, ';
+    $sql .= 'o_r_s, ';
+    $sql .= 'importo_dovuto, ';
+    $sql .= 'importo_dovuto_euro, ';
+    $sql .= 'dt_emissione_pagamento, ';
+    $sql .= 'descrizione, ';
+    $sql .= 'n_stra, ';
+    $sql .= 'anno_gestione, ';
+    $sql .= 'd_e_p, ';
+    $sql .= 'resta_da_compensare, ';
+    $sql .= 'str_orig ';
+    $sql .= 'FROM emes_det ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('emes_det', $row);
+    }
 }

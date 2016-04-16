@@ -1,8 +1,8 @@
 <?php
 
-function stabiliCrea($dd){
-
-$sql="
+function stabiliCrea($dd)
+{
+    $sql = '
 CREATE TABLE `stabili` (
   `id` int(11) NOT NULL,
   `uuid` varchar(36) NOT NULL,
@@ -146,10 +146,8 @@ ALTER TABLE `stabili` ADD PRIMARY KEY (`id`),  ADD UNIQUE KEY `uuid` (`uuid`);
 ;
 ALTER TABLE `stabili` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-";
+';
 
-$dd->query($sql);
-echo "<br/>".$sql."<br/>";
+    $dd->query($sql);
+    echo '<br/>'.$sql.'<br/>';
 }
-
-?>

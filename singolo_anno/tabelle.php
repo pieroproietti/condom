@@ -1,10 +1,11 @@
 <?php
+
 function tabelleCreate($ds, $dd)
 {
-   $dbstring = 'drop table `tabelle`;';
-   echo "Creazione tabelle; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `tabelle`;';
+    echo "Creazione tabelle; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `tabelle` (
          `id_tabella` int(4) DEFAULT NULL,
          `cod_tab` varchar(6) DEFAULT NULL,
@@ -30,45 +31,45 @@ function tabelleCreate($ds, $dd)
          `num_decimali` int(2) DEFAULT NULL,
          `selezionato` varchar(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function tabelleCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="id_tabella, ";
-   $sql.="cod_tab, ";
-   $sql.="descr, ";
-   $sql.="calcolo, ";
-   $sql.="tipo, ";
-   $sql.="tot_mm, ";
-   $sql.="inte_col, ";
-   $sql.="un_mis, ";
-   $sql.="note, ";
-   $sql.="nord, ";
-   $sql.="tot_prev, ";
-   $sql.="tot_prev_euro, ";
-   $sql.="tot_cons, ";
-   $sql.="tot_cons_euro, ";
-   $sql.="tot_cond, ";
-   $sql.="tot_inq, ";
-   $sql.="len_mm_prev, ";
-   $sql.="len_imp_prev, ";
-   $sql.="len_mm_cons, ";
-   $sql.="len_imp_cons, ";
-   $sql.="nord2, ";
-   $sql.="num_decimali, ";
-   $sql.="selezionato ";
-   $sql.="FROM tabelle ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('tabelle', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'id_tabella, ';
+    $sql .= 'cod_tab, ';
+    $sql .= 'descr, ';
+    $sql .= 'calcolo, ';
+    $sql .= 'tipo, ';
+    $sql .= 'tot_mm, ';
+    $sql .= 'inte_col, ';
+    $sql .= 'un_mis, ';
+    $sql .= 'note, ';
+    $sql .= 'nord, ';
+    $sql .= 'tot_prev, ';
+    $sql .= 'tot_prev_euro, ';
+    $sql .= 'tot_cons, ';
+    $sql .= 'tot_cons_euro, ';
+    $sql .= 'tot_cond, ';
+    $sql .= 'tot_inq, ';
+    $sql .= 'len_mm_prev, ';
+    $sql .= 'len_imp_prev, ';
+    $sql .= 'len_mm_cons, ';
+    $sql .= 'len_imp_cons, ';
+    $sql .= 'nord2, ';
+    $sql .= 'num_decimali, ';
+    $sql .= 'selezionato ';
+    $sql .= 'FROM tabelle ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('tabelle', $row);
+    }
 }

@@ -1,10 +1,11 @@
 <?php
+
 function amministratoreCreate($ds, $dd)
 {
-   $dbstring = 'drop table `amministratore`;';
-   echo "Creazione amministratore; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `amministratore`;';
+    echo "Creazione amministratore; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `amministratore` (
          `nome` varchar(40) DEFAULT NULL,
          `indirizzo` varchar(40) DEFAULT NULL,
@@ -35,50 +36,50 @@ function amministratoreCreate($ds, $dd)
          `applico_rda` varchar(2) DEFAULT NULL,
          `logo_su_fatture` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function amministratoreCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="nome, ";
-   $sql.="indirizzo, ";
-   $sql.="cap, ";
-   $sql.="citta, ";
-   $sql.="pr, ";
-   $sql.="p_iva, ";
-   $sql.="cod_fisc, ";
-   $sql.="intestazione, ";
-   $sql.="cod_fornitore, ";
-   $sql.="cod_cont_amm, ";
-   $sql.="indirizzo_email, ";
-   $sql.="internet_codice_amm, ";
-   $sql.="internet_password, ";
-   $sql.="telefoni, ";
-   $sql.="fax, ";
-   $sql.="cellulare, ";
-   $sql.="sito_personale, ";
-   $sql.="intestaz_sito, ";
-   $sql.="logo, ";
-   $sql.="pt_pw, ";
-   $sql.="orari, ";
-   $sql.="compensi_1, ";
-   $sql.="compensi_2, ";
-   $sql.="compensi_3, ";
-   $sql.="profess_non_regolam, ";
-   $sql.="sfondo_su_fatture, ";
-   $sql.="applico_rda, ";
-   $sql.="logo_su_fatture ";
-   $sql.="FROM amministratore ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('amministratore', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'nome, ';
+    $sql .= 'indirizzo, ';
+    $sql .= 'cap, ';
+    $sql .= 'citta, ';
+    $sql .= 'pr, ';
+    $sql .= 'p_iva, ';
+    $sql .= 'cod_fisc, ';
+    $sql .= 'intestazione, ';
+    $sql .= 'cod_fornitore, ';
+    $sql .= 'cod_cont_amm, ';
+    $sql .= 'indirizzo_email, ';
+    $sql .= 'internet_codice_amm, ';
+    $sql .= 'internet_password, ';
+    $sql .= 'telefoni, ';
+    $sql .= 'fax, ';
+    $sql .= 'cellulare, ';
+    $sql .= 'sito_personale, ';
+    $sql .= 'intestaz_sito, ';
+    $sql .= 'logo, ';
+    $sql .= 'pt_pw, ';
+    $sql .= 'orari, ';
+    $sql .= 'compensi_1, ';
+    $sql .= 'compensi_2, ';
+    $sql .= 'compensi_3, ';
+    $sql .= 'profess_non_regolam, ';
+    $sql .= 'sfondo_su_fatture, ';
+    $sql .= 'applico_rda, ';
+    $sql .= 'logo_su_fatture ';
+    $sql .= 'FROM amministratore ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('amministratore', $row);
+    }
 }

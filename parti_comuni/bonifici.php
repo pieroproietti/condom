@@ -1,10 +1,11 @@
-<?php 
+<?php
+
 function bonificiCreate($ds, $dd)
 {
-   $dbstring = 'drop table `bonifici`;';
-   echo "Creazione bonifici; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `bonifici`;';
+    echo "Creazione bonifici; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `bonifici` (
          `cod_stabile` int(4) DEFAULT NULL,
          `descriz_stabile` varchar(50) DEFAULT NULL,
@@ -18,33 +19,33 @@ function bonificiCreate($ds, $dd)
          `nome_file` varchar(100) DEFAULT NULL,
          `da_banca_posta` varchar(6) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function bonificiCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="cod_stabile, ";
-   $sql.="descriz_stabile, ";
-   $sql.="cod_fornitore, ";
-   $sql.="descriz_fornitore, ";
-   $sql.="dt_esecuzione, ";
-   $sql.="dt_valuta, ";
-   $sql.="dt_creazione, ";
-   $sql.="descriz_operaz, ";
-   $sql.="importo, ";
-   $sql.="nome_file, ";
-   $sql.="da_banca_posta ";
-   $sql.="FROM bonifici ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('bonifici', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'cod_stabile, ';
+    $sql .= 'descriz_stabile, ';
+    $sql .= 'cod_fornitore, ';
+    $sql .= 'descriz_fornitore, ';
+    $sql .= 'dt_esecuzione, ';
+    $sql .= 'dt_valuta, ';
+    $sql .= 'dt_creazione, ';
+    $sql .= 'descriz_operaz, ';
+    $sql .= 'importo, ';
+    $sql .= 'nome_file, ';
+    $sql .= 'da_banca_posta ';
+    $sql .= 'FROM bonifici ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('bonifici', $row);
+    }
 }

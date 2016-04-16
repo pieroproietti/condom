@@ -1,10 +1,11 @@
 <?php
+
 function dett_tabCreate($ds, $dd)
 {
-   $dbstring = 'drop table `dett_tab`;';
-   echo "Creazione dett_tab; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `dett_tab`;';
+    echo "Creazione dett_tab; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `dett_tab` (
          `id` int(4) DEFAULT NULL,
          `cod_tab` varchar(6) DEFAULT NULL,
@@ -18,33 +19,33 @@ function dett_tabCreate($ds, $dd)
          `n_stra` int(2) DEFAULT NULL,
          `unico` int(4) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function dett_tabCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="id, ";
-   $sql.="cod_tab, ";
-   $sql.="id_cond, ";
-   $sql.="cond_inquil, ";
-   $sql.="mm, ";
-   $sql.="prev, ";
-   $sql.="prev_euro, ";
-   $sql.="cons, ";
-   $sql.="cons_euro, ";
-   $sql.="n_stra, ";
-   $sql.="unico ";
-   $sql.="FROM dett_tab ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('dett_tab', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'id, ';
+    $sql .= 'cod_tab, ';
+    $sql .= 'id_cond, ';
+    $sql .= 'cond_inquil, ';
+    $sql .= 'mm, ';
+    $sql .= 'prev, ';
+    $sql .= 'prev_euro, ';
+    $sql .= 'cons, ';
+    $sql .= 'cons_euro, ';
+    $sql .= 'n_stra, ';
+    $sql .= 'unico ';
+    $sql .= 'FROM dett_tab ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('dett_tab', $row);
+    }
 }

@@ -1,10 +1,11 @@
 <?php
+
 function temp_dovCreate($ds, $dd)
 {
-   $dbstring = 'drop table `temp_dov`;';
-   echo "Creazione temp_dov; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `temp_dov`;';
+    echo "Creazione temp_dov; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `temp_dov` (
          `cod_cond` int(4) DEFAULT NULL,
          `cond_inq` varchar(1) DEFAULT NULL,
@@ -23,38 +24,38 @@ function temp_dovCreate($ds, $dd)
          `d_e_p` varchar(1) DEFAULT NULL,
          `resta_da_compensare` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function temp_dovCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="cod_cond, ";
-   $sql.="cond_inq, ";
-   $sql.="raggruppamento, ";
-   $sql.="n_emissione, ";
-   $sql.="anno_emissione, ";
-   $sql.="n_ricevuta, ";
-   $sql.="n_mese, ";
-   $sql.="o_r_s, ";
-   $sql.="importo_dovuto, ";
-   $sql.="importo_dovuto_euro, ";
-   $sql.="dt_emissione_pagamento, ";
-   $sql.="descrizione, ";
-   $sql.="n_stra, ";
-   $sql.="anno_gestione, ";
-   $sql.="d_e_p, ";
-   $sql.="resta_da_compensare ";
-   $sql.="FROM temp_dov ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('temp_dov', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'cod_cond, ';
+    $sql .= 'cond_inq, ';
+    $sql .= 'raggruppamento, ';
+    $sql .= 'n_emissione, ';
+    $sql .= 'anno_emissione, ';
+    $sql .= 'n_ricevuta, ';
+    $sql .= 'n_mese, ';
+    $sql .= 'o_r_s, ';
+    $sql .= 'importo_dovuto, ';
+    $sql .= 'importo_dovuto_euro, ';
+    $sql .= 'dt_emissione_pagamento, ';
+    $sql .= 'descrizione, ';
+    $sql .= 'n_stra, ';
+    $sql .= 'anno_gestione, ';
+    $sql .= 'd_e_p, ';
+    $sql .= 'resta_da_compensare ';
+    $sql .= 'FROM temp_dov ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('temp_dov', $row);
+    }
 }

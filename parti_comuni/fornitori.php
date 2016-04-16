@@ -1,10 +1,11 @@
 <?php
+
 function fornitoriCreate($ds, $dd)
 {
-   $dbstring = 'drop table `fornitori`;';
-   echo "Creazione fornitori; \r\n";
-   $dd->query($dbstring);
-   $dbstring = '
+    $dbstring = 'drop table `fornitori`;';
+    echo "Creazione fornitori; \r\n";
+    $dd->query($dbstring);
+    $dbstring = '
       CREATE TABLE `fornitori` (
          `id_fornitore` int(4) DEFAULT NULL,
          `cod_forn` int(4) DEFAULT NULL,
@@ -60,75 +61,75 @@ function fornitoriCreate($ds, $dd)
          `agg_utilizzo_forn` datetime DEFAULT NULL,
          `descrizione` varchar(200) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-   $dd->query($dbstring);
-   echo '<br/>';
-   echo $dbstring;
-   echo '<br/>';
+    $dd->query($dbstring);
+    echo '<br/>';
+    echo $dbstring;
+    echo '<br/>';
 }
 
 function fornitoriCopy($ds, $dd)
 {
-   $sql="SELECT ";
-   $sql.="id_fornitore, ";
-   $sql.="cod_forn, ";
-   $sql.="cognome, ";
-   $sql.="nome, ";
-   $sql.="indirizzo, ";
-   $sql.="cap, ";
-   $sql.="citta, ";
-   $sql.="pr, ";
-   $sql.="dt_nas, ";
-   $sql.="luo_nas, ";
-   $sql.="pr_nas, ";
-   $sql.="cod_fisc, ";
-   $sql.="p_iva, ";
-   $sql.="natura, ";
-   $sql.="sede_inps, ";
-   $sql.="sesso, ";
-   $sql.="in_elenco, ";
-   $sql.="non_residente, ";
-   $sql.="al_cassa, ";
-   $sql.="des_cassa, ";
-   $sql.="rit_95100, ";
-   $sql.="ubicaz_1, ";
-   $sql.="ubicaz_2, ";
-   $sql.="ubicaz_3, ";
-   $sql.="ubicaz_4, ";
-   $sql.="telef_1, ";
-   $sql.="telef_2, ";
-   $sql.="telef_3, ";
-   $sql.="telef_4, ";
-   $sql.="note, ";
-   $sql.="importo_ac, ";
-   $sql.="tipo_riga, ";
-   $sql.="appoggio, ";
-   $sql.="s_n, ";
-   $sql.="etichette, ";
-   $sql.="titolo, ";
-   $sql.="indir_email, ";
-   $sql.="perc_cassa_prof, ";
-   $sql.="trib_1019_1020, ";
-   $sql.="cod_iban, ";
-   $sql.="selezionato, ";
-   $sql.="contrib_minimi, ";
-   $sql.="importo_770, ";
-   $sql.="fax, ";
-   $sql.="cellulare, ";
-   $sql.="selez_copia, ";
-   $sql.="new_cod, ";
-   $sql.="l_388_nuove_iniz, ";
-   $sql.="temp_certificaz, ";
-   $sql.="ricorda_che_forn, ";
-   $sql.="utilizzo, ";
-   $sql.="agg_utilizzo_forn, ";
-   $sql.="descrizione ";
-   $sql.="FROM fornitori ";
-   $sql.="WHERE 1";
-   echo '<br/>';
-   echo $sql;
-   echo '<br/>';
-   $rows = $ds->query($sql, PDO::FETCH_ASSOC);
-   foreach ($rows as $row) {
-      $dd->insert('fornitori', $row);
-   }
+    $sql = 'SELECT ';
+    $sql .= 'id_fornitore, ';
+    $sql .= 'cod_forn, ';
+    $sql .= 'cognome, ';
+    $sql .= 'nome, ';
+    $sql .= 'indirizzo, ';
+    $sql .= 'cap, ';
+    $sql .= 'citta, ';
+    $sql .= 'pr, ';
+    $sql .= 'dt_nas, ';
+    $sql .= 'luo_nas, ';
+    $sql .= 'pr_nas, ';
+    $sql .= 'cod_fisc, ';
+    $sql .= 'p_iva, ';
+    $sql .= 'natura, ';
+    $sql .= 'sede_inps, ';
+    $sql .= 'sesso, ';
+    $sql .= 'in_elenco, ';
+    $sql .= 'non_residente, ';
+    $sql .= 'al_cassa, ';
+    $sql .= 'des_cassa, ';
+    $sql .= 'rit_95100, ';
+    $sql .= 'ubicaz_1, ';
+    $sql .= 'ubicaz_2, ';
+    $sql .= 'ubicaz_3, ';
+    $sql .= 'ubicaz_4, ';
+    $sql .= 'telef_1, ';
+    $sql .= 'telef_2, ';
+    $sql .= 'telef_3, ';
+    $sql .= 'telef_4, ';
+    $sql .= 'note, ';
+    $sql .= 'importo_ac, ';
+    $sql .= 'tipo_riga, ';
+    $sql .= 'appoggio, ';
+    $sql .= 's_n, ';
+    $sql .= 'etichette, ';
+    $sql .= 'titolo, ';
+    $sql .= 'indir_email, ';
+    $sql .= 'perc_cassa_prof, ';
+    $sql .= 'trib_1019_1020, ';
+    $sql .= 'cod_iban, ';
+    $sql .= 'selezionato, ';
+    $sql .= 'contrib_minimi, ';
+    $sql .= 'importo_770, ';
+    $sql .= 'fax, ';
+    $sql .= 'cellulare, ';
+    $sql .= 'selez_copia, ';
+    $sql .= 'new_cod, ';
+    $sql .= 'l_388_nuove_iniz, ';
+    $sql .= 'temp_certificaz, ';
+    $sql .= 'ricorda_che_forn, ';
+    $sql .= 'utilizzo, ';
+    $sql .= 'agg_utilizzo_forn, ';
+    $sql .= 'descrizione ';
+    $sql .= 'FROM fornitori ';
+    $sql .= 'WHERE 1';
+    echo '<br/>';
+    echo $sql;
+    echo '<br/>';
+    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        $dd->insert('fornitori', $row);
+    }
 }
