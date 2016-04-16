@@ -74,10 +74,21 @@ $dbc = [
 dbCreate($dbc);
 
 // in anni nome_dir è la directory per singolo_anno
-if ($_GET['cartella']==''){
+$cartella='';
+if (isset($_GET['cartella'])) {
+  $cartella=$_GET['cartella'];
+}
+$anno='';
+if (isset($_GET['anno'])) {
+  $anno=$_GET['anno'];
+}
+
+if ($cartella==''){
+  echo "<br/>ATTENZIONE:";
   die("devi passare il parametro cartella!");
 }
-if ($_GET['anno']==''){
+if ($anno==''){
+  echo "<br/>ATTENZIONE:";
   die("devi passare il parametro anno!");
 }
 
@@ -87,7 +98,8 @@ $dbFile="singolo_anno.mdb";
 $dbName = $dbPath."\\".$dbFolder."\\".$dbFile;
 
 if (!file_exists($dbName)) {
-    die("Non riesco a trovare il database: $dbname");
+  echo "<br/>ATTENZIONE:";
+    die("Non riesco a trovare il database: $dbName");
   }else{
     echo "$dbName trovato!<br/>";
   }
