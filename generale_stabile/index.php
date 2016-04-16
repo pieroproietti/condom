@@ -63,13 +63,13 @@ dbCreate($dbc);
 */
 // in anni nome_dir è la directory per singolo_anno
 if ($_GET['cartella']==''){
-  die "devi passare il parametro cartella!";
+  die("devi passare il parametro cartella!");
 }
 
 $dbPath="E:\\gescon";
 $dbFolder=$_GET['cartella'];
 $dbFile="generale_stabile.mdb";
-$dbName = $accessPath."\\".$accessCartella."\\".$accessName;
+$dbName = $dbPath."\\".$dbFolder."\\".$dbFile;
 
 if (!file_exists($dbName)) {
     die("Non riesco a trovare il database: $dbname");
