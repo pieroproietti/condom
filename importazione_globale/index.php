@@ -1,65 +1,71 @@
 <?php
 // Importazione stabili di parti comuni
-require "../medoo.php";
-require "../parti_comuni/stabili.php";
+require '../medoo.php';
+require '../parti_comuni/stabili.php';
 
-
-function dbCreate($dbc){
-  $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
-  if ($db->connect_errno) {
-      echo 'Il sito sta avendo problemi...\n';
-      echo "Errore: connessione MySQL fallita: \n";
-      echo 'Errno: '.$db->connect_errno."\n";
-      echo 'Error: '.$db->connect_error."\n";
-      exit;
-  } else {
-      echo "connessi a: ".$db->host_info."\n";
-      $db->query("DROP DATABASE `".$dbc['name'].";");
-      $db->query("CREATE DATABASE IF NOT EXISTS `".$dbc['name']."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
-      $db->query("USE `".$dbc['name']."`;");
-      $db->close();
-  }
+function dbCreate($dbc)
+{
+    $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
+    if ($db->connect_errno) {
+        echo 'Il sito sta avendo problemi...\n';
+        echo "Errore: connessione MySQL fallita: \n";
+        echo 'Errno: '.$db->connect_errno."\n";
+        echo 'Error: '.$db->connect_error."\n";
+        exit;
+    } else {
+        echo 'connessi a: '.$db->host_info."\n";
+        $db->query('DROP DATABASE `'.$dbc['name'].';');
+        $db->query('CREATE DATABASE IF NOT EXISTS `'.$dbc['name'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;');
+        $db->query('USE `'.$dbc['name'].'`;');
+        $db->close();
+    }
 }
 
 /*
 * main
 */
+
+$linuxCondomAddress="127.0.0.1";
+$linuxCondomUser="root";
+$linuxCondomPass="evoluzione";
 $aDbCondom = [
-  'server' => 'localhost',
-  'username' => 'condom',
-  'password' => 'condom',
+  'server' => $linuxCondomAddress,
+  'username' => $linuxCondomUser,
+  'password' => $linuxCondomPass,
   'name' => 'condom',
   'charset' => 'utf8'
 ];
 
+
+$windowsCondomAddress="192.168.1.203";
+$windowsCondomUser="condom";
+$windowsCondomPass="condom";
 $aDbPartiComuni = [
-  'server' => 'localhost',
-  'username' => 'condom',
-  'password' => 'condom',
+  'server' => $windowsCondomAddress,
+  'username' => $windowsCondomUser,
+  'password' => $windowsCondomPass,
   'name' => 'parti_comuni',
   'charset' => 'utf8'
 ];
 
 $aDbGeneraleStabile = [
-  'server' => 'localhost',
-  'username' => 'condom',
-  'password' => 'condom',
+  'server' => $windowsCondomAddress,
+  'username' => $windowsCondomUser,
+  'password' => $windowsCondomPass,
   'name' => 'generale_stabile',
   'charset' => 'utf8'
 ];
 
 $aDbSingoloAnno = [
-  'server' => 'localhost',
-  'username' => 'condom',
-  'password' => 'condom',
+  'server' => $windowsCondomAddress,
+  'username' => $windowsCondomUser,
+  'password' => $windowsCondomPass,
   'name' => 'singolo_anno',
   'charset' => 'utf8'
 ];
 
-
 // creazione del database condom
 dbCreate($aDbCondom);
-
 
 // Database di destinazione
 $dbCondom = new medoo([
@@ -81,12 +87,19 @@ $dbPartiComuni = new medoo([
     'charset' => $aDbPartiComuni['charset']
         ]);
 
-require "stabili_importa.php";
-require "stabili_crea.php";
+require 'stabili_importa.php';
+require 'stabili_crea.php';
 
 stabiliCrea($dbCondom);
-stabiliImporta($dbPartiComuni,$dbCondom);
+stabiliImporta($dbPartiComuni, $dbCondom);
 
-
-
- ?>
+$stabili=$dbCondom->select("stabili",["id","uuid","codice","denominazione","cartella"]);
+foreach ($stabili as &$stabile) {
+  // importo generale_stabile
+  echo "<li><a href='http://" . $aDbGeneraleStabile['server'];
+  echo "/condom/generale_stabile/index.php?";
+  echo "id=".$stabile['id']."&";
+  echo "cartella=".$stabile['cartella']."&";
+  echo "uuid=".$stabile['uuid'];
+  echo "'>".$stabile['denominazione']."</a></li>"."\n";
+}
