@@ -74,6 +74,10 @@ $dbc = [
 dbCreate($dbc);
 
 // in anni nome_dir è la directory per singolo_anno
+$uuid = '';
+if (isset($_GET['uuid'])) {
+    $uuid = $_GET['uuid'];
+}
 $cartella = '';
 if (isset($_GET['cartella'])) {
     $cartella = $_GET['cartella'];
@@ -83,13 +87,17 @@ if (isset($_GET['anno'])) {
     $anno = $_GET['anno'];
 }
 
+if ($uuid == '') {
+    echo '<br/>ATTENZIONE:';
+    die($_SERVER['PHP_SELF'].': devi passare il parametro uuid!');
+}
 if ($cartella == '') {
     echo '<br/>ATTENZIONE:';
-    die('devi passare il parametro cartella!');
+    die($_SERVER['PHP_SELF'].': devi passare il parametro cartella!');
 }
 if ($anno == '') {
     echo '<br/>ATTENZIONE:';
-    die('devi passare il parametro anno!');
+    die($_SERVER['PHP_SELF'].': devi passare il parametro anno!');
 }
 
 $dbPath = 'E:\\gescon';

@@ -94,11 +94,5 @@ stabiliImporta($dbPartiComuni, $dbCondom);
 
 $stabili = $dbCondom->select('stabili', ['id', 'uuid', 'codice', 'denominazione', 'cartella']);
 foreach ($stabili as &$stabile) {
-    // importo generale_stabile
-  echo "<li><a href='http://".$aDbGeneraleStabile['server'];
-    echo ':8080/generale_stabile/index.php?';
-    echo 'id='.$stabile['id'].'&';
-    echo 'cartella='.$stabile['cartella'].'&';
-    echo 'uuid='.$stabile['uuid'];
-    echo "'>".$stabile['denominazione'].'</a></li>'."\n";
+  echo "<li><a href='http://".$aDbGeneraleStabile['server'].":8080/generale_stabile/index.php?id=".$stabile['id']."&cartella=".$stabile['cartella']."&uuid=".$stabile['uuid']."'>".$stabile['denominazione'].'</a></li>'."\n";
 }

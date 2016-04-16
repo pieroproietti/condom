@@ -61,8 +61,22 @@ dbCreate($dbc);
 *
 */
 // in anni nome_dir è la directory per singolo_anno
-if ($_GET['cartella'] == '') {
-    die('devi passare il parametro cartella!');
+$uuid = '';
+if (isset($_GET['uuid'])) {
+    $uuid = $_GET['uuid'];
+}
+$cartella = '';
+if (isset($_GET['cartella'])) {
+    $cartella = $_GET['cartella'];
+}
+
+if ($uuid == '') {
+    echo '<br/>ATTENZIONE:';
+    die($_SERVER['PHP_SELF'].': devi passare il parametro uuid!');
+}
+if ($cartella == '') {
+    echo '<br/>ATTENZIONE:';
+    die($_SERVER['PHP_SELF'].': devi passare il parametro cartella!');
 }
 
 $dbPath = 'E:\\gescon';
@@ -133,3 +147,8 @@ temp_dovCreate($ds, $dd);
 temp_dovCopy($ds, $dd);
 temp_ricevCreate($ds, $dd);
 temp_ricevCopy($ds, $dd);
+
+$anni = $dbCondom->select('anni', ['id_anno (id)','nome_dir (cartella)']);
+foreach ($anni as &$anno) {
+  echo "<li><a href='http://".$aDbGeneraleStabile['server'].":8080/singolo_anno/index.php?id=".$anno['id']."&cartella=".$anno['cartella']."&uuid=".$stabile['uuid']."'>".$stabile['denominazione'].'</a></li>'."\n";
+}
