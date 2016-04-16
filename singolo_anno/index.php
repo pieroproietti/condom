@@ -73,20 +73,27 @@ $dbc = [
 // creazione del database condom
 dbCreate($dbc);
 
-/**
-*
-*/
 // in anni nome_dir è la directory per singolo_anno
-$dbName = 'E:\Gescon\0008\0001\singolo_anno.mdb';
+if ($_GET['cartella']==''){
+  die("devi passare il parametro cartella!");
+}
+if ($_GET['anno']==''){
+  die("devi passare il parametro anno!");
+}
+
+$dbPath="E:\\gescon";
+$dbFolder=$_GET['cartella']."\\".$_GET['anno'];
+$dbFile="singolo_anno.mdb";
+$dbName = $dbPath."\\".$dbFolder."\\".$dbFile;
+
 if (!file_exists($dbName)) {
-    die("Could not find database file. Uffa!");
+    die("Non riesco a trovare il database: $dbname");
   }else{
     echo "$dbName trovato!<br/>";
   }
 $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
+
 // database destinazione
-
-
 $dd = new medoo([
     'database_type' => 'mysql',
     'database_name' => $dbc['name'],

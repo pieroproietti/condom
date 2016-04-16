@@ -97,7 +97,7 @@ $stabili=$dbCondom->select("stabili",["id","uuid","codice","denominazione","cart
 foreach ($stabili as &$stabile) {
   // importo generale_stabile
   echo "<li><a href='http://" . $aDbGeneraleStabile['server'];
-  echo "/condom/generale_stabile/index.php?";
+  echo ":8080/generale_stabile/index.php?";
   echo "id=".$stabile['id']."&";
   echo "cartella=".$stabile['cartella']."&";
   echo "uuid=".$stabile['uuid'];
