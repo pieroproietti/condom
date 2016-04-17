@@ -1,11 +1,11 @@
 <?php
-require_once 'jsonRPCClient.php';
-$myExample = new jsonRPCClient('http://jsonrpcphp.org/server.php');
+require_once 'includes/jsonRPCClient.php';
+$myExample = new jsonRPCClient('http://127.0.0.1:8080/jsonrpc/server.php');
 
 // performs some basic operation
 echo '<b>Attempt to perform basic operations</b><br />'."\n";
 try {
-	echo 'Your name is <i>'.$myExample->giveMeSomeData('name').'</i><br />'."\n";
+	echo 'Il tuo nome &egrave;: <i>'.$myExample->giveMeSomeData('name').'</i><br />'."\n";
 	$myExample->changeYourState('I am using this function from the network');
 	echo 'Your status request has been accepted<br />'."\n";
 } catch (Exception $e) {
