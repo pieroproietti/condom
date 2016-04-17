@@ -1,5 +1,5 @@
 <?php
-require_once 'example.php';
+require_once 'includes/example.php';
 $myExample = new example();
 
 // performs some basic operation
