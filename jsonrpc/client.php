@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/jsonRPCClient.php';
-$myExample = new jsonRPCClient('http://127.0.0.1:8080/jsonrpc/server.php');
+$myExample = new jsonRPCClient('http://192.168.1.203:8080/jsonrpc/server.php');
 
 // performs some basic operation
 echo '<b>Attempt to perform basic operations</b><br />'."\n";
