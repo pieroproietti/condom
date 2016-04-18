@@ -6,10 +6,19 @@ class Api
     private $dbc = [
         'server' => 'localhost',
         'username' => 'condom',
-        'password' => 'condom',
         'name' => 'generale_stabile',
       ];
 
+    public function letStabile($parStabile)
+    {
+        $this->$varStabile['id'] = $parStabile['id'];
+        $this->$varStabile['uuid'] = $parStabile['uuid'];
+        $this->$varStabile['codice'] = $parStabile['codice'];
+    }
+    public function getStabile()
+    {
+        return $this->varStabile;
+    }
     public function drop()
     {
         $db = new mysqli($this->$dbc['server'], $this->$dbc['username'], $this->$dbc['password']);
@@ -31,30 +40,8 @@ class Api
 
     public function create($dbc)
     {
-        require 'create.php';
-        if (!create($dbc)) {
-          return true;
-        } else {
-            throw new Exception('Errore: non riesco a creare il database: stabile');
-        }
-    }
-    public function define($param)
-    {
-        if (array_key_exists($param)) {
-            $this->$varStabile['id'] = $param['id'];
-            $this->$varStabile['uuid'] = $param['uuid'];
-            $this->$varStabile['codice'] = $param['codice'];
-            return true;
-        } else {
-            throw new Exception('Errore: parametro non valido '.$param);
-        }
     }
     public function import($dbc)
     {
-        if (!import($dbc)) {
-            return true;
-        } else {
-            throw new Exception('Errore: non riesco ad importare il database: stabile');
-        }
     }
 }
