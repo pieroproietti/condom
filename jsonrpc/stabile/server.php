@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '../../vendor/autoload.php';
+require 'http://127.0.0.1:8080/vendor/autoload.php';
 
 use JsonRPC\Server;
 require "api.php";
