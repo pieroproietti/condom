@@ -16,6 +16,8 @@
     echo "<li><a href='singolo_anno'>Source/singolo_anno</a></li>";
     echo '<br/>';
     echo "<li><a href='importazione_globale'>Condom/importazione_globale</a></li>";
+    echo '<br/>';
+    echo "<li><a href='condom/jsonrpc'>jsonRPC</a></li>";
 
      ?>
   </body>
