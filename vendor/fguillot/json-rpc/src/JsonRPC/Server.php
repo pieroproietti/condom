@@ -460,19 +460,6 @@ class Server
         catch (AuthenticationFailure $e) {
             $this->sendAuthenticationFailureResponse();
         }
-        catch (AccessDeniedException $e) {
-            $this->sendForbiddenResponse();
-        }
-        catch (ResponseException $e) {
-            return $this->getResponse(array(
-                'error' => array(
-                    'code' => $e->getCode(),
-                    'message' => $e->getMessage(),
-                    'data' => $e->getData(),
-                )),
-                $this->payload
-            );
-        }
         catch (Exception $e) {
 
             foreach ($this->exceptions as $class) {
@@ -553,13 +540,8 @@ class Server
         $instance = is_string($class) ? new $class : $class;
 
         // Execute before action
-        if (! empty($this->before)) {
-            if (is_callable($this->before)) {
-                call_user_func_array($this->before, array($this->getUsername(), $this->getPassword(), get_class($class), $method));
-            }
-            else if (method_exists($instance, $this->before)) {
-                $instance->{$this->before}($this->getUsername(), $this->getPassword(), get_class($class), $method);
-            }
+        if (! empty($this->before) && method_exists($instance, $this->before)) {
+            $instance->{$this->before}($this->getUsername(), $this->getPassword(), get_class($class), $method);
         }
 
         $reflection = new ReflectionMethod($class, $method);

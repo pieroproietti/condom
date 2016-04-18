@@ -3,10 +3,11 @@
 namespace JsonRPC;
 
 use Exception;
+use RuntimeException;
 use BadFunctionCallException;
 use InvalidArgumentException;
-use RuntimeException;
 
+class AccessDeniedException extends Exception {};
 class ConnectionFailureException extends Exception {};
 class ServerErrorException extends Exception {};
 
@@ -99,7 +100,7 @@ class Client
     /**
      * SSL certificates verification
      *
-     * @access public
+     * @access private
      * @var boolean
      */
     public $ssl_verify_peer = true;
@@ -255,26 +256,16 @@ class Client
      * @throws BadFunctionCallException
      * @throws InvalidArgumentException
      * @throws RuntimeException
-     * @throws ResponseException
      */
     public function handleRpcErrors(array $error)
     {
         switch ($error['code']) {
-            case -32700:
-                throw new RuntimeException('Parse error: '. $error['message']);
-            case -32600:
-                throw new RuntimeException('Invalid Request: '. $error['message']);
             case -32601:
                 throw new BadFunctionCallException('Procedure not found: '. $error['message']);
             case -32602:
                 throw new InvalidArgumentException('Invalid arguments: '. $error['message']);
             default:
-                throw new ResponseException(
-                    $error['message'],
-                    $error['code'],
-                    null,
-                    isset($error['data']) ? $error['data'] : null
-                );
+                throw new RuntimeException('Invalid request/response: '. $error['message'], $error['code']);
         }
     }
 
@@ -355,11 +346,8 @@ class Client
                 'max_redirects' => 2,
                 'header' => implode("\r\n", $headers),
                 'content' => json_encode($payload),
+                'verify_peer' => $this->ssl_verify_peer,
                 'ignore_errors' => true,
-            ),
-            "ssl" => array(
-                "verify_peer" => $this->ssl_verify_peer,
-                "verify_peer_name" => $this->ssl_verify_peer,
             )
         ));
     }

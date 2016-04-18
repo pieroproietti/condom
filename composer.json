@@ -1,5 +1,5 @@
 {
     "require": {
-        "fguillot/json-rpc": "@stable"
+        "fguillot/json-rpc": "v1.0.0"
     }
 }
