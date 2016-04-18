@@ -1,14 +1,16 @@
 <?php
-require_once '../includes/jsonRPCClient.php';
-$stabile = new jsonRPCClient('http://192.168.1.203:8080/jsonrpc/stabile/server.php');
+
+use JsonRPC\Client;
+
+$stabile = new Client('http://192.168.1.203:8080/jsonrpc/stabile/server.php');
 
 // performs some basic operation
-echo 'Stabile: drop</b><br/>'."\n";
+echo 'Stabile: drop;<br/>'."\n";
 try {
 	if($stabile->drop()){
-		echo "drop riuscito!<br/>";
+		echo "<li>drop riuscito!</li>";
 	}	else{
-		echo "drop NON riuscito!<br/>";
+		echo "<li>drop NON riuscito!</li>";
 	}
 } catch (Exception $e) {
 	echo nl2br($e->getMessage()).'<br />'."\n";

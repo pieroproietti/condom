@@ -1,6 +1,6 @@
 <?php
 
-class stabile
+class Api
 {
     private $varStabile = array('id' => 0, 'uuid' => '', 'codice' => '');
     private $dbc = [
