@@ -9,13 +9,13 @@ class Api
         'name' => 'generale_stabile',
       ];
 
-    public function set($parStabile)
+    public function let($parStabile)
     {
         $this->$varStabile['id'] = $parStabile['id'];
         $this->$varStabile['uuid'] = $parStabile['uuid'];
         $this->$varStabile['codice'] = $parStabile['codice'];
     }
-    public function let()
+    public function get()
     {
         return $this->varStabile;
     }
