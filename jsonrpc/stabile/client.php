@@ -5,7 +5,7 @@ $stabile = new jsonRPCClient('http://192.168.1.203:8080/jsonrpc/stabile/server.p
 // performs some basic operation
 echo 'Stabile: drop</b><br/>'."\n";
 try {
-	if($stabile->drop){
+	if($stabile->drop()){
 		echo "drop riuscito!<br/>";
 	}	else{
 		echo "drop NON riuscito!<br/>";
