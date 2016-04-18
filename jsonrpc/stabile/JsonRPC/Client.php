@@ -306,10 +306,11 @@ class Client
     {
         $stream = @fopen(trim($this->url), 'r', false, $this->getContext($payload));
 
+        /*
         if (! is_resource($stream)) {
             throw new ConnectionFailureException('Unable to establish a connection: ' . $this->url);
         }
-
+        */
         $metadata = stream_get_meta_data($stream);
         $this->handleHttpErrors($metadata['wrapper_data']);
 
