@@ -7,12 +7,17 @@ use JsonRPC\Client;
 $stabile = new Client('http://192.168.1.203/condom/jsonrpc/stabile/server.php');
 $stabile->debug = true;
 
-echo 'Stabile: let;<br/>'."\n";
-$parStabile=array('id' => 1, 'uuid' => 'test', 'codice' => 'test');
-//$stabile->execute('set',$parStabile);
-$getStabile=$stabile->execute('get');
-echo "<br/>";
+
+echo "Stabile: private <b>\$varStabile </b><br/>"."\n";
+echo "\$varStabile: ";
+print_r($varStabile);
+
+echo "Stabile: <b>let </b><br/>"."\n";
+$parStabile=array('id' => 1, 'uuid' => 'parametro', 'codice' => 'test');
+$stabile->execute('set',$parStabile);
 print_r($parStabile);
-echo "<br/>";
+
+echo "Stabile: <b>get </b><br/>"."\n";
+$getStabile=$stabile->execute('get');
 print_r($getStabile);
 echo "<br/>";
