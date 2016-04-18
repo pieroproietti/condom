@@ -1,7 +1,6 @@
 <?php
 
-require 'fguillot/json-rpc/src/JsonRPC/Server.php';
-require 'fguillot/json-rpc/src/JsonRPC/Client.php';
+require 'JsonRPC/Server.php';
 
 use JsonRPC\Server;
 
