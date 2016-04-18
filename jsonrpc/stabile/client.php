@@ -14,7 +14,7 @@ print_r($varStabile);
 
 echo "Stabile: <b>let </b><br/>"."\n";
 $parStabile=array('id' => 1, 'uuid' => 'parametro', 'codice' => 'test');
-$stabile->execute('set',$parStabile);
+$stabile->execute('let',$parStabile);
 print_r($parStabile);
 
 echo "Stabile: <b>get </b><br/>"."\n";
