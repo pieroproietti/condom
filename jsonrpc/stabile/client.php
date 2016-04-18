@@ -1,5 +1,8 @@
 <?php
-require 'http://127.0.0.1:8080/vendor/autoload.php';
+require 'fguillot/json-rpc/src/JsonRPC/Server.php';
+require 'fguillot/json-rpc/src/JsonRPC/Client.php';
+require 'fguillot/json-rpc/src/JsonRPC/AccessDeniedException.php';
+require 'fguillot/json-rpc/src/JsonRPC/ResponseException.php';
 
 use JsonRPC\Client;
 
