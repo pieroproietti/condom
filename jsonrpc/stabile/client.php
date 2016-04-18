@@ -1,13 +1,17 @@
 <?php
 require_once 'includes/jsonRPCClient.php';
-$myExample = new jsonRPCClient('http://192.168.1.203:8080/jsonrpc/server.php');
+$stabile = new jsonRPCClient('http://192.168.1.203:8080/jsonrpc/stabile/server.php');
 
 // performs some basic operation
-echo '<b>Attempt to perform basic operations</b><br />'."\n";
+echo '<b>Esecuzione di drop</b><br/>'."\n";
 try {
-	echo 'Il tuo nome &egrave;: <i>'.$myExample->giveMeSomeData('name').'</i><br />'."\n";
-	$myExample->changeYourState('I am using this function from the network');
-	echo 'Your status request has been accepted<br />'."\n";
+	if($stabile->drop){
+		echo "drop riuscito!<br/>";
+	}	else{
+		echo "drop NON riuscito!<br/>";
+	}
+
+;
 } catch (Exception $e) {
 	echo nl2br($e->getMessage()).'<br />'."\n";
 }

@@ -11,7 +11,7 @@ class example {
 	 * @var array
 	 */
 	private $someData = array (
-							'name' => 'Some Proper NameEE',
+							'name' => 'Some Proper Name',
 							'attr' => 'Some Personal Attribute'
 							);
 
