@@ -10,10 +10,9 @@ class Api
         'name' => 'generale_stabile',
       ];
 
-    public function drop($dbc)
+    public function drop()
     {
-        $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
-
+        $db = new mysqli($this->$dbc['server'], $this->$dbc['username'], $this->$dbc['password']);
         if ($db->connect_errno) {
             echo 'Il sito sta avendo problemi...\n';
             echo "Errore: connessione MySQL fallita: \n";
