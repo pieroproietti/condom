@@ -1,5 +1,5 @@
 <?php
-require '/vendor/autoload.php';
+require '\vendor\autoload.php';
 use JsonRPC\Server;
 require "api.php";
 $server = new Server;
