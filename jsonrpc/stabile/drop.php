@@ -1,6 +1,6 @@
 <?php
 
-function drop($dbc)
+function dropStabile($dbc)
 {
     $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
 

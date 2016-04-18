@@ -13,7 +13,7 @@ class stabile
     public function drop()
     {
         require 'drop.php';
-        if (drop($dbc)) {
+        if (dropStabile($dbc)) {
             return true;
         } else {
             throw new Exception('Errore: non riesco a cancellare il database: stabile');
