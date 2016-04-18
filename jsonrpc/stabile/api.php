@@ -10,7 +10,7 @@ class Api
         'name' => 'generale_stabile',
       ];
 
-    public function drop()
+    public function drop($dbc)
     {
         $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
 
@@ -50,7 +50,7 @@ class Api
             throw new Exception('Errore: parametro non valido '.$param);
         }
     }
-    public function import()
+    public function import($dbc)
     {
         if (!import($dbc)) {
             return true;
