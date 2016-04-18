@@ -8,13 +8,9 @@ $stabile = new Client('http://192.168.1.203/condom/jsonrpc/stabile/server.php');
 $stabile->debug = true;
 
 
-echo "Stabile: private <b>\$varStabile </b><br/>"."\n";
-echo "\$varStabile: ";
-print_r($varStabile);
-
 echo "Stabile: <b>let </b><br/>"."\n";
 $parStabile=array('id' => 1, 'uuid' => 'parametro', 'codice' => 'test');
-$stabile->execute('let',$parStabile);
+$stabile->execute('let', $parStabile);
 print_r($parStabile);
 
 echo "Stabile: <b>get </b><br/>"."\n";
