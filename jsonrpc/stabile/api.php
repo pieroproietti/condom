@@ -15,7 +15,7 @@ class Api
         $this->$varStabile['uuid'] = $parStabile['uuid'];
         $this->$varStabile['codice'] = $parStabile['codice'];
     }
-    public function get()
+    public function let()
     {
         return $this->varStabile;
     }

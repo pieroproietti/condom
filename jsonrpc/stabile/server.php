@@ -7,7 +7,7 @@ use JsonRPC\Server;
 require 'api.php';
 $server = new Server();
 
-$server->bind('set', 'Api');
+$server->bind('let', 'Api');
 $server->bind('get', 'Api');
 $server->bind('drop', 'Api');
 $server->bind('create', 'Api');
