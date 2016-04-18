@@ -9,7 +9,7 @@ $stabile->debug = true;
 
 echo 'Stabile: let;<br/>'."\n";
 $parStabile=array('id' => 1, 'uuid' => 'test', 'codice' => 'test');
-$stabile->execute('set',$parStabile);
+//$stabile->execute('set',$parStabile);
 $getStabile=$stabile->execute('get');
 echo "<br/>";
 print_r($parStabile);
