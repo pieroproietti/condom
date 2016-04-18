@@ -2,8 +2,6 @@
 
 require 'fguillot/json-rpc/src/JsonRPC/Server.php';
 require 'fguillot/json-rpc/src/JsonRPC/Client.php';
-require 'fguillot/json-rpc/src/JsonRPC/AccessDeniedException.php';
-require 'fguillot/json-rpc/src/JsonRPC/ResponseException.php';
 
 use JsonRPC\Server;
 
