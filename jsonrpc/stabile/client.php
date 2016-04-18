@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/jsonRPCClient.php';
+require_once '../includes/jsonRPCClient.php';
 $stabile = new jsonRPCClient('http://192.168.1.203:8080/jsonrpc/stabile/server.php');
 
 // performs some basic operation
