@@ -8,8 +8,8 @@ use JsonRPC\Server;
 require 'api.php';
 $server = new Server();
 
-$server->bind('setStabile', 'Api');
-$server->bind('getStabile', 'Api');
+$server->bind('set', 'Api');
+$server->bind('get', 'Api');
 $server->bind('drop', 'Api');
 $server->bind('create', 'Api');
 $server->bind('import', 'Api');
