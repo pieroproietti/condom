@@ -64,7 +64,7 @@ dbCreate($dbc);
 /*
 *
 */
-$dbName = "E:\Gescon\parti_comuni.mdb";
+$dbName = "C:\Gescon\parti_comuni.mdb";
 if (!file_exists($dbName)) {
     die('Could not find database file. Uffa!');
 } else {

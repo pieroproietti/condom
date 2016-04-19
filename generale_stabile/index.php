@@ -79,7 +79,7 @@ if ($cartella == '') {
     die($_SERVER['PHP_SELF'].': devi passare il parametro cartella!');
 }
 
-$dbPath = 'E:\\gescon';
+$dbPath = 'C:\\gescon';
 $dbFolder = $_GET['cartella'];
 $dbFile = 'generale_stabile.mdb';
 $dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;

@@ -38,7 +38,7 @@ dbCreate($dbc);
 /**
 *
 */
-$dbName = "E:\Gescon\cartellestabili_e_anni.mdb";
+$dbName = "C:\Gescon\cartellestabili_e_anni.mdb";
 if (!file_exists($dbName)) {
     die("Could not find database file. Uffa!");
   }else{

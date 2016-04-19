@@ -100,7 +100,7 @@ if ($anno == '') {
     die($_SERVER['PHP_SELF'].': devi passare il parametro anno!');
 }
 
-$dbPath = 'E:\\gescon';
+$dbPath = 'C:\\gescon';
 $dbFolder = $_GET['cartella'].'\\'.$_GET['anno'];
 $dbFile = 'singolo_anno.mdb';
 $dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
