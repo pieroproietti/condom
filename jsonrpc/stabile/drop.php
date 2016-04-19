@@ -5,8 +5,6 @@ function dropStabile($dbc)
     $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
 
     if ($db->connect_errno) {
-        echo 'Il sito sta avendo problemi...\n';
-        echo "Errore: connessione MySQL fallita: \n";
         echo 'Errno: '.$db->connect_errno."\n";
         echo 'Error: '.$db->connect_error."\n";
 
