@@ -15,12 +15,12 @@ echo '<br/>Stabile: <b>drop </b><br/>'."\n";
 $result = $stabile->execute('drop');
 var_dump($result);
 
-echo '<br/>Stabile: <b>create </b><br/>'."\n";
-$result = $stabile->execute('create');
+echo '<br/>Stabile: <b>createDb </b><br/>'."\n";
+$result = $stabile->execute('createDb');
 var_dump($result);
 
-echo '<br/>Stabile: <b>import </b><br/>'."\n";
-$result = $stabile->execute('import');
+echo '<br/>Stabile: <b>createStructure </b><br/>'."\n";
+$result = $stabile->execute('createStructure');
 var_dump($result);
 
 echo '<br/>';

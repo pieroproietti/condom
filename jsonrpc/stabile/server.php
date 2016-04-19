@@ -7,7 +7,6 @@ require 'api.php';
 
 $server = new Server();
 //->bind(procedure,APi, 'method')
-$server->bind('add', 'Api');
 $server->bind('id', 'Api');
 $server->bind('uuid', 'Api');
 $server->bind('folder_stabile', 'Api');
