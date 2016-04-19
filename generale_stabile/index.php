@@ -61,26 +61,35 @@ dbCreate($dbc);
 *
 */
 // in anni nome_dir è la directory per singolo_anno
+$id="";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+
 $uuid = '';
 if (isset($_GET['uuid'])) {
     $uuid = $_GET['uuid'];
 }
-$cartella = '';
-if (isset($_GET['cartella'])) {
-    $cartella = $_GET['cartella'];
+$folder_stabile = '';
+if (isset($_GET['folder_stabile'])) {
+    $folder_stabile = $_GET['folder_stabile'];
 }
 
+if ($id == '') {
+    echo '<br/>ATTENZIONE:';
+    die($_SERVER['PHP_SELF'].': devi passare il parametro id!');
+}
 if ($uuid == '') {
     echo '<br/>ATTENZIONE:';
     die($_SERVER['PHP_SELF'].': devi passare il parametro uuid!');
 }
-if ($cartella == '') {
+if ($folder_stabile == '') {
     echo '<br/>ATTENZIONE:';
-    die($_SERVER['PHP_SELF'].': devi passare il parametro cartella!');
+    die($_SERVER['PHP_SELF'].': devi passare il parametro folder_stabile!');
 }
 
 $dbPath = 'C:\\gescon';
-$dbFolder = $_GET['cartella'];
+$dbFolder = $_GET['folder_stabile'];
 $dbFile = 'generale_stabile.mdb';
 $dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
 

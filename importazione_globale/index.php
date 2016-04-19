@@ -26,8 +26,8 @@ function dbCreate($dbc)
 */
 
 $linuxCondomAddress = '127.0.0.1';
-$linuxCondomUser = 'root';
-$linuxCondomPass = 'evoluzione';
+$linuxCondomUser = 'condom';
+$linuxCondomPass = 'condom';
 $aDbCondom = [
   'server' => $linuxCondomAddress,
   'username' => $linuxCondomUser,

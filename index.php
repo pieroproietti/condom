@@ -8,14 +8,14 @@
     <h1>Condom</h1>
     <h4>Un sistema "Sicuro" di gestione condomini!</h4>
     <?php
-    echo "<li><a href='http://192.168.1.203/phpmyadmin'>Source->phpmyadmin</a></li>";
-    echo "<li><a href='http://127.0.0.1/phpmyadmin'>Condom->phpmyadmin</a></li>";
+    echo "<li><a href='http://192.168.1.203/phpmyadmin'>192.168.1.203->phpmyadmin</a></li>";
+    echo "<li><a href='http://127.0.0.1/phpmyadmin'>Local->phpmyadmin</a></li>";
     echo '<br/>';
     echo "<li><a href='parti_comuni'>Source/parti_comuni</a></li>";
-    echo "<li><a href='generale_stabile'>Source/generale_stabile</a></li>";
-    echo "<li><a href='singolo_anno'>Source/singolo_anno</a></li>";
+    echo "<li><a href='generale_stabile?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007'>Source/generale_stabile?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007</a></li>";
+    echo "<li><a href='singolo_anno?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007&folder_anno=0002'>Source/singolo_anno?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007&folder_anno=0002</a></li>";
     echo '<br/>';
-    echo "<li><a href='importazione_globale'>Condom/importazione_globale</a></li>";
+    echo "<li><a href='importazione_globale'>Condom/importazione_globale?id=&uuid=&folder_stabile&folder_anno</a></li>";
     echo '<br/>';
     echo "<li><a href='condom/jsonrpc'>jsonRPC</a></li>";
 
