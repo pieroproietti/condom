@@ -17,7 +17,7 @@
     echo '<br/>';
     echo "<li><a href='importazione_globale'>Condom/importazione_globale?id=&uuid=&folder_stabile&folder_anno</a></li>";
     echo '<br/>';
-    echo "<li><a href='condom/jsonrpc'>jsonRPC</a></li>";
+    echo "<li><a href='jsonrpc'>jsonRPC</a></li>";
 
      ?>
   </body>
