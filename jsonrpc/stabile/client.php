@@ -19,8 +19,17 @@ echo '<br/>Stabile: <b>createDb </b><br/>'."\n";
 $result = $stabile->execute('createDb');
 var_dump($result);
 
-echo '<br/>Stabile: <b>createStructure </b><br/>'."\n";
-$result = $stabile->execute('createStructure');
+echo '<br/>Stabile: <b>createDbStructure </b><br/>'."\n";
+$result = $stabile->execute('createDbStructure');
 var_dump($result);
+
+echo '<br/>Stabile: <b>copy </b><br/>'."\n";
+$result = $stabile->execute('copy');
+var_dump($result);
+
+echo '<br/>Stabile: <b>view </b><br/>'."\n";
+$result = $stabile->execute('view');
+var_dump($result);
+
 
 echo '<br/>';

@@ -1,6 +1,6 @@
 <?php
 
-function createStructureStabile($dbc, $id, $uuid, $folder_stabile)
+function createDbStructureStabile($dbc)
 {
     require '../../medoo.php';
     require '../../generale_stabile/acqua_dett.php';
@@ -27,17 +27,7 @@ function createStructureStabile($dbc, $id, $uuid, $folder_stabile)
     require '../../generale_stabile/temp_dov.php';
     require '../../generale_stabile/temp_ricev.php';
 
-    $dbRoot = "C:\\gescon";
-    $dbFile = "generale_stabile.mdb";
-    $dbName = $dbRoot.'\\'.$folder_stabile.'\\'.$dbFile;
-
-    if (!file_exists($dbName)) {
-        die("Non riesco a trovare il database: $dbname");
-    } else {
-        echo "$dbName trovato!<br/>";
-    }
-    $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
-
+    $ds=null;
     $dd = new medoo([
     'database_type' => 'mysql',
     'database_name' => $dbc['name'],
