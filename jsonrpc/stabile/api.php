@@ -2,30 +2,24 @@
 
 class Api
 {
-    private $dbc = [
-        'server' => 'localhost',
-        'username' => 'condom',
-        'password' => 'condom',
-        'name' => 'generale_stabile',
-      ];
-    public function drop()
+    public function drop($dbc)
     {
         require 'drop.php';
-        return dropStabile($this->dbc);
+        return dropStabile($dbc);
     }
-    public function createDb()
+    public function createDb($dbc)
     {
         require 'create_db.php';
-        createDbStabile($this->dbc);
+        createDbStabile($dbc);
     }
-    public function createDbStructure()
+    public function createDbStructure($dbc)
     {
         require 'create_db_structure.php';
-        createdbStructureStabile($this->dbc);
+        createdbStructureStabile($dbc);
     }
-    public function copy($id, $uuid, $folder_stabile)
+    public function importDb($param)
     {
-        require 'copy.php';
-        copyStabile($this->dbc, $id, $uuid, $folder_stabile);
+        require 'import_db.php';
+        importDbStabile($param);
     }
 }

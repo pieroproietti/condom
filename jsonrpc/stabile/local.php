@@ -1,29 +1,29 @@
 <?php
-use JsonRPC\Client;
-require_once '../../vendor/autoload.php';
+require "drop_db.php";
+require "create_db.php";
+require "create_db_structure.php";
+require "import_db.php";
 $dbc = [
     'server' => 'localhost',
     'username' => 'condom',
     'password' => 'condom',
     'name' => 'generale_stabile'
   ];
-$stabile = new Client('http://192.168.1.203/condom/jsonrpc/stabile/server.php');
-$stabile->debug = false;
 
-echo "<h1>Test rpc</h1>";
+echo "<h1>Test locale</h1>";
 
 echo '<br/>Stabile: <b>drop </b><br/>'."\n";
-$result = $stabile->execute('drop', [$dbc]);
+$result = dropDbStabile($dbc);
 echo "\$result:";
 var_dump($result);
 
 echo '<br/>Stabile: <b>createDb </b><br/>'."\n";
-$result = $stabile->execute('createDb', [$dbc]);
+$result = createDbStabile($dbc);
 echo "\$result:";
 var_dump($result);
 
 echo '<br/>Stabile: <b>createDbStructure </b><br/>'."\n";
-$result = $stabile->execute('createDbStructure', [$dbc]);
+$result =createDbStructureStabile($dbc);
 echo "\$result:";
 var_dump($result);
 
@@ -34,7 +34,8 @@ echo "\$param: ";
 print_r($dbc_param);
 echo '<br/>';
 
-$result = $stabile->execute('importDb', [$dbc_param]);
+$result=importDbStabile($dbc_param);
 echo "\$result:";
 var_dump($result);
 echo '<br/>';
+?>

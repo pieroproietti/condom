@@ -71,3 +71,7 @@ function acqua_dett_parzCopy($ds, $dd)
         $dd->insert('acqua_dett_parz', $row);
     }
 }
+
+function acqua_dett_parzNormalize($stabile_uuid){
+  $dbstring="ALTER TABLE `acqua_dett` ADD `id` INT(11) NOT NULL AUTO_INCREMENT FIRST, ADD `stabile_id` INT(11) NOT NULL AFTER `id`, ADD `stabile_uuid` VARCHAR(36) NOT NULL AFTER `stabile_id`, ADD PRIMARY KEY (`id`);";
+}
