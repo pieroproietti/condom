@@ -8,22 +8,6 @@ class Api
         'password' => 'condom',
         'name' => 'generale_stabile',
       ];
-      private $id;
-      private $uuid;
-      private $folder_stabile;
-
-      public function id($param){
-        $id=$param[0];
-      }
-      public function uuid($param){
-        $uuid=$param[0];
-      }
-      public function folder_stabile($param){
-        $folder_stabile=$param[0];
-      }
-    public function view(){
-      return $this->var;
-    }
     public function drop()
     {
         require 'drop.php';
@@ -39,9 +23,9 @@ class Api
         require 'create_db_structure.php';
         createdbStructureStabile($this->dbc);
     }
-    public function copy()
+    public function copy($id, $uuid, $folder_stabile)
     {
         require 'copy.php';
-        copyStabile($this->dbc, $this->id,$this->uuid,$this->folder_stabile);
+        copyStabile($this->dbc, $id, $uuid, $folder_stabile);
     }
 }
