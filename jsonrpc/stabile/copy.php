@@ -1,6 +1,6 @@
 <?php
 
-function copyStabile($dbc,$id,$uuid,$folder_stabile)
+function copyStabile($dbc, $id, $uuid, $folder_stabile);
 {
     require '../../medoo.php';
     require '../../generale_stabile/acqua_dett.php';
@@ -27,8 +27,8 @@ function copyStabile($dbc,$id,$uuid,$folder_stabile)
     require '../../generale_stabile/temp_dov.php';
     require '../../generale_stabile/temp_ricev.php';
 
-    $folder_stabile='0007';
-    $dbName = "C:\\Gescon\\0007\\generale_stabile.mdb";
+    $folder_stabile='0008';
+    $dbName = "C:\\Gescon\\$folder_stabile\\generale_stabile.mdb";
     $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
     $dd = new medoo([

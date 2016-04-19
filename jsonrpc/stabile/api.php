@@ -8,16 +8,19 @@ class Api
         'password' => 'condom',
         'name' => 'generale_stabile',
       ];
-    private $var=[];
-    public function id($id){
-      $var['id']=$id;
-    }
-    public function uuid($uuid){
-      $var['uuid']=$uuid;
-    }
-    public function folder_stabile($folder_stabile){
-      $var['folder_stabile']=$folder_stabile;
-    }
+      private $id;
+      private $uuid;
+      private $folder_stabile;
+
+      public function id($param){
+        $id=$param[0];
+      }
+      public function uuid($param){
+        $uuid=$param[0];
+      }
+      public function folder_stabile($param){
+        $folder_stabile=$param[0];
+      }
     public function view(){
       return $this->var;
     }
@@ -38,10 +41,7 @@ class Api
     }
     public function copy()
     {
-        require 'create_copy.php';
-        copyStabile($this->dbc,
-                    $this->id,
-                    $this->uuid,
-                    $this->folder_stabile);
+        require 'copy.php';
+        copyStabile($this->dbc, $this->id,$this->uuid,$this->folder_stabile);
     }
 }
