@@ -1,6 +1,6 @@
 <?php
 
-function createStabile($dbc)
+function dropDbStabile($dbc)
 {
     $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
 
@@ -11,8 +11,7 @@ function createStabile($dbc)
         return false;
     } else {
         echo 'connessi a: '.$db->host_info."\n";
-        $db->query('CREATE DATABASE IF NOT EXISTS `'.$dbc['name'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;');
-        $db->query('USE `'.$dbc['name'].'`;');
+        $db->query('DROP DATABASE `'.$dbc['name'].';');
         $db->close();
 
         return true;

@@ -7,87 +7,83 @@ use RuntimeException;
 use BadFunctionCallException;
 use InvalidArgumentException;
 
-class AccessDeniedException extends Exception {};
-class ConnectionFailureException extends Exception {};
-class ServerErrorException extends Exception {};
+class AccessDeniedException extends Exception
+{
+};
+class ConnectionFailureException extends Exception
+{
+};
+class ServerErrorException extends Exception
+{
+};
 
 /**
- * JsonRPC client class
+ * JsonRPC client class.
  *
- * @package JsonRPC
  * @author  Frederic Guillot
  */
 class Client
 {
     /**
-     * URL of the server
+     * URL of the server.
      *
-     * @access private
      * @var string
      */
     private $url;
 
     /**
      * If the only argument passed to a function is an array
-     * assume it contains named arguments
+     * assume it contains named arguments.
      *
-     * @access public
-     * @var boolean
+     * @var bool
      */
     public $named_arguments = true;
 
     /**
-     * HTTP client timeout
+     * HTTP client timeout.
      *
-     * @access private
-     * @var integer
+     * @var int
      */
     private $timeout;
 
     /**
-     * Username for authentication
+     * Username for authentication.
      *
-     * @access private
      * @var string
      */
     private $username;
 
     /**
-     * Password for authentication
+     * Password for authentication.
      *
-     * @access private
      * @var string
      */
     private $password;
 
     /**
-     * True for a batch request
+     * True for a batch request.
      *
-     * @access public
-     * @var boolean
+     * @var bool
      */
     public $is_batch = false;
 
     /**
-     * Batch payload
+     * Batch payload.
      *
-     * @access public
      * @var array
      */
     public $batch = array();
 
     /**
-     * Enable debug output to the php error log
+     * Enable debug output to the php error log.
      *
-     * @access public
-     * @var boolean
+     * @var bool
      */
     public $debug = false;
 
     /**
-     * Default HTTP headers to send to the server
+     * Default HTTP headers to send to the server.
      *
-     * @access private
      * @var array
      */
     private $headers = array(
@@ -98,20 +94,18 @@ class Client
     );
 
     /**
-     * SSL certificates verification
+     * SSL certificates verification.
      *
-     * @access private
-     * @var boolean
+     * @var bool
      */
     public $ssl_verify_peer = true;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  string    $url         Server URL
-     * @param  integer   $timeout     HTTP timeout
-     * @param  array     $headers     Custom HTTP headers
+     * @param string $url     Server URL
+     * @param int    $timeout HTTP timeout
+     * @param array  $headers Custom HTTP headers
      */
     public function __construct($url, $timeout = 3, $headers = array())
     {
@@ -121,11 +115,11 @@ class Client
     }
 
     /**
-     * Automatic mapping of procedures
+     * Automatic mapping of procedures.
      *
-     * @access public
-     * @param  string   $method   Procedure name
-     * @param  array    $params   Procedure arguments
+     * @param string $method Procedure name
+     * @param array  $params Procedure arguments
+     *
      * @return mixed
      */
     public function __call($method, array $params)
@@ -139,11 +133,11 @@ class Client
     }
 
     /**
-     * Set authentication parameters
+     * Set authentication parameters.
      *
-     * @access public
-     * @param  string   $username   Username
-     * @param  string   $password   Password
+     * @param string $username Username
+     * @param string $password Password
+     *
      * @return Client
      */
     public function authentication($username, $password)
@@ -155,9 +149,8 @@ class Client
     }
 
     /**
-     * Start a batch request
+     * Start a batch request.
      *
-     * @access public
      * @return Client
      */
     public function batch()
@@ -169,9 +162,8 @@ class Client
     }
 
     /**
-     * Send a batch request
+     * Send a batch request.
      *
-     * @access public
      * @return array
      */
     public function send()
@@ -184,17 +176,18 @@ class Client
     }
 
     /**
-     * Execute a procedure
+     * Execute a procedure.
      *
-     * @access public
-     * @param  string   $procedure   Procedure name
-     * @param  array    $params      Procedure arguments
+     * @param string $procedure Procedure name
+     * @param array  $params    Procedure arguments
+     *
      * @return mixed
      */
     public function execute($procedure, array $params = array())
     {
         if ($this->is_batch) {
             $this->batch[] = $this->prepareRequest($procedure, $params);
+
             return $this;
         }
 
@@ -204,11 +197,11 @@ class Client
     }
 
     /**
-     * Prepare the payload
+     * Prepare the payload.
      *
-     * @access public
-     * @param  string   $procedure   Procedure name
-     * @param  array    $params      Procedure arguments
+     * @param string $procedure Procedure name
+     * @param array  $params    Procedure arguments
+     *
      * @return array
      */
     public function prepareRequest($procedure, array $params = array())
@@ -216,10 +209,10 @@ class Client
         $payload = array(
             'jsonrpc' => '2.0',
             'method' => $procedure,
-            'id' => mt_rand()
+            'id' => mt_rand(),
         );
 
-        if (! empty($params)) {
+        if (!empty($params)) {
             $payload['params'] = $params;
         }
 
@@ -227,10 +220,10 @@ class Client
     }
 
     /**
-     * Parse the response and return the procedure result
+     * Parse the response and return the procedure result.
      *
-     * @access public
-     * @param  array     $payload
+     * @param array $payload
+     *
      * @return mixed
      */
     public function parseResponse(array $payload)
@@ -249,10 +242,10 @@ class Client
     }
 
     /**
-     * Throw an exception according the RPC error
+     * Throw an exception according the RPC error.
      *
-     * @access public
-     * @param  array   $error
+     * @param array $error
+     *
      * @throws BadFunctionCallException
      * @throws InvalidArgumentException
      * @throws RuntimeException
@@ -261,19 +254,19 @@ class Client
     {
         switch ($error['code']) {
             case -32601:
-                throw new BadFunctionCallException('Procedure not found: '. $error['message']);
+                throw new BadFunctionCallException('Procedure not found: '.$error['message']);
             case -32602:
-                throw new InvalidArgumentException('Invalid arguments: '. $error['message']);
+                throw new InvalidArgumentException('Invalid arguments: '.$error['message']);
             default:
-                throw new RuntimeException('Invalid request/response: '. $error['message'], $error['code']);
+                throw new RuntimeException('Invalid request/response: '.$error['message'], $error['code']);
         }
     }
 
     /**
-     * Throw an exception according the HTTP response
+     * Throw an exception according the HTTP response.
      *
-     * @access public
-     * @param  array   $headers
+     * @param array $headers
+     *
      * @throws AccessDeniedException
      * @throws ServerErrorException
      */
@@ -296,17 +289,17 @@ class Client
     }
 
     /**
-     * Do the HTTP request
+     * Do the HTTP request.
      *
-     * @access private
-     * @param  array   $payload
+     * @param array $payload
+     *
      * @return array
      */
     private function doRequest(array $payload)
     {
         $stream = @fopen(trim($this->url), 'r', false, $this->getContext($payload));
 
-        if (! is_resource($stream)) {
+        if (!is_resource($stream)) {
             throw new ConnectionFailureException('Unable to establish a connection');
         }
 
@@ -324,17 +317,17 @@ class Client
     }
 
     /**
-     * Prepare stream context
+     * Prepare stream context.
      *
-     * @access private
-     * @param  array   $payload
+     * @param array $payload
+     *
      * @return resource
      */
     private function getContext(array $payload)
     {
         $headers = $this->headers;
 
-        if (! empty($this->username) && ! empty($this->password)) {
+        if (!empty($this->username) && !empty($this->password)) {
             $headers[] = 'Authorization: Basic '.base64_encode($this->username.':'.$this->password);
         }
 
@@ -348,16 +341,16 @@ class Client
                 'content' => json_encode($payload),
                 'verify_peer' => $this->ssl_verify_peer,
                 'ignore_errors' => true,
-            )
+            ),
         ));
     }
 
     /**
-     * Return true if we have a batch response
+     * Return true if we have a batch response.
      *
-     * @access public
-     * @param  array    $payload
-     * @return boolean
+     * @param array $payload
+     *
+     * @return bool
      */
     private function isBatchResponse(array $payload)
     {
@@ -365,10 +358,10 @@ class Client
     }
 
     /**
-     * Get a RPC call result
+     * Get a RPC call result.
      *
-     * @access private
-     * @param  array    $payload
+     * @param array $payload
+     *
      * @return mixed
      */
     private function getResult(array $payload)
