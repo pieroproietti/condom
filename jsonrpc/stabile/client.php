@@ -19,7 +19,7 @@ $result = $stabile->execute('createDbStructure');
 var_dump($result);
 
 echo '<br/>Stabile: <b>copy </b><br/>'."\n";
-$result = $stabile->execute('copy',['id'=>7,'uuid'=>'75489a66-0a48-4f90-a543-f9561f5d9215','folder_stabile'=>'0007']);
+$result = $stabile->execute('copy',['id'=>7, 'uuid'=>'75489a66-0a48-4f90-a543-f9561f5d9215', 'folder_stabile'=>'0007']);
 var_dump($result);
 
 echo '<br/>';

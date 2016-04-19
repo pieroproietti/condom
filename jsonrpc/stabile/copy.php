@@ -27,6 +27,8 @@ function copyStabile($dbc, $id, $uuid, $folder_stabile);
     require '../../generale_stabile/temp_dov.php';
     require '../../generale_stabile/temp_ricev.php';
 
+
+    $folder_stabile="0007";
     $dbName = "C:\\Gescon\\$folder_stabile\\generale_stabile.mdb";
     $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
