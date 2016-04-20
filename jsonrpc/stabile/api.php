@@ -17,9 +17,9 @@ class Api
         require 'create_db_structure.php';
         createdbStructureStabile($dbc);
     }
-    public function importDb($param)
+    public function importDb($dbc_param)
     {
         require 'import_db.php';
-        importDbStabile($param);
+        importDbStabile($dbc_param);
     }
 }

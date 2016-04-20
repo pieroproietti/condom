@@ -2,30 +2,30 @@
 
 function createDbStructureStabile($dbc)
 {
-    require '../../medoo.php';
-    require '../../generale_stabile/acqua_dett.php';
-    require '../../generale_stabile/acqua_dett_parz.php';
-    require '../../generale_stabile/acqua_fatture.php';
-    require '../../generale_stabile/acqua_gen.php';
-    require '../../generale_stabile/anagr_casse.php';
-    require '../../generale_stabile/anni.php';
-    require '../../generale_stabile/corrisp_inviata.php';
-    require '../../generale_stabile/elenco_destinatari_email.php';
-    require '../../generale_stabile/elenco_destinatari_email1.php';
-    require '../../generale_stabile/elenco_destinatari_fax.php';
-    require '../../generale_stabile/elenco_destinatari_rol.php';
-    require '../../generale_stabile/elenco_destinatari_sms.php';
-    require '../../generale_stabile/emes_det.php';
-    require '../../generale_stabile/emes_gen.php';
-    require '../../generale_stabile/inc_da_ec.php';
-    require '../../generale_stabile/protoc_ec.php';
-    require '../../generale_stabile/protoc_email.php';
-    require '../../generale_stabile/protoc_fax.php';
-    require '../../generale_stabile/protoc_rol.php';
-    require '../../generale_stabile/protoc_sms.php';
-    require '../../generale_stabile/registro_nomina_revoca_amm.php';
-    require '../../generale_stabile/temp_dov.php';
-    require '../../generale_stabile/temp_ricev.php';
+  require_once '../../medoo.php';
+  require_once '../../generale_stabile/acqua_dett.php';
+  require_once '../../generale_stabile/acqua_dett_parz.php';
+  require_once '../../generale_stabile/acqua_fatture.php';
+  require_once '../../generale_stabile/acqua_gen.php';
+  require_once '../../generale_stabile/anagr_casse.php';
+  require_once '../../generale_stabile/anni.php';
+  require_once '../../generale_stabile/corrisp_inviata.php';
+  require_once '../../generale_stabile/elenco_destinatari_email.php';
+  require_once '../../generale_stabile/elenco_destinatari_email1.php';
+  require_once '../../generale_stabile/elenco_destinatari_fax.php';
+  require_once '../../generale_stabile/elenco_destinatari_rol.php';
+  require_once '../../generale_stabile/elenco_destinatari_sms.php';
+  require_once '../../generale_stabile/emes_det.php';
+  require_once '../../generale_stabile/emes_gen.php';
+  require_once '../../generale_stabile/inc_da_ec.php';
+  require_once '../../generale_stabile/protoc_ec.php';
+  require_once '../../generale_stabile/protoc_email.php';
+  require_once '../../generale_stabile/protoc_fax.php';
+  require_once '../../generale_stabile/protoc_rol.php';
+  require_once '../../generale_stabile/protoc_sms.php';
+  require_once '../../generale_stabile/registro_nomina_revoca_amm.php';
+  require_once '../../generale_stabile/temp_dov.php';
+  require_once '../../generale_stabile/temp_ricev.php';
 
     $ds=null;
     $dd = new medoo([

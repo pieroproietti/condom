@@ -86,13 +86,10 @@ $dbPartiComuni = new medoo([
     'charset' => $aDbPartiComuni['charset'],
         ]);
 
-require 'stabili_importa.php';
-require 'stabili_crea.php';
-
+require 'stabili.php';
 stabiliCrea($dbCondom);
 stabiliImporta($dbPartiComuni, $dbCondom);
 
-$stabili = $dbCondom->select('stabili', ['id', 'uuid', 'codice', 'denominazione', 'cartella']);
-foreach ($stabili as &$stabile) {
-  echo "<li><a href='http://".$aDbGeneraleStabile['server'].":8080/generale_stabile/index.php?id=".$stabile['id']."&cartella=".$stabile['cartella']."&uuid=".$stabile['uuid']."'>".$stabile['denominazione'].'</a></li>'."\n";
-}
+require 'affitti.php';
+affittiCrea($dbCondom);
+affittiImporta($dbPartiComuni, $dbCondom);
