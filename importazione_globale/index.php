@@ -3,6 +3,17 @@
 require '../medoo.php';
 require '../parti_comuni/stabili.php';
 
+function stabile_uuid($db, $id)
+{
+    $retval='';
+    $sql = "SELECT uuid FROM stabili WHERE id=$id";
+    $rows = $db->query($sql)->fetchAll();
+    foreach ($rows as $row) {
+        $retval = $row['uuid'];
+    }
+    return $retval;
+}
+
 function dbCreate($dbc)
 {
     $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
@@ -91,5 +102,30 @@ stabiliCrea($dbCondom);
 stabiliImporta($dbPartiComuni, $dbCondom);
 
 require 'affitti.php';
-affittiCrea($dbCondom);
-affittiImporta($dbPartiComuni, $dbCondom);
+//affittiCrea($dbCondom);
+//affittiImporta($dbPartiComuni, $dbCondom);
+
+require 'fatture.php';
+//fattureCrea($dbCondom);
+//fattureImporta($dbPartiComuni, $dbCondom);
+
+require 'fatture_amministratore.php';
+//fattureAmministratoreCrea($dbCondom);
+//fattureAmministratoreImporta($dbPartiComuni, $dbCondom);
+
+require 'fatture_multiple_dettaglio.php';
+//fattureMultipleDettaglioCrea($dbCondom);
+//fattureMultipleDettaglioImporta($dbPartiComuni, $dbCondom);
+
+
+require 'ff24.php';
+//ff24Crea($dbCondom);
+//ff24Importa($dbPartiComuni, $dbCondom);
+
+require 'fornitori.php';
+//fornitoriCrea($dbCondom);
+//fornitoriImporta($dbPartiComuni, $dbCondom);
+
+require 'operazioni.php';
+operazioniCrea($dbCondom);
+operazioniImporta($dbPartiComuni, $dbCondom);

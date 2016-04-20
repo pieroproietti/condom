@@ -1,6 +1,6 @@
 <?php
 
-function fattureCreate($ds, $dd)
+function fattureCrea($dd)
 {
     $dbstring = 'drop table `fatture`;';
     echo "Creazione fatture; \r\n";
@@ -9,6 +9,7 @@ function fattureCreate($ds, $dd)
       CREATE TABLE `fatture` (
         `id` int(11) DEFAULT NULL,
         `stabile_id` int(11) DEFAULT NULL,
+        `stabile_uuid` varchar(36) NULL,
         `riferimento` int(4) DEFAULT NULL,
         `cod_fornitore` int(4) DEFAULT NULL,
         `data_fattura` datetime DEFAULT NULL,
@@ -57,8 +58,8 @@ function fattureCreate($ds, $dd)
         ALTER TABLE `fatture` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
         ';
 
-    $dd->query($sql);
-    echo '<br/>'.$sql.'<br/>';
+    $dd->query($dbstring);
+    echo '<br/>'.$dbstring.'<br/>';
 }
 
 function fattureImporta($ds, $dd)
@@ -108,7 +109,7 @@ function fattureImporta($ds, $dd)
               'bonifico_diretto',
               'file_bonifico_telematico',
               'etic_axivar',
-              'singola_multipla',
+              'singola_multipla'
             ];
 
     $fatture = $ds->select($table, $columns);
@@ -116,24 +117,11 @@ function fattureImporta($ds, $dd)
     if (!empty($fatture)) {
         echo 'fatture NOT empty';
         foreach ($fatture as &$fattura) {
+          print_r($fattura);
             $fattura['stabile_uuid'] = stabile_uuid($dd, $fattura['stabile_id']);
             $dd->insert('fatture', $fattura);
         }
     } else {
         echo '$affitti=empty';
     }
-}
-
-
-function stabile_uuid($db, $id)
-{
-    $sql = "SELECT uuid FROM stabili WHERE id=$id";
-    $rows = $db->query($sql)->fetchAll();
-    echo $sql.'<br/>';
-    foreach ($rows as $row) {
-        $retval = $row['uuid'];
-    }
-    echo $retval;
-
-    return $retval;
 }

@@ -80,16 +80,3 @@ function affittiImporta($ds, $dd)
         echo '$affitti=empty';
     }
 }
-
-function stabile_uuid($db, $id)
-{
-    $sql = "SELECT uuid FROM stabili WHERE id=$id";
-    $rows = $db->query($sql)->fetchAll();
-    echo $sql.'<br/>';
-    foreach ($rows as $row) {
-        $retval = $row['uuid'];
-    }
-    echo $retval;
-
-    return $retval;
-}
