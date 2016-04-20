@@ -152,14 +152,14 @@ CREATE TABLE `ff24` (
     ALTER TABLE `f24` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
     ';
 
-        $dd->query($sql);
-        echo '<br/>'.$sql.'<br/>';
-    }
+    $dd->query($sql);
+    echo '<br/>'.$sql.'<br/>';
+}
 
 function ff24Importa($ds, $dd)
-  {
-      $table = 'f24';
-      $columns = [
+{
+    $table = 'f24';
+    $columns = [
         'id_stabile (stabile_id)',
         //`stabile_uuid` varchar(36) NULL,
           'mese',
@@ -300,20 +300,20 @@ function ff24Importa($ds, $dd)
           'addeb_iban',
           'nome_file_telematico',
           'etic_axivar',
-          'di_cui_interessi'
+          'di_cui_interessi',
         ];
 
-        $ff24 = $ds->select($table, $columns);
+    $ff24 = $ds->select($table, $columns);
 
-        if (!empty($ff24)) {
-            echo 'ff24 NOT empty';
-            foreach ($ff24 as &$f24) {
-                echo '<br/>';
-                print_r($f24);
-                echo 'stabile_id='.$f24['stabile_id'].'<br/>';
-                $stabile_uuid = stabile_uuid($dd, $f24['stabile_id']);
-                $f24['stabile_uuid'] = $stabile_uuid;
-                $dd->insert('ff24', $f24);
-            }
+    if (!empty($ff24)) {
+        echo 'ff24 NOT empty';
+        foreach ($ff24 as &$f24) {
+            echo '<br/>';
+            print_r($f24);
+            echo 'stabile_id='.$f24['stabile_id'].'<br/>';
+            $stabile_uuid = stabile_uuid($dd, $f24['stabile_id']);
+            $f24['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('ff24', $f24);
+        }
     }
 }

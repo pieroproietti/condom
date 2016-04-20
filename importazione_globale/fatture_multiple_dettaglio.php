@@ -112,9 +112,9 @@ function fattureMultipleDettaglioCrea($dd)
             ALTER TABLE `fatture_amministratore` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
             ';
 
-        $dd->query($dbstring);
-        echo '<br/>'.$dbstring.'<br/>';
-    }
+    $dd->query($dbstring);
+    echo '<br/>'.$dbstring.'<br/>';
+}
 
     function fattureMultipleDettaglioImporta($ds, $dd)
     {
@@ -218,16 +218,16 @@ function fattureMultipleDettaglioCrea($dd)
               'descrizione_reg_2',
               'descrizione_reg_3',
               'descrizione_reg_4',
-              'descrizione_reg_5'
+              'descrizione_reg_5',
             ];
         $fattureMultipleDettaglio = $ds->select($table, $columns);
         //print_r($fattureMultipleDettaglio);
         if (!empty($fattureMultipleDettaglio)) {
-          echo 'fatture NOT empty';
-          foreach ($fattureMultipleDettaglio as &$fatturaMultiplaDettaglio) {
-            print_r($fatturaMultiplaDettaglio);
-              $fatturaMultiplaDettaglio['stabile_uuid'] = stabile_uuid($dd, $fatturaMultiplaDettaglio['stabile_id']);
-              $dd->insert('fatture_multiple_dettaglio', $fatturaMultiplaDettaglio);
-          }
+            echo 'fatture NOT empty';
+            foreach ($fattureMultipleDettaglio as &$fatturaMultiplaDettaglio) {
+                print_r($fatturaMultiplaDettaglio);
+                $fatturaMultiplaDettaglio['stabile_uuid'] = stabile_uuid($dd, $fatturaMultiplaDettaglio['stabile_id']);
+                $dd->insert('fatture_multiple_dettaglio', $fatturaMultiplaDettaglio);
+            }
         }
-      }
+    }

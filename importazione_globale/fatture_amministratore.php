@@ -17,7 +17,7 @@ function fattureAmministratoreCrea($dd)
         `cliente_provincia` varchar(2) DEFAULT NULL,
         `cliente_codice_fiscale` varchar(16) DEFAULT NULL,
         `cliente_partita_iva` varchar(11) DEFAULT NULL,
-        `fornitore_id` int(11) DEFAULT NULL, 
+        `fornitore_id` int(11) DEFAULT NULL,
         `data_fattura` datetime DEFAULT NULL,
         `anno` int(2) DEFAULT NULL,
         `data_pagamento` datetime DEFAULT NULL,
@@ -120,16 +120,16 @@ function fattureAmministratoreImporta($ds, $dd)
         'reg_nstra',
         'rif_fat_rda_mio',
         'note',
-        'cassa_m_proposta'
+        'cassa_m_proposta',
       ];
-  $fattureAmministratore = $ds->select($table, $columns);
+    $fattureAmministratore = $ds->select($table, $columns);
 
-  if (!empty($fattureAmministratore)) {
-    echo 'fatture NOT empty';
-    foreach ($fattureAmministratore as &$fatturaAmministratore) {
-      print_r($fatturaAmministratore);
-        $fatturaAmministratore['stabile_uuid'] = stabile_uuid($dd, $fatturaAmministratore['stabile_id']);
-        $dd->insert('fatture_amministratore', $fatturaAmministratore);
+    if (!empty($fattureAmministratore)) {
+        echo 'fatture NOT empty';
+        foreach ($fattureAmministratore as &$fatturaAmministratore) {
+            print_r($fatturaAmministratore);
+            $fatturaAmministratore['stabile_uuid'] = stabile_uuid($dd, $fatturaAmministratore['stabile_id']);
+            $dd->insert('fatture_amministratore', $fatturaAmministratore);
+        }
     }
-  }
 }

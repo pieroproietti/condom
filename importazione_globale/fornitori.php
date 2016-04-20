@@ -66,14 +66,14 @@ function fornitoriCrea($dd)
         ALTER TABLE `fornitori` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
                 ';
 
-            $dd->query($dbstring);
-            echo '<br/>'.$dbstring.'<br/>';
-        }
+    $dd->query($dbstring);
+    echo '<br/>'.$dbstring.'<br/>';
+}
 
 function fornitoriImporta($ds, $dd)
 {
-  $table = 'fornitori';
-  $columns = [
+    $table = 'fornitori';
+    $columns = [
               'id_fornitore     (id)',
               'cod_forn',
               'cognome',
@@ -126,7 +126,7 @@ function fornitoriImporta($ds, $dd)
               'ricorda_che_forn',
               'utilizzo',
               'agg_utilizzo_forn',
-              'descrizione'
+              'descrizione',
             ];
 
     $fornitori = $ds->select($table, $columns);

@@ -20,35 +20,35 @@ CREATE TABLE `operazioni` (
     ALTER TABLE `operazioni` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
     ';
 
-        $dd->query($sql);
-        echo '<br/>'.$sql.'<br/>';
-    }
+    $dd->query($sql);
+    echo '<br/>'.$sql.'<br/>';
+}
 
 function operazioniImporta($ds, $dd)
-    {
-        $table = 'operaz_ammin';
-        $columns = [
-'num_operazione   (id)',
-'data_operazione  (del)',
-'conto',
-'descrizione',
-'natura',
-'importo',
-'importo_spese',
-'importo_entrate',
-'importo_crediti',
-'importo_debiti'
-];
+{
+    $table = 'operaz_ammin';
+    $columns = [
+      'num_operazione   (id)',
+      'data_operazione  (del)',
+      'conto',
+      'descrizione',
+      'natura',
+      'importo',
+      'importo_spese',
+      'importo_entrate',
+      'importo_crediti',
+      'importo_debiti',
+    ];
 
-$operazioni = $ds->select($table, $columns);
+    $operazioni = $ds->select($table, $columns);
 
-if (!empty($operazioni)) {
-    echo 'operazioni NOT empty';
-    foreach ($operazioni as &$operazione) {
-        echo '<br/>';
-        $dd->insert('operazioni', $operazione);
+    if (!empty($operazioni)) {
+        echo 'operazioni NOT empty';
+        foreach ($operazioni as &$operazione) {
+            echo '<br/>';
+            $dd->insert('operazioni', $operazione);
+        }
+    } else {
+        echo 'operazioni is empty!';
     }
-} else {
-    echo 'operazioni is empty!';
-}
 }
