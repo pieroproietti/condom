@@ -57,15 +57,14 @@ function fattureCreate($ds, $dd)
         ALTER TABLE `fatture` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
         ';
 
-            $dd->query($sql);
-            echo '<br/>'.$sql.'<br/>';
+    $dd->query($sql);
+    echo '<br/>'.$sql.'<br/>';
 }
 
-
 function fattureImporta($ds, $dd)
-        {
-            $table = 'fatture';
-            $columns = [
+{
+    $table = 'fatture';
+    $columns = [
               'id_fatture     (id)',
               'id_stabile     (stabile_id)',
               'riferimento',
@@ -76,7 +75,7 @@ function fattureImporta($ds, $dd)
               'descrizione_sintetica',
               'descriz_corpo',
               'conteggi_a_m',
-              `onorario',
+              'onorario',
               'aliq_4perc',
               'importo_4perc',
               'aliq_cassa',
@@ -109,29 +108,32 @@ function fattureImporta($ds, $dd)
               'bonifico_diretto',
               'file_bonifico_telematico',
               'etic_axivar',
-              'singola_multipla'
+              'singola_multipla',
             ];
 
-            $fatture = $ds->select($table, $columns);
+    $fatture = $ds->select($table, $columns);
 
-            if (!empty($fatture)) {
-              echo "fatture NOT empty";
-                foreach ($fatture as &$fattura) {
-                  $fattura['stabile_uuid'] = stabile_uuid($dd, $fattura['stabile_id']);
-                  $dd->insert('fatture', $fattura);
-                }
-            } else {
-                echo "\$affitti=empty";
-            }
+    if (!empty($fatture)) {
+        echo 'fatture NOT empty';
+        foreach ($fatture as &$fattura) {
+            $fattura['stabile_uuid'] = stabile_uuid($dd, $fattura['stabile_id']);
+            $dd->insert('fatture', $fattura);
         }
+    } else {
+        echo '$affitti=empty';
+    }
+}
 
-        function stabile_uuid($db, $id){
-          $sql="SELECT uuid FROM stabili WHERE id=$id";
-          $rows=$db->query($sql)->fetchAll();
-          echo $sql."<br/>";
-          foreach ($rows as $row){
-            $retval= $row['uuid'];
-          }
-          echo $retval;
-          return $retval;
-        }
+
+function stabile_uuid($db, $id)
+{
+    $sql = "SELECT uuid FROM stabili WHERE id=$id";
+    $rows = $db->query($sql)->fetchAll();
+    echo $sql.'<br/>';
+    foreach ($rows as $row) {
+        $retval = $row['uuid'];
+    }
+    echo $retval;
+
+    return $retval;
+}

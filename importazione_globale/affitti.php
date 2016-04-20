@@ -61,33 +61,35 @@ function affittiImporta($ds, $dd)
       'prossima_registrazione (contratto_prossima_registrazione)',
       'note                   (contratto_annotazioni)',
       'inte_cc                (pagamenti_ccp)',
-      'iban                   (pagamenti_iban)'
+      'iban                   (pagamenti_iban)',
     ];
 
     $affitti = $ds->select($table, $columns);
 
     if (!empty($affitti)) {
-      echo "affitti NOT empty";
+        echo 'affitti NOT empty';
         foreach ($affitti as &$affitto) {
-          echo "<br/>";
-          print_r($affitto);
-          echo "stabile_id=".$affitto['stabile_id']."<br/>";
-          $stabile_uuid = stabile_uuid($dd, $affitto['stabile_id']);
-          $affitto['stabile_uuid'] = $stabile_uuid;
-          $dd->insert('affitti', $affitto);
+            echo '<br/>';
+            print_r($affitto);
+            echo 'stabile_id='.$affitto['stabile_id'].'<br/>';
+            $stabile_uuid = stabile_uuid($dd, $affitto['stabile_id']);
+            $affitto['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('affitti', $affitto);
         }
     } else {
-        echo "\$affitti=empty";
+        echo '$affitti=empty';
     }
 }
 
-function stabile_uuid($db, $id){
-  $sql="SELECT uuid FROM stabili WHERE id=$id";
-  $rows=$db->query($sql)->fetchAll();
-  echo $sql."<br/>";
-  foreach ($rows as $row){
-    $retval= $row['uuid'];
-  }
-  echo $retval;
-  return $retval;
+function stabile_uuid($db, $id)
+{
+    $sql = "SELECT uuid FROM stabili WHERE id=$id";
+    $rows = $db->query($sql)->fetchAll();
+    echo $sql.'<br/>';
+    foreach ($rows as $row) {
+        $retval = $row['uuid'];
+    }
+    echo $retval;
+
+    return $retval;
 }
