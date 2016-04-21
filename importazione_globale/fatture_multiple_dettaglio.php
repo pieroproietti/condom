@@ -108,12 +108,12 @@ function fattureMultipleDettaglioCrea($dd)
             `descrizione_reg_5` varchar(100) DEFAULT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-            ALTER TABLE `fatture_amministratore` ADD PRIMARY KEY (`id`),  ADD UNIQUE KEY `uuid` (`uuid`);
-            ALTER TABLE `fatture_amministratore` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+            ALTER TABLE `fatture_multiple_dettaglio` ADD PRIMARY KEY (`id`);
+            ALTER TABLE `fatture_multiple_dettaglio` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
             ';
 
     $dd->query($dbstring);
-    echo '<br/>'.$dbstring.'<br/>';
+    //echo '<br/>'.$dbstring.'<br/>';
 }
 
     function fattureMultipleDettaglioImporta($ds, $dd)
@@ -225,7 +225,6 @@ function fattureMultipleDettaglioCrea($dd)
         if (!empty($fattureMultipleDettaglio)) {
             echo 'fatture NOT empty';
             foreach ($fattureMultipleDettaglio as &$fatturaMultiplaDettaglio) {
-                print_r($fatturaMultiplaDettaglio);
                 $fatturaMultiplaDettaglio['stabile_uuid'] = stabile_uuid($dd, $fatturaMultiplaDettaglio['stabile_id']);
                 $dd->insert('fatture_multiple_dettaglio', $fatturaMultiplaDettaglio);
             }

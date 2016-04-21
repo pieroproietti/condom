@@ -4,7 +4,7 @@ function affittiCrea($dd)
 {
     $sql = '
 CREATE TABLE `affitti` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) DEFAULT 0 NOT NULL,
   `stabile_id` int(11) NULL,
   `stabile_uuid` varchar(36) NULL,
   `proprietario_nome` varchar(200) DEFAULT NULL,
@@ -28,12 +28,10 @@ CREATE TABLE `affitti` (
   `pagamenti_iban` varchar(27) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-ALTER TABLE `affitti` ADD PRIMARY KEY (`id`),  ADD UNIQUE KEY `uuid` (`uuid`);
-ALTER TABLE `affitti` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-';
+ALTER TABLE `affitti` ADD PRIMARY KEY (`id`);
 
+';
     $dd->query($sql);
-    echo '<br/>'.$sql.'<br/>';
 }
 
 function affittiImporta($ds, $dd)
@@ -67,16 +65,10 @@ function affittiImporta($ds, $dd)
     $affitti = $ds->select($table, $columns);
 
     if (!empty($affitti)) {
-        echo 'affitti NOT empty';
         foreach ($affitti as &$affitto) {
-            echo '<br/>';
-            print_r($affitto);
-            echo 'stabile_id='.$affitto['stabile_id'].'<br/>';
             $stabile_uuid = stabile_uuid($dd, $affitto['stabile_id']);
             $affitto['stabile_uuid'] = $stabile_uuid;
             $dd->insert('affitti', $affitto);
         }
-    } else {
-        echo '$affitti=empty';
     }
 }

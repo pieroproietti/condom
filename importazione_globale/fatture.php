@@ -11,7 +11,7 @@ function fattureCrea($dd)
         `stabile_id` int(11) DEFAULT NULL,
         `stabile_uuid` varchar(36) NULL,
         `riferimento` int(4) DEFAULT NULL,
-        `cod_fornitore` int(4) DEFAULT NULL,
+        `fornitore_id` int(11) DEFAULT NULL,
         `data_fattura` datetime DEFAULT NULL,
         `data_pagamento` datetime DEFAULT NULL,
         `num_fattura` varchar(12) DEFAULT NULL,
@@ -54,12 +54,12 @@ function fattureCrea($dd)
         `singola_multipla` varchar(1) DEFAULT NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-        ALTER TABLE `fatture` ADD PRIMARY KEY (`id`),  ADD UNIQUE KEY `uuid` (`uuid`);
+        ALTER TABLE `fatture` ADD PRIMARY KEY (`id`);
         ALTER TABLE `fatture` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
         ';
 
     $dd->query($dbstring);
-    echo '<br/>'.$dbstring.'<br/>';
+    //echo '<br/>'.$dbstring.'<br/>';
 }
 
 function fattureImporta($ds, $dd)
@@ -69,7 +69,7 @@ function fattureImporta($ds, $dd)
               'id_fatture     (id)',
               'id_stabile     (stabile_id)',
               'riferimento',
-              'cod_fornitore',
+              'cod_fornitore  (fornitore_id)',
               'data_fattura',
               'data_pagamento',
               'num_fattura',
@@ -115,13 +115,9 @@ function fattureImporta($ds, $dd)
     $fatture = $ds->select($table, $columns);
 
     if (!empty($fatture)) {
-        echo 'fatture NOT empty';
         foreach ($fatture as &$fattura) {
-          print_r($fattura);
             $fattura['stabile_uuid'] = stabile_uuid($dd, $fattura['stabile_id']);
             $dd->insert('fatture', $fattura);
         }
-    } else {
-        echo '$affitti=empty';
     }
 }

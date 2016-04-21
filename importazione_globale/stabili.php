@@ -149,7 +149,7 @@ ALTER TABLE `stabili` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ';
 
     $dd->query($sql);
-    echo '<br/>'.$sql.'<br/>';
+    //echo '<br/>'.$sql.'<br/>';
 }
 
 function stabiliImporta($ds, $dd)

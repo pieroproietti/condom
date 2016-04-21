@@ -148,12 +148,12 @@ CREATE TABLE `ff24` (
     `di_cui_interessi` decimal(10,2) DEFAULT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-    ALTER TABLE `f24` ADD PRIMARY KEY (`id`),  ADD UNIQUE KEY `uuid` (`uuid`);
-    ALTER TABLE `f24` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+    ALTER TABLE `ff24` ADD PRIMARY KEY (`id`);
+    ALTER TABLE `ff24` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
     ';
 
     $dd->query($sql);
-    echo '<br/>'.$sql.'<br/>';
+    //echo '<br/>'.$sql.'<br/>';
 }
 
 function ff24Importa($ds, $dd)
@@ -308,9 +308,6 @@ function ff24Importa($ds, $dd)
     if (!empty($ff24)) {
         echo 'ff24 NOT empty';
         foreach ($ff24 as &$f24) {
-            echo '<br/>';
-            print_r($f24);
-            echo 'stabile_id='.$f24['stabile_id'].'<br/>';
             $stabile_uuid = stabile_uuid($dd, $f24['stabile_id']);
             $f24['stabile_uuid'] = $stabile_uuid;
             $dd->insert('ff24', $f24);

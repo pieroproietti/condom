@@ -8,7 +8,7 @@ function fornitoriCrea($dd)
     $dbstring = '
       CREATE TABLE `fornitori` (
           `id` int(11) DEFAULT NULL,
-          `cod_forn` int(4) DEFAULT NULL,
+          -- `cod_forn` int(4) DEFAULT NULL,
           `cognome` varchar(45) DEFAULT NULL,
           `nome` varchar(35) DEFAULT NULL,
           `indirizzo` varchar(35) DEFAULT NULL,
@@ -62,20 +62,20 @@ function fornitoriCrea($dd)
           `descrizione` varchar(200) DEFAULT NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-        ALTER TABLE `fornitori` ADD PRIMARY KEY (`id`),  ADD UNIQUE KEY `uuid` (`uuid`);
+        ALTER TABLE `fornitori` ADD PRIMARY KEY (`id`);
         ALTER TABLE `fornitori` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
                 ';
 
     $dd->query($dbstring);
-    echo '<br/>'.$dbstring.'<br/>';
+    //echo '<br/>'.$dbstring.'<br/>';
 }
 
 function fornitoriImporta($ds, $dd)
 {
     $table = 'fornitori';
     $columns = [
-              'id_fornitore     (id)',
-              'cod_forn',
+              // 'id_fornitore     (id)',
+              'cod_forn            (id)',
               'cognome',
               'nome',
               'indirizzo',

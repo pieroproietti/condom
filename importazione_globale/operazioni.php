@@ -6,7 +6,7 @@ function operazioniCrea($dd)
 CREATE TABLE `operazioni` (
   `id` int(11) DEFAULT NULL,
     `del` datetime DEFAULT NULL,
-    `conto` varchar(3) DEFAULT NULL,
+    `conto_codice` varchar(3) DEFAULT NULL,
     `descrizione` varchar(115) DEFAULT NULL,
     `natura` varchar(10) DEFAULT NULL,
     `importo` decimal(10,2) DEFAULT NULL,
@@ -16,12 +16,12 @@ CREATE TABLE `operazioni` (
     `importo_debiti` decimal(10,2) DEFAULT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-    ALTER TABLE `operazioni` ADD PRIMARY KEY (`id`),  ADD UNIQUE KEY `uuid` (`uuid`);
+    ALTER TABLE `operazioni` ADD PRIMARY KEY (`id`);
     ALTER TABLE `operazioni` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
     ';
 
     $dd->query($sql);
-    echo '<br/>'.$sql.'<br/>';
+    //echo '<br/>'.$sql.'<br/>';
 }
 
 function operazioniImporta($ds, $dd)
@@ -30,7 +30,7 @@ function operazioniImporta($ds, $dd)
     $columns = [
       'num_operazione   (id)',
       'data_operazione  (del)',
-      'conto',
+      'conto            (conto_codice)',
       'descrizione',
       'natura',
       'importo',
@@ -45,7 +45,6 @@ function operazioniImporta($ds, $dd)
     if (!empty($operazioni)) {
         echo 'operazioni NOT empty';
         foreach ($operazioni as &$operazione) {
-            echo '<br/>';
             $dd->insert('operazioni', $operazione);
         }
     } else {
