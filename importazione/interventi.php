@@ -31,7 +31,6 @@ CREATE TABLE `interventi` (
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
   ALTER TABLE `interventi` ADD PRIMARY KEY (`id`);
-  ALTER TABLE `interventi` CHANGE `id` `id` INT(11) NOT NULL DEFAULT '0' AUTO_INCREMENT;
   ';
       $dd->query($sql);
 }
@@ -68,13 +67,9 @@ function interventiImporta($ds, $dd)
       $interventi = $ds->select($table, $columns);
 
       if (!empty($interventi)) {
-        echo "interventi NOT empty!";
           foreach ($interventi as &$intervento) {
               $stabile_uuid = stabile_uuid($dd, $intervento['stabile_id']);
               $intervento['stabile_uuid'] = $stabile_uuid;
-              echo "<br/>";
-              print_r($intervento);
-              echo "<br/>";
               $dd->insert('interventi', $intervento);
           }
       }

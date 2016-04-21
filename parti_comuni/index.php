@@ -48,32 +48,17 @@ function dbCreate($dbc)
     }
 }
 
-/*
-* main
-*/
-$dbc = [
-  'server' => 'localhost',
-  'username' => 'condom',
-  'password' => 'condom',
-  'name' => 'parti_comuni',
-];
-
-// creazione del database condom
-dbCreate($dbc);
-
-/*
-*
-*/
-$dbName = "C:\Gescon\parti_comuni.mdb";
-if (!file_exists($dbName)) {
-    die('Could not find database file. Uffa!');
-} else {
-    echo "$dbName trovato!<br/>";
-}
-$ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
-// database destinazione
-
-$dd = new medoo([
+function importazione($dbc)
+{
+    dbCreate($dbc);
+    $dbName = "C:\Gescon\parti_comuni.mdb";
+    if (!file_exists($dbName)) {
+        die('Could not find database file. Uffa!');
+    } else {
+        echo "$dbName trovato!<br/>";
+    }
+    $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
+    $dd = new medoo([
     'database_type' => 'mysql',
     'database_name' => $dbc['name'],
     'server' => $dbc['server'],
@@ -82,57 +67,66 @@ $dd = new medoo([
     'charset' => 'utf8',
         ]);
 
-affittiCreate($ds, $dd);
-affittiCopy($ds, $dd);
-amministratoreCreate($ds, $dd);
-amministratoreCopy($ds, $dd);
-bonificiCreate($ds, $dd);
-bonificiCopy($ds, $dd);
-contiCreate($ds, $dd);
-contiCopy($ds, $dd);
-contratti_aceaCreate($ds, $dd);
-contratti_aceaCopy($ds, $dd);
-f24Create($ds, $dd);
-f24Copy($ds, $dd);
-fatt_multiple_dettCreate($ds, $dd);
-fatt_multiple_dettCopy($ds, $dd);
-fattureCreate($ds, $dd);
-fattureCopy($ds, $dd);
-fatture_amministratoreCreate($ds, $dd);
-fatture_amministratoreCopy($ds, $dd);
-fatture_provvisorieCreate($ds, $dd);
-fatture_provvisorieCopy($ds, $dd);
-fitti_dovutiCreate($ds, $dd);
-fitti_dovutiCopy($ds, $dd);
-fitti_impostazCreate($ds, $dd);
-fitti_impostazCopy($ds, $dd);
-fitti_pagamentiCreate($ds, $dd);
-fitti_pagamentiCopy($ds, $dd);
-fonts_firmaCreate($ds, $dd);
-fonts_firmaCopy($ds, $dd);
-fornitoriCreate($ds, $dd);
-fornitoriCopy($ds, $dd);
-frasi_pronteCreate($ds, $dd);
-frasi_pronteCopy($ds, $dd);
-gruppiCreate($ds, $dd);
-gruppiCopy($ds, $dd);
-inc_reg_gloCreate($ds, $dd);
-inc_reg_gloCopy($ds, $dd);
-interventiCreate($ds, $dd);
-interventiCopy($ds, $dd);
-operaz_amminCreate($ds, $dd);
-operaz_amminCopy($ds, $dd);
-scadenzeCreate($ds, $dd);
-scadenzeCopy($ds, $dd);
-sistemaCreate($ds, $dd);
-sistemaCopy($ds, $dd);
-stabiliCreate($ds, $dd);
-stabiliCopy($ds, $dd);
-taiffe_acea_2011Create($ds, $dd);
-taiffe_acea_2011Copy($ds, $dd);
-tariffe_acea_standardCreate($ds, $dd);
-tariffe_acea_standardCopy($ds, $dd);
-ut_pCreate($ds, $dd);
-ut_pCopy($ds, $dd);
-utentiCreate($ds, $dd);
-utentiCopy($ds, $dd);
+    affittiCreate($ds, $dd);
+    affittiCopy($ds, $dd);
+    amministratoreCreate($ds, $dd);
+    amministratoreCopy($ds, $dd);
+    bonificiCreate($ds, $dd);
+    bonificiCopy($ds, $dd);
+    contiCreate($ds, $dd);
+    contiCopy($ds, $dd);
+    contratti_aceaCreate($ds, $dd);
+    contratti_aceaCopy($ds, $dd);
+    f24Create($ds, $dd);
+    f24Copy($ds, $dd);
+    fatt_multiple_dettCreate($ds, $dd);
+    fatt_multiple_dettCopy($ds, $dd);
+    fattureCreate($ds, $dd);
+    fattureCopy($ds, $dd);
+    fatture_amministratoreCreate($ds, $dd);
+    fatture_amministratoreCopy($ds, $dd);
+    fatture_provvisorieCreate($ds, $dd);
+    fatture_provvisorieCopy($ds, $dd);
+    fitti_dovutiCreate($ds, $dd);
+    fitti_dovutiCopy($ds, $dd);
+    fitti_impostazCreate($ds, $dd);
+    fitti_impostazCopy($ds, $dd);
+    fitti_pagamentiCreate($ds, $dd);
+    fitti_pagamentiCopy($ds, $dd);
+    fonts_firmaCreate($ds, $dd);
+    fonts_firmaCopy($ds, $dd);
+    fornitoriCreate($ds, $dd);
+    fornitoriCopy($ds, $dd);
+    frasi_pronteCreate($ds, $dd);
+    frasi_pronteCopy($ds, $dd);
+    gruppiCreate($ds, $dd);
+    gruppiCopy($ds, $dd);
+    inc_reg_gloCreate($ds, $dd);
+    inc_reg_gloCopy($ds, $dd);
+    interventiCreate($ds, $dd);
+    interventiCopy($ds, $dd);
+    operaz_amminCreate($ds, $dd);
+    operaz_amminCopy($ds, $dd);
+    scadenzeCreate($ds, $dd);
+    scadenzeCopy($ds, $dd);
+    sistemaCreate($ds, $dd);
+    sistemaCopy($ds, $dd);
+    stabiliCreate($ds, $dd);
+    stabiliCopy($ds, $dd);
+    taiffe_acea_2011Create($ds, $dd);
+    taiffe_acea_2011Copy($ds, $dd);
+    tariffe_acea_standardCreate($ds, $dd);
+    tariffe_acea_standardCopy($ds, $dd);
+    ut_pCreate($ds, $dd);
+    ut_pCopy($ds, $dd);
+    utentiCreate($ds, $dd);
+    utentiCopy($ds, $dd);
+}
+$dbPartiComuni = [
+    'server' => 'localhost',
+    'username' => 'condom',
+    'password' => 'condom',
+    'name' => 'parti_comuni',
+];
+
+importazione($dbPartiComuni);
