@@ -25,46 +25,46 @@ require 'registro_nomina_revoca_amm.php';
 require 'temp_dov.php';
 require 'temp_ricev.php';
 
-function generaleStabileImport($dbc, $id, $uuid, $cartella){
+function generaleStabileImport($dbc, $id, $uuid, $cartella)
+{
+    $id = '';
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    }
 
-$id="";
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-}
+    $uuid = '';
+    if (isset($_GET['uuid'])) {
+        $uuid = $_GET['uuid'];
+    }
+    $folder_stabile = '';
+    if (isset($_GET['folder_stabile'])) {
+        $folder_stabile = $_GET['folder_stabile'];
+    }
 
-$uuid = '';
-if (isset($_GET['uuid'])) {
-    $uuid = $_GET['uuid'];
-}
-$folder_stabile = '';
-if (isset($_GET['folder_stabile'])) {
-    $folder_stabile = $_GET['folder_stabile'];
-}
+    if ($id == '') {
+        echo '<br/>ATTENZIONE:';
+        die($_SERVER['PHP_SELF'].': devi passare il parametro id!');
+    }
+    if ($uuid == '') {
+        echo '<br/>ATTENZIONE:';
+        die($_SERVER['PHP_SELF'].': devi passare il parametro uuid!');
+    }
+    if ($folder_stabile == '') {
+        echo '<br/>ATTENZIONE:';
+        die($_SERVER['PHP_SELF'].': devi passare il parametro folder_stabile!');
+    }
 
-if ($id == '') {
-    echo '<br/>ATTENZIONE:';
-    die($_SERVER['PHP_SELF'].': devi passare il parametro id!');
-}
-if ($uuid == '') {
-    echo '<br/>ATTENZIONE:';
-    die($_SERVER['PHP_SELF'].': devi passare il parametro uuid!');
-}
-if ($folder_stabile == '') {
-    echo '<br/>ATTENZIONE:';
-    die($_SERVER['PHP_SELF'].': devi passare il parametro folder_stabile!');
-}
+    $dbPath = 'C:\\gescon';
+    $dbFolder = $_GET['folder_stabile'];
+    $dbFile = 'generale_stabile.mdb';
+    $dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
 
-$dbPath = 'C:\\gescon';
-$dbFolder = $_GET['folder_stabile'];
-$dbFile = 'generale_stabile.mdb';
-$dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
-
-if (!file_exists($dbName)) {
-    die("Non riesco a trovare il database: $dbname");
-} else {
-    echo "$dbName trovato!<br/>";
-}
-$ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
+    if (!file_exists($dbName)) {
+        die("Non riesco a trovare il database: $dbname");
+    } else {
+        echo "$dbName trovato!<br/>";
+    }
+    $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 // database destinazione
 
 $dd = new medoo([
@@ -76,55 +76,55 @@ $dd = new medoo([
     'charset' => 'utf8',
         ]);
 
-acqua_dettCreate($ds, $dd);
-acqua_dettCopy($ds, $dd);
-acqua_dett_parzCreate($ds, $dd);
-acqua_dett_parzCopy($ds, $dd);
-acqua_fattureCreate($ds, $dd);
-acqua_fattureCopy($ds, $dd);
-acqua_genCreate($ds, $dd);
-acqua_genCopy($ds, $dd);
-anagr_casseCreate($ds, $dd);
-anagr_casseCopy($ds, $dd);
-anniCreate($ds, $dd);
-anniCopy($ds, $dd);
-corrisp_inviataCreate($ds, $dd);
-corrisp_inviataCopy($ds, $dd);
-elenco_destinatari_emailCreate($ds, $dd);
-elenco_destinatari_emailCopy($ds, $dd);
-elenco_destinatari_email1Create($ds, $dd);
-elenco_destinatari_email1Copy($ds, $dd);
-elenco_destinatari_faxCreate($ds, $dd);
-elenco_destinatari_faxCopy($ds, $dd);
-elenco_destinatari_rolCreate($ds, $dd);
-elenco_destinatari_rolCopy($ds, $dd);
-elenco_destinatari_smsCreate($ds, $dd);
-elenco_destinatari_smsCopy($ds, $dd);
-emes_detCreate($ds, $dd);
-emes_detCopy($ds, $dd);
-emes_genCreate($ds, $dd);
-emes_genCopy($ds, $dd);
-inc_da_ecCreate($ds, $dd);
-inc_da_ecCopy($ds, $dd);
-protoc_ecCreate($ds, $dd);
-protoc_ecCopy($ds, $dd);
-protoc_emailCreate($ds, $dd);
-protoc_emailCopy($ds, $dd);
-protoc_faxCreate($ds, $dd);
-protoc_faxCopy($ds, $dd);
-protoc_rolCreate($ds, $dd);
-protoc_rolCopy($ds, $dd);
-protoc_smsCreate($ds, $dd);
-protoc_smsCopy($ds, $dd);
-registro_nomina_revoca_ammCreate($ds, $dd);
-registro_nomina_revoca_ammCopy($ds, $dd);
-temp_dovCreate($ds, $dd);
-temp_dovCopy($ds, $dd);
-temp_ricevCreate($ds, $dd);
-temp_ricevCopy($ds, $dd);
+    acqua_dettCreate($ds, $dd);
+    acqua_dettCopy($ds, $dd);
+    acqua_dett_parzCreate($ds, $dd);
+    acqua_dett_parzCopy($ds, $dd);
+    acqua_fattureCreate($ds, $dd);
+    acqua_fattureCopy($ds, $dd);
+    acqua_genCreate($ds, $dd);
+    acqua_genCopy($ds, $dd);
+    anagr_casseCreate($ds, $dd);
+    anagr_casseCopy($ds, $dd);
+    anniCreate($ds, $dd);
+    anniCopy($ds, $dd);
+    corrisp_inviataCreate($ds, $dd);
+    corrisp_inviataCopy($ds, $dd);
+    elenco_destinatari_emailCreate($ds, $dd);
+    elenco_destinatari_emailCopy($ds, $dd);
+    elenco_destinatari_email1Create($ds, $dd);
+    elenco_destinatari_email1Copy($ds, $dd);
+    elenco_destinatari_faxCreate($ds, $dd);
+    elenco_destinatari_faxCopy($ds, $dd);
+    elenco_destinatari_rolCreate($ds, $dd);
+    elenco_destinatari_rolCopy($ds, $dd);
+    elenco_destinatari_smsCreate($ds, $dd);
+    elenco_destinatari_smsCopy($ds, $dd);
+    emes_detCreate($ds, $dd);
+    emes_detCopy($ds, $dd);
+    emes_genCreate($ds, $dd);
+    emes_genCopy($ds, $dd);
+    inc_da_ecCreate($ds, $dd);
+    inc_da_ecCopy($ds, $dd);
+    protoc_ecCreate($ds, $dd);
+    protoc_ecCopy($ds, $dd);
+    protoc_emailCreate($ds, $dd);
+    protoc_emailCopy($ds, $dd);
+    protoc_faxCreate($ds, $dd);
+    protoc_faxCopy($ds, $dd);
+    protoc_rolCreate($ds, $dd);
+    protoc_rolCopy($ds, $dd);
+    protoc_smsCreate($ds, $dd);
+    protoc_smsCopy($ds, $dd);
+    registro_nomina_revoca_ammCreate($ds, $dd);
+    registro_nomina_revoca_ammCopy($ds, $dd);
+    temp_dovCreate($ds, $dd);
+    temp_dovCopy($ds, $dd);
+    temp_ricevCreate($ds, $dd);
+    temp_ricevCopy($ds, $dd);
 
-$anni = $dbCondom->select('anni', ['id_anno (id)','nome_dir (cartella)']);
-foreach ($anni as &$anno) {
-  echo "<li><a href='http://".$aDbGeneraleStabile['server'].":8080/singolo_anno/index.php?id=".$anno['id']."&cartella=".$anno['cartella']."&uuid=".$stabile['uuid']."'>".$stabile['denominazione'].'</a></li>'."\n";
-}
+    $anni = $dbCondom->select('anni', ['id_anno (id)', 'nome_dir (cartella)']);
+    foreach ($anni as &$anno) {
+        echo "<li><a href='http://".$aDbGeneraleStabile['server'].':8080/singolo_anno/index.php?id='.$anno['id'].'&cartella='.$anno['cartella'].'&uuid='.$stabile['uuid']."'>".$stabile['denominazione'].'</a></li>'."\n";
+    }
 }
