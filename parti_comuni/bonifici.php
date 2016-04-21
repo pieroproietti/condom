@@ -20,9 +20,6 @@ function bonificiCreate($ds, $dd)
          `da_banca_posta` varchar(6) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function bonificiCopy($ds, $dd)
@@ -41,9 +38,6 @@ function bonificiCopy($ds, $dd)
     $sql .= 'da_banca_posta ';
     $sql .= 'FROM bonifici ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('bonifici', $row);

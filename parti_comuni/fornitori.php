@@ -62,9 +62,6 @@ function fornitoriCreate($ds, $dd)
          `descrizione` varchar(200) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function fornitoriCopy($ds, $dd)
@@ -125,9 +122,6 @@ function fornitoriCopy($ds, $dd)
     $sql .= 'descrizione ';
     $sql .= 'FROM fornitori ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('fornitori', $row);

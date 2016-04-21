@@ -149,9 +149,6 @@ function f24Create($ds, $dd)
          `di_cui_interessi` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function f24Copy($ds, $dd)
@@ -299,9 +296,6 @@ function f24Copy($ds, $dd)
     $sql .= 'di_cui_interessi ';
     $sql .= 'FROM f24 ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('f24', $row);

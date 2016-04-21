@@ -298,7 +298,6 @@ function stabiliImporta($ds, $dd)
   ];
 
     $stabili = $ds->select($table, $columns);
-
     require 'uuid.php';
     if (!empty($stabili)) {
         foreach ($stabili as &$stabile) {

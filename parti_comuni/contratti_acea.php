@@ -31,9 +31,6 @@ function contratti_aceaCreate($ds, $dd)
          `tipo_riga` varchar(50) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function contratti_aceaCopy($ds, $dd)
@@ -63,9 +60,6 @@ function contratti_aceaCopy($ds, $dd)
     $sql .= 'tipo_riga ';
     $sql .= 'FROM contratti_acea ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('contratti_acea', $row);

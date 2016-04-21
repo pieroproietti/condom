@@ -32,9 +32,6 @@ function taiffe_acea_2011Create($ds, $dd)
          `periodo` varchar(6) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function taiffe_acea_2011Copy($ds, $dd)
@@ -65,9 +62,6 @@ function taiffe_acea_2011Copy($ds, $dd)
     $sql .= 'periodo ';
     $sql .= 'FROM taiffe_acea_2011 ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('taiffe_acea_2011', $row);

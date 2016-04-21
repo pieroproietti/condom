@@ -1,6 +1,6 @@
 <?php
 
-require '../medoo.php';
+require_once '../medoo.php';
 require 'affitti.php';
 require 'amministratore.php';
 require 'bonifici.php';
@@ -29,7 +29,7 @@ require 'tariffe_acea_standard.php';
 require 'ut_p.php';
 require 'utenti.php';
 
-function dbCreate($dbc)
+function dbPartiComuniCreate($dbc)
 {
     $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
 
@@ -48,9 +48,9 @@ function dbCreate($dbc)
     }
 }
 
-function importazione($dbc)
+function AccessImportazione($dbc)
 {
-    dbCreate($dbc);
+    //dbPartiComuniCreate($dbc);
     $dbName = "C:\Gescon\parti_comuni.mdb";
     if (!file_exists($dbName)) {
         die('Could not find database file. Uffa!');
@@ -58,6 +58,7 @@ function importazione($dbc)
         echo "$dbName trovato!<br/>";
     }
     $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
+
     $dd = new medoo([
     'database_type' => 'mysql',
     'database_name' => $dbc['name'],
@@ -122,6 +123,7 @@ function importazione($dbc)
     utentiCreate($ds, $dd);
     utentiCopy($ds, $dd);
 }
+/*
 $dbPartiComuni = [
     'server' => 'localhost',
     'username' => 'condom',
@@ -129,4 +131,5 @@ $dbPartiComuni = [
     'name' => 'parti_comuni',
 ];
 
-importazione($dbPartiComuni);
+AccessImportazione($dbPartiComuni);
+*/

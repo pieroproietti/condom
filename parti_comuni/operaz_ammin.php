@@ -19,9 +19,6 @@ function operaz_amminCreate($ds, $dd)
          `importo_debiti` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function operaz_amminCopy($ds, $dd)
@@ -39,9 +36,6 @@ function operaz_amminCopy($ds, $dd)
     $sql .= 'importo_debiti ';
     $sql .= 'FROM operaz_ammin ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('operaz_ammin', $row);

@@ -15,9 +15,6 @@ function frasi_pronteCreate($ds, $dd)
          `gescon_personalizzate` varchar(50) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function frasi_pronteCopy($ds, $dd)
@@ -31,9 +28,6 @@ function frasi_pronteCopy($ds, $dd)
     $sql .= 'gescon_personalizzate ';
     $sql .= 'FROM frasi_pronte ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('frasi_pronte', $row);

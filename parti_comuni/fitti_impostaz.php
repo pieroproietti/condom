@@ -15,9 +15,6 @@ function fitti_impostazCreate($ds, $dd)
          `cc_cond_inq` varchar(12) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function fitti_impostazCopy($ds, $dd)
@@ -31,9 +28,6 @@ function fitti_impostazCopy($ds, $dd)
     $sql .= 'cc_cond_inq ';
     $sql .= 'FROM fitti_impostaz ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('fitti_impostaz', $row);

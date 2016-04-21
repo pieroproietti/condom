@@ -37,9 +37,6 @@ function amministratoreCreate($ds, $dd)
          `logo_su_fatture` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function amministratoreCopy($ds, $dd)
@@ -75,9 +72,6 @@ function amministratoreCopy($ds, $dd)
     $sql .= 'logo_su_fatture ';
     $sql .= 'FROM amministratore ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('amministratore', $row);

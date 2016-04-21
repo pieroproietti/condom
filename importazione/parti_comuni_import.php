@@ -1,8 +1,10 @@
 <?php
-
+require_once '../medoo.php';
 
 function partiComuniImport($dbPartiComuni, $dbCondom)
 {
+
+
     require 'stabili.php';
     stabiliCrea($dbCondom);
     stabiliImporta($dbPartiComuni, $dbCondom);

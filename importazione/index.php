@@ -50,6 +50,7 @@ $aDbCondom = [
 $windowsCondomAddress = '192.168.1.203';
 $windowsCondomUser = 'condom';
 $windowsCondomPass = 'condom';
+
 $aDbPartiComuni = [
   'server' => $windowsCondomAddress,
   'username' => $windowsCondomUser,
@@ -75,6 +76,7 @@ $aDbSingoloAnno = [
 ];
 
 // creazione del database condom
+dbCreate($aDbPartiComuni);
 dbCreate($aDbCondom);
 
 // Database di destinazione
@@ -87,7 +89,6 @@ $dbCondom = new medoo([
     'charset' => $aDbCondom['charset'],
         ]);
 
-// Apertura parti_comuni
 $dbPartiComuni = new medoo([
     'database_type' => 'mysql',
     'database_name' => $aDbPartiComuni['name'],
@@ -97,7 +98,12 @@ $dbPartiComuni = new medoo([
     'charset' => $aDbPartiComuni['charset'],
         ]);
 
-require 'parti_comuni_import.php';
+echo '<br/>avvio importazione da access: Parti_comuni'.'<br/>';
+require "../parti_comuni/index.php";
+accessImportazione($aDbPartiComuni);
+echo '<br/>fine importazione da access: Parti_comuni'.'<br/>';
+
 echo '<br/>avvio importazione Parti_comuni'.'<br/>';
+require 'parti_comuni_import.php';
 partiComuniImport($dbPartiComuni, $dbCondom);
 echo '<br/>fine importazione Parti_comuni'.'<br/>';

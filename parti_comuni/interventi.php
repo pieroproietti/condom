@@ -32,9 +32,6 @@ function interventiCreate($ds, $dd)
          `costo_intervento` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function interventiCopy($ds, $dd)
@@ -65,9 +62,6 @@ function interventiCopy($ds, $dd)
     $sql .= 'costo_intervento ';
     $sql .= 'FROM interventi ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('interventi', $row);

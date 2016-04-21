@@ -18,9 +18,6 @@ function inc_reg_gloCreate($ds, $dd)
          `nome_file_pdf` varchar(50) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function inc_reg_gloCopy($ds, $dd)
@@ -37,9 +34,6 @@ function inc_reg_gloCopy($ds, $dd)
     $sql .= 'nome_file_pdf ';
     $sql .= 'FROM inc_reg_glo ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('inc_reg_glo', $row);

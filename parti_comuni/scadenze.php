@@ -28,9 +28,6 @@ function scadenzeCreate($ds, $dd)
          `pop_up_dal` datetime DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function scadenzeCopy($ds, $dd)
@@ -57,9 +54,6 @@ function scadenzeCopy($ds, $dd)
     $sql .= 'pop_up_dal ';
     $sql .= 'FROM scadenze ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('scadenze', $row);

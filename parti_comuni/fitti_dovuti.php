@@ -24,9 +24,6 @@ function fitti_dovutiCreate($ds, $dd)
          `n_ricevuta` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function fitti_dovutiCopy($ds, $dd)
@@ -49,9 +46,6 @@ function fitti_dovutiCopy($ds, $dd)
     $sql .= 'n_ricevuta ';
     $sql .= 'FROM fitti_dovuti ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('fitti_dovuti', $row);

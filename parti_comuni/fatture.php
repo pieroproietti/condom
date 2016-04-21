@@ -53,9 +53,6 @@ function fattureCreate($ds, $dd)
          `singola_multipla` varchar(1) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function fattureCopy($ds, $dd)
@@ -107,9 +104,6 @@ function fattureCopy($ds, $dd)
     $sql .= 'singola_multipla ';
     $sql .= 'FROM fatture ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('fatture', $row);

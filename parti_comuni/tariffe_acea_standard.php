@@ -32,9 +32,6 @@ function tariffe_acea_standardCreate($ds, $dd)
          `periodo` varchar(6) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function tariffe_acea_standardCopy($ds, $dd)
@@ -65,9 +62,6 @@ function tariffe_acea_standardCopy($ds, $dd)
     $sql .= 'periodo ';
     $sql .= 'FROM tariffe_acea_standard ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('tariffe_acea_standard', $row);

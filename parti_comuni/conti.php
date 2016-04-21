@@ -15,9 +15,6 @@ function contiCreate($ds, $dd)
          `num_operazioni` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function contiCopy($ds, $dd)
@@ -31,9 +28,6 @@ function contiCopy($ds, $dd)
     $sql .= 'num_operazioni ';
     $sql .= 'FROM conti ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('conti', $row);

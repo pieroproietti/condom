@@ -58,9 +58,6 @@ function fatture_amministratoreCreate($ds, $dd)
          `cassa_m_proposta` varchar(3) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function fatture_amministratoreCopy($ds, $dd)
@@ -117,9 +114,6 @@ function fatture_amministratoreCopy($ds, $dd)
     $sql .= 'cassa_m_proposta ';
     $sql .= 'FROM fatture_amministratore ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('fatture_amministratore', $row);
