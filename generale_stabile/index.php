@@ -25,42 +25,8 @@ require 'registro_nomina_revoca_amm.php';
 require 'temp_dov.php';
 require 'temp_ricev.php';
 
-function dbCreate($dbc)
-{
-    $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
+function generaleStabileImport($dbc, $id, $uuid, $cartella){
 
-    if ($db->connect_errno) {
-        echo 'Il sito sta avendo problemi...\n';
-        echo "Errore: connessione MySQL fallita: \n";
-        echo 'Errno: '.$db->connect_errno."\n";
-        echo 'Error: '.$db->connect_error."\n";
-        exit;
-    } else {
-        echo 'connessi a: '.$db->host_info."\n";
-        $db->query('DROP DATABASE `'.$dbc['name'].';');
-        $db->query('CREATE DATABASE IF NOT EXISTS `'.$dbc['name'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;');
-        $db->query('USE `'.$dbc['name'].'`;');
-        $db->close();
-    }
-}
-
-/*
-* main
-*/
-$dbc = [
-  'server' => 'localhost',
-  'username' => 'condom',
-  'password' => 'condom',
-  'name' => 'generale_stabile',
-];
-
-// creazione del database condom
-dbCreate($dbc);
-
-/*
-*
-*/
-// in anni nome_dir è la directory per singolo_anno
 $id="";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -160,4 +126,5 @@ temp_ricevCopy($ds, $dd);
 $anni = $dbCondom->select('anni', ['id_anno (id)','nome_dir (cartella)']);
 foreach ($anni as &$anno) {
   echo "<li><a href='http://".$aDbGeneraleStabile['server'].":8080/singolo_anno/index.php?id=".$anno['id']."&cartella=".$anno['cartella']."&uuid=".$stabile['uuid']."'>".$stabile['denominazione'].'</a></li>'."\n";
+}
 }

@@ -18,16 +18,26 @@ function dbCreate($dbc)
 {
     $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
     if ($db->connect_errno) {
-        echo 'Il sito sta avendo problemi...\n';
-        echo "Errore: connessione MySQL fallita: \n";
         echo 'Errno: '.$db->connect_errno."\n";
         echo 'Error: '.$db->connect_error."\n";
         exit;
     } else {
-        echo 'connessi a: '.$db->host_info."\n";
         $db->query('DROP DATABASE `'.$dbc['name'].';');
         $db->query('CREATE DATABASE IF NOT EXISTS `'.$dbc['name'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;');
         $db->query('USE `'.$dbc['name'].'`;');
+        $db->close();
+    }
+}
+
+function dbDrop($dbc)
+{
+    $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
+    if ($db->connect_errno) {
+        echo 'Errno: '.$db->connect_errno."\n";
+        echo 'Error: '.$db->connect_error."\n";
+        exit;
+    } else {
+        $db->query('DROP DATABASE `'.$dbc['name'].';');
         $db->close();
     }
 }
@@ -98,12 +108,25 @@ $dbPartiComuni = new medoo([
     'charset' => $aDbPartiComuni['charset'],
         ]);
 
-echo '<br/>avvio importazione da access: Parti_comuni'.'<br/>';
+echo '<li>avvio importazione da access: Parti_comuni'.'</li>';
 require "../parti_comuni/index.php";
 accessImportazione($aDbPartiComuni);
-echo '<br/>fine importazione da access: Parti_comuni'.'<br/>';
+echo '<li>fine importazione da access: Parti_comuni'.'</li>';
 
-echo '<br/>avvio importazione Parti_comuni'.'<br/>';
+echo '<li>avvio importazione Parti_comuni'.'</li>';
 require 'parti_comuni_import.php';
 partiComuniImport($dbPartiComuni, $dbCondom);
-echo '<br/>fine importazione Parti_comuni'.'<br/>';
+echo '<li>fine importazione Parti_comuni'.'</li>';
+
+echo '<li>cancellazione Parti_comuni'.'</li>';
+dbDrop($aDbPartiComuni);
+echo '<li>dine cancellazione Parti_comuni'.'</li>';
+
+echo '<li>avvio importazione stabili'.'</li>';
+$dbCondom->select("stabili",['id','uuid','denominazion','cartella');
+
+foreach ($stabili as $stabile) {
+  echo "<li>Stabile id= $stabile['id'], uuid=$stabile['uuid'], denominazione=$stabile['denominazione']";
+  dbCreate($aDbGeneraleStabile);
+  
+}
