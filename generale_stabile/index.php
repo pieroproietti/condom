@@ -1,6 +1,6 @@
 <?php
 
-require '../medoo.php';
+//require '../medoo.php';
 require 'acqua_dett.php';
 require 'acqua_dett_parz.php';
 require 'acqua_fatture.php';
@@ -25,56 +25,19 @@ require 'registro_nomina_revoca_amm.php';
 require 'temp_dov.php';
 require 'temp_ricev.php';
 
-function generaleStabileImport($dbc, $id, $uuid, $cartella)
+function accessGeneraleStabileImport($dd, $id, $uuid, $denominazione, $folder_stabile)
 {
-    $id = '';
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-    }
-
-    $uuid = '';
-    if (isset($_GET['uuid'])) {
-        $uuid = $_GET['uuid'];
-    }
-    $folder_stabile = '';
-    if (isset($_GET['folder_stabile'])) {
-        $folder_stabile = $_GET['folder_stabile'];
-    }
-
-    if ($id == '') {
-        echo '<br/>ATTENZIONE:';
-        die($_SERVER['PHP_SELF'].': devi passare il parametro id!');
-    }
-    if ($uuid == '') {
-        echo '<br/>ATTENZIONE:';
-        die($_SERVER['PHP_SELF'].': devi passare il parametro uuid!');
-    }
-    if ($folder_stabile == '') {
-        echo '<br/>ATTENZIONE:';
-        die($_SERVER['PHP_SELF'].': devi passare il parametro folder_stabile!');
-    }
 
     $dbPath = 'C:\\gescon';
-    $dbFolder = $_GET['folder_stabile'];
     $dbFile = 'generale_stabile.mdb';
-    $dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
+    $dbName = $dbPath.'\\'.$folder_stabile.'\\'.$dbFile;
 
     if (!file_exists($dbName)) {
-        die("Non riesco a trovare il database: $dbname");
+        die("Non riesco a trovare il database: $dbName");
     } else {
         echo "$dbName trovato!<br/>";
     }
     $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
-// database destinazione
-
-$dd = new medoo([
-    'database_type' => 'mysql',
-    'database_name' => $dbc['name'],
-    'server' => $dbc['server'],
-    'username' => $dbc['username'],
-    'password' => $dbc['password'],
-    'charset' => 'utf8',
-        ]);
 
     acqua_dettCreate($ds, $dd);
     acqua_dettCopy($ds, $dd);
@@ -123,8 +86,10 @@ $dd = new medoo([
     temp_ricevCreate($ds, $dd);
     temp_ricevCopy($ds, $dd);
 
+/*
     $anni = $dbCondom->select('anni', ['id_anno (id)', 'nome_dir (cartella)']);
     foreach ($anni as &$anno) {
         echo "<li><a href='http://".$aDbGeneraleStabile['server'].':8080/singolo_anno/index.php?id='.$anno['id'].'&cartella='.$anno['cartella'].'&uuid='.$stabile['uuid']."'>".$stabile['denominazione'].'</a></li>'."\n";
     }
+*/
 }
