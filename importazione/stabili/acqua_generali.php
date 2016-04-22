@@ -116,7 +116,6 @@ function acquaGeneraliImporta($ds, $dd,  $stabile_id, $stabile_uuid)
       $acquaGenerali = $ds->select($table, $columns);
       if (!empty($acquaGenerali)) {
           foreach ($acquaGenerali as &$acquaGenerale) {
-            print_r($acquaGenerale);
             $acquaGenerale['stabile_id']=$stabile_id;
             $acquaGenerale['stabile_uuid']=$stabile_uuid;
             $dd->insert('acqua_generali',$acquaGenerale);

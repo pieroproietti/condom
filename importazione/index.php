@@ -141,6 +141,7 @@ foreach ($stabili as &$stabile) {
   require_once "../generale_stabile/index.php";
   //tested! accessGeneraleStabileImport($dbGeneraleStabile, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
   require_once "stabili/index.php";
+  generaleStabileCrea($dbCondom);
   generaleStabileImport($dbGeneraleStabile, $dbCondom, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
   exit;
 }
