@@ -86,7 +86,7 @@ function destinatariImportaSms($ds, $dd,  $stabile_id, $stabile_uuid)
 
 
 
-function   destinatariImportaRol($ds, $dd,  $stabile_id, $stabile_uuid);
+function   destinatariImportaRol($ds, $dd,  $stabile_id, $stabile_uuid)
 {
   $table = 'elenco_destinatari_rol';
   $columns = [
@@ -101,7 +101,7 @@ function   destinatariImportaRol($ds, $dd,  $stabile_id, $stabile_uuid);
     'indir_destinatario       (destinatario_indirizzo)',//rol
     'civ_destinatario         (destinatario_civico)',   //rol
     'cap_destinatario         (destinatario_cap)',      //rol
-    'citta_destinatario       (destinatario_comune)'    //rol
+    'citta_destinatario       (destinatario_comune)',    //rol
     // 'cell_destinatario        (destinatario_cellulare)',//sms
     'selezionato',
     'c_i',
