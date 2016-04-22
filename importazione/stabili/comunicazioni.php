@@ -22,14 +22,13 @@ function comunicazioniCrea($dd)
       -- ALTER TABLE `comunicazioni` ADD PRIMARY KEY (`id`);
       -- ALTER TABLE `comunicazioni` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
       ';
-      $dd->query($sql);
-
-  }
+    $dd->query($sql);
+}
 
   function comunicazioniImporta($ds, $dd,  $stabile_id, $stabile_uuid)
-    {
-        $table = 'corrisp_inviata';
-        $columns = [
+  {
+      $table = 'corrisp_inviata';
+      $columns = [
           'id_corrisp     (id)',
           'protocollo',
           'tipo_documento',
@@ -40,15 +39,15 @@ function comunicazioniCrea($dd)
           'oggetto',
           'lettera_tipo_caricata',
           'note',
-          'id_cond_for'
+          'id_cond_for',
         ];
 
-        $comunicazioni = $ds->select($table, $columns);
-        if (!empty($comunicazioni)) {
-            foreach ($comunicazioni as &$comunicazione) {
-              $comunicazione['stabile_id']=$stabile_id;
-              $comunicazione['stabile_uuid']=$stabile_uuid;
-              $dd->insert('comunicazioni',$comunicazione);
-            }
-        }
-    }
+      $comunicazioni = $ds->select($table, $columns);
+      if (!empty($comunicazioni)) {
+          foreach ($comunicazioni as &$comunicazione) {
+              $comunicazione['stabile_id'] = $stabile_id;
+              $comunicazione['stabile_uuid'] = $stabile_uuid;
+              $dd->insert('comunicazioni', $comunicazione);
+          }
+      }
+  }

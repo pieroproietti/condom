@@ -60,14 +60,13 @@ function anniCrea($dd)
       ALTER TABLE `anni` ADD PRIMARY KEY (`id`);
       ALTER TABLE `anni` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
       ';
-      $dd->query($sql);
-
-  }
+    $dd->query($sql);
+}
 
   function anniImporta($ds, $dd,  $stabile_id, $stabile_uuid)
-    {
-        $table = 'anni';
-        $columns = [
+  {
+      $table = 'anni';
+      $columns = [
           'id_anno      (id)',
           'anno_o',
           'anno_r',
@@ -116,15 +115,15 @@ function anniCrea($dd)
           'ft_num_12',
           'ft_voce_compenso',
           'ft_voce_iva',
-          'ft_voce_rda'
+          'ft_voce_rda',
         ];
 
-        $anni = $ds->select($table, $columns);
-        if (!empty($anni)) {
-            foreach ($anni as &$anno) {
+      $anni = $ds->select($table, $columns);
+      if (!empty($anni)) {
+          foreach ($anni as &$anno) {
               $anno['stabile_id'] = $stabile_id;
               $anno['stabile_uuid'] = $stabile_uuid;
-              $dd->insert('anni',$anno);
-            }
-        }
-    }
+              $dd->insert('anni', $anno);
+          }
+      }
+  }

@@ -59,13 +59,12 @@ function acquaDettagliCrea($dd)
     ALTER TABLE `acqua_dettagli` ADD PRIMARY KEY (`id`);
     ';
     $dd->query($sql);
-
 }
 
 function acquaDettagliImporta($ds, $dd,  $stabile_id, $stabile_uuid)
-  {
-      $table = 'acqua_dett';
-      $columns = [
+{
+    $table = 'acqua_dett';
+    $columns = [
         'rif_ute',
         'id_cond',
         'cond_inquil',
@@ -115,12 +114,12 @@ function acquaDettagliImporta($ds, $dd,  $stabile_id, $stabile_uuid)
         'tipo_lettura',
       ];
 
-      $acquaDettagli = $ds->select($table, $columns);
-      if (!empty($acquaDettagli)) {
-          foreach ($acquaDettagli as &$acquaDettaglio) {
-            $acquaDettaglio['stabile_id']=$stabile_id;
-            $acquaDettaglio['stabile_uuid']=$stabile_uuid;
-            $dd->insert('acqua_dettagli',$acquaDettaglio);
-          }
-      }
-  }
+    $acquaDettagli = $ds->select($table, $columns);
+    if (!empty($acquaDettagli)) {
+        foreach ($acquaDettagli as &$acquaDettaglio) {
+            $acquaDettaglio['stabile_id'] = $stabile_id;
+            $acquaDettaglio['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('acqua_dettagli', $acquaDettaglio);
+        }
+    }
+}

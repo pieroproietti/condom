@@ -36,7 +36,6 @@ function destinatariCrea($dd)
       ALTER TABLE `destinatari` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
       ';
       $dd->query($sql);
-
 }
 
 function destinatariImporta($ds, $dd,  $stabile_id, $stabile_uuid)
@@ -161,7 +160,6 @@ function   destinatariImportaFax($ds, $dd,  $stabile_id, $stabile_uuid)
         $dd->insert('destinatari',$destinatario);
       }
   }
-
 }
 
 function destinatariImportaEmail($ds, $dd,  $stabile_id, $stabile_uuid)

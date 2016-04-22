@@ -62,9 +62,9 @@ function acquaGeneraliCrea($dd)
 }
 
 function acquaGeneraliImporta($ds, $dd,  $stabile_id, $stabile_uuid)
-  {
-      $table = 'acqua_gen';
-      $columns = [
+{
+    $table = 'acqua_gen';
+    $columns = [
         'rif_ute',
         'rif_anno',
         'nom_ute',
@@ -110,15 +110,15 @@ function acquaGeneraliImporta($ds, $dd,  $stabile_id, $stabile_uuid)
         'n_mesi',
         'tariffa_periodo',
         'note',
-        'note_acqua'
+        'note_acqua',
       ];
 
-      $acquaGenerali = $ds->select($table, $columns);
-      if (!empty($acquaGenerali)) {
-          foreach ($acquaGenerali as &$acquaGenerale) {
-            $acquaGenerale['stabile_id']=$stabile_id;
-            $acquaGenerale['stabile_uuid']=$stabile_uuid;
-            $dd->insert('acqua_generali',$acquaGenerale);
-          }
-      }
-  }
+    $acquaGenerali = $ds->select($table, $columns);
+    if (!empty($acquaGenerali)) {
+        foreach ($acquaGenerali as &$acquaGenerale) {
+            $acquaGenerale['stabile_id'] = $stabile_id;
+            $acquaGenerale['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('acqua_generali', $acquaGenerale);
+        }
+    }
+}

@@ -13,27 +13,26 @@ function acquaFattureCrea($dd)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
       ALTER TABLE `acqua_fatture` ADD PRIMARY KEY (`id`);
-      ALTER TABLE `acqua_fatture` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;      
+      ALTER TABLE `acqua_fatture` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
       ';
-      $dd->query($sql);
-
-  }
+    $dd->query($sql);
+}
 
   function acquaFattureImporta($ds, $dd,  $stabile_id, $stabile_uuid)
-    {
-        $table = 'acqua_fatture';
-        $columns = [
+  {
+      $table = 'acqua_fatture';
+      $columns = [
           'rif_ute',
           'descriz_ft',
-          'importo_ft'
+          'importo_ft',
         ];
 
-        $acquaFatture = $ds->select($table, $columns);
-        if (!empty($acquaFatture)) {
-            foreach ($acquaFatture as &$acquaFattura) {
-              $acquaFattura['stabile_id']=$stabile_id;
-              $acquaFattura['stabile_uuid']=$stabile_uuid;
-              $dd->insert('acqua_fatture',$acquaFattura);
-            }
-        }
-    }
+      $acquaFatture = $ds->select($table, $columns);
+      if (!empty($acquaFatture)) {
+          foreach ($acquaFatture as &$acquaFattura) {
+              $acquaFattura['stabile_id'] = $stabile_id;
+              $acquaFattura['stabile_uuid'] = $stabile_uuid;
+              $dd->insert('acqua_fatture', $acquaFattura);
+          }
+      }
+  }
