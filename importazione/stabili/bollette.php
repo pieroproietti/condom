@@ -3,6 +3,8 @@
 function bolletteCrea($dd)
 {
     $sql = '
+    DROP TABLE IF EXISTS `bollette`;
+
     CREATE TABLE `bollette` (
     `id` int(11) DEFAULT NULL,
     `stabile_id` int(11) NOT NULL,

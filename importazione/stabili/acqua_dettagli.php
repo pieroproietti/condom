@@ -3,6 +3,7 @@
 function acquaDettagliCrea($dd)
 {
     $sql = '
+    DROP TABLE IF EXISTS `acqua_dettagli`;
     CREATE TABLE `acqua_dettagli` (
       `id` int(11) NOT NULL,
       `stabile_id` int(11) NOT NULL,
@@ -57,6 +58,7 @@ function acquaDettagliCrea($dd)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
     ALTER TABLE `acqua_dettagli` ADD PRIMARY KEY (`id`);
+    ALTER TABLE `acqua_dettagli` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
     ';
     $dd->query($sql);
 }

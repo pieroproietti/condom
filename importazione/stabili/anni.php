@@ -3,6 +3,7 @@
 function anniCrea($dd)
 {
     $sql = '
+    DROP TABLE IF EXISTS `anni`;
     CREATE TABLE `anni` (
       `id` int(11) NOT NULL,
       `stabile_id` int(11) NOT NULL,

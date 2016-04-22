@@ -7,6 +7,7 @@ require 'anni.php';
 require 'comunicazioni.php';
 require 'destinatari.php';
 require 'bollette.php';
+require 'bollette_det.php';
 
 function generaleStabileCrea($dd)
 {
@@ -17,6 +18,7 @@ function generaleStabileCrea($dd)
     comunicazioniCrea($dd);
     destinatariCrea($dd);
     bolletteCrea($dd);
+    bolletteDetCrea($dd);
 }
 
 function generaleStabileImport($ds, $dd, $id, $uuid, $denominazione, $folder_stabile)
@@ -27,6 +29,6 @@ function generaleStabileImport($ds, $dd, $id, $uuid, $denominazione, $folder_sta
     anniImporta($ds, $dd, $id, $uuid);
     comunicazioniImporta($ds, $dd, $id, $uuid);
     destinatariImporta($ds, $dd, $id, $uuid);
-    echo "bolletteImporta";
     bolletteImporta($ds, $dd, $id, $uuid);
+    bolletteDetImporta($ds, $dd, $id, $uuid);
 }

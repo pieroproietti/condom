@@ -3,6 +3,8 @@
 function comunicazioniCrea($dd)
 {
     $sql = '
+    DROP TABLE IF EXISTS `comunicazioni`;
+
     CREATE TABLE `comunicazioni` (
       `id` int(11) NOT NULL,
       `stabile_id` int(11) NOT NULL,

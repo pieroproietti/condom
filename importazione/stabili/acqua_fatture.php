@@ -3,6 +3,7 @@
 function acquaFattureCrea($dd)
 {
     $sql = '
+    DROP TABLE IF EXISTS `acqua_fatture`;
     CREATE TABLE `acqua_fatture` (
       `id` int(11) NOT NULL,
       `stabile_id` int(11) NOT NULL,

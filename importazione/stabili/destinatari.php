@@ -3,6 +3,8 @@
 function destinatariCrea($dd)
 {
     $sql = '
+    DROP TABLE IF EXISTS `destinatari`;
+    
     CREATE TABLE `destinatari` (
       `id` int(11) NOT NULL,
       `stabile_id` int(11) NOT NULL,
