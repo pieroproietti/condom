@@ -2,6 +2,8 @@
 
 function votazioni_dettCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/votazioni_dett; \r\n";
+
     $dbstring = 'drop table `votazioni_dett`;';
     echo "Creazione votazioni_dett; \r\n";
     $dd->query($dbstring);
@@ -27,6 +29,8 @@ function votazioni_dettCreate($ds, $dd)
 
 function votazioni_dettCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/votazioni_dett; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id_votazione, ';
     $sql .= 'id_condomino, ';

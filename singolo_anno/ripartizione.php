@@ -2,6 +2,8 @@
 
 function ripartizioneCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/ripartizione; \r\n";
+
     $dbstring = 'drop table `ripartizione`;';
     echo "Creazione ripartizione; \r\n";
     $dd->query($dbstring);
@@ -31,6 +33,7 @@ function ripartizioneCreate($ds, $dd)
 
 function ripartizioneCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/ripartizione; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_cond, ';
     $sql .= 'cod_cond, ';

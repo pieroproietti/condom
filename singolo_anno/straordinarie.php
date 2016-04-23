@@ -2,6 +2,8 @@
 
 function straordinarieCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/straordinarie; \r\n";
+
     $dbstring = 'drop table `straordinarie`;';
     echo "Creazione straordinarie; \r\n";
     $dd->query($dbstring);
@@ -63,6 +65,8 @@ function straordinarieCreate($ds, $dd)
 
 function straordinarieCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/straordinarie; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id_stra, ';
     $sql .= 'codice, ';

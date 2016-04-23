@@ -2,6 +2,8 @@
 
 function prevent_straordinariCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/prevent_straordinari; \r\n";
+
     $dbstring = 'drop table `prevent_straordinari`;';
     echo "Creazione prevent_straordinari; \r\n";
     $dd->query($dbstring);
@@ -21,6 +23,8 @@ function prevent_straordinariCreate($ds, $dd)
 
 function prevent_straordinariCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/prevent_straordinari; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'n_stra, ';

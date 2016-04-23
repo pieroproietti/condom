@@ -2,6 +2,8 @@
 
 function notesCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/notes; \r\n";
+
     $dbstring = 'drop table `notes`;';
     echo "Creazione note; \r\n";
     $dd->query($dbstring);
@@ -29,6 +31,8 @@ function notesCreate($ds, $dd)
 
 function notesCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/notes; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'voci_di_spesa, ';
     $sql .= 'prevent_ord, ';

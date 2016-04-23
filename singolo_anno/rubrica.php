@@ -2,6 +2,8 @@
 
 function rubricaCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/rubrica; \r\n";
+
     $dbstring = 'drop table `rubrica`;';
     echo "Creazione rubrica; \r\n";
     $dd->query($dbstring);
@@ -35,6 +37,8 @@ function rubricaCreate($ds, $dd)
 
 function rubricaCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/rubrica; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'nome, ';

@@ -2,8 +2,8 @@
 
 function fatture_provvisorieCreate($ds, $dd)
 {
+  echo "Creazione parti_comuni/fatture_provvisorie; \r\n";
     $dbstring = 'drop table `fatture_provvisorie`;';
-    echo "Creazione parti_comuni/fatture_provvisorie; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fatture_provvisorie` (

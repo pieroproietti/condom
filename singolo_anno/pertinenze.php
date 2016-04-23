@@ -2,8 +2,9 @@
 
 function pertinenzeCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/pertinenze; \r\n";
+
     $dbstring = 'drop table `pertinenze`;';
-    echo "Creazione pertinenze; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `pertinenze` (
@@ -28,6 +29,8 @@ function pertinenzeCreate($ds, $dd)
 
 function pertinenzeCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/pertinenze; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id_cond, ';
     $sql .= 'dest_uso, ';

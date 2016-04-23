@@ -2,6 +2,8 @@
 
 function descriz_rateCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/descriz_rate; \r\n";
+
     $dbstring = 'drop table `descriz_rate`;';
     echo "Creazione descriz_rate; \r\n";
     $dd->query($dbstring);
@@ -19,6 +21,8 @@ function descriz_rateCreate($ds, $dd)
 
 function descriz_rateCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/descriz_rate; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'mese, ';
     $sql .= 'ordin, ';

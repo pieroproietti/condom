@@ -2,6 +2,8 @@
 
 function giri_contiCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/giri_conti; \r\n";
+
     $dbstring = 'drop table `giri_conti`;';
     echo "Creazione giri_conti; \r\n";
     $dd->query($dbstring);
@@ -25,6 +27,8 @@ function giri_contiCreate($ds, $dd)
 
 function giri_contiCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/giri_conti; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'riferimento, ';
     $sql .= 'data_giroconto, ';

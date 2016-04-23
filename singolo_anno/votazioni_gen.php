@@ -2,6 +2,8 @@
 
 function votazioni_genCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/votazioni_gen; \r\n";
+
     $dbstring = 'drop table `votazioni_gen`;';
     echo "Creazione votazioni_gen; \r\n";
     $dd->query($dbstring);
@@ -20,6 +22,8 @@ function votazioni_genCreate($ds, $dd)
 
 function votazioni_genCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/votazioni_gen; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'id_votazione, ';
     $sql .= 'num_assemblea, ';

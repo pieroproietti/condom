@@ -2,6 +2,8 @@
 
 function rateCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/rate; \r\n";
+
     $dbstring = 'drop table `rate`;';
     echo "Creazione rate; \r\n";
     $dd->query($dbstring);
@@ -31,6 +33,8 @@ function rateCreate($ds, $dd)
 
 function rateCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/rate; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id_rate, ';
     $sql .= 'id_condomino, ';

@@ -2,6 +2,8 @@
 
 function comproprietariCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/comproprietari; \r\n";
+
     $dbstring = 'drop table `comproprietari`;';
     echo "Creazione comproprietari; \r\n";
     $dd->query($dbstring);
@@ -41,6 +43,7 @@ function comproprietariCreate($ds, $dd)
 
 function comproprietariCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/comproprietari; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_compr, ';
     $sql .= 'id_cond, ';

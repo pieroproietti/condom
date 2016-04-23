@@ -2,6 +2,8 @@
 
 function preced_dovutoCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/preced_dovuto; \r\n";
+
     $dbstring = 'drop table `preced_dovuto`;';
     echo "Creazione preced_dovuto; \r\n";
     $dd->query($dbstring);
@@ -24,6 +26,8 @@ function preced_dovutoCreate($ds, $dd)
 
 function preced_dovutoCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/preced_dovuto; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'n_emissione, ';
     $sql .= 'n_ricevuta, ';

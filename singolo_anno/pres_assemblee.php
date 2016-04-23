@@ -2,6 +2,8 @@
 
 function pres_assembleeCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/pres_assemblee; \r\n";
+
     $dbstring = 'drop table `pres_assemblee`;';
     echo "Creazione pres_assemblee; \r\n";
     $dd->query($dbstring);
@@ -27,6 +29,7 @@ function pres_assembleeCreate($ds, $dd)
 
 function pres_assembleeCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/pres_assemblee; \r\n";
     $sql = 'SELECT ';
     $sql .= 'num_assemblea, ';
     $sql .= 'id_condomino, ';

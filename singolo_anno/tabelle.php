@@ -2,6 +2,8 @@
 
 function tabelleCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/tabelle; \r\n";
+
     $dbstring = 'drop table `tabelle`;';
     echo "Creazione tabelle; \r\n";
     $dd->query($dbstring);
@@ -39,6 +41,8 @@ function tabelleCreate($ds, $dd)
 
 function tabelleCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/tabelle; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'id_tabella, ';
     $sql .= 'cod_tab, ';

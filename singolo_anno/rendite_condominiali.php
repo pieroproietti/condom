@@ -2,6 +2,8 @@
 
 function rendite_condominialiCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/rendite_condominiali; \r\n";
+
     $dbstring = 'drop table `rendite_condominiali`;';
     echo "Creazione rendite_condominiali; \r\n";
     $dd->query($dbstring);
@@ -94,6 +96,8 @@ function rendite_condominialiCreate($ds, $dd)
 
 function rendite_condominialiCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/rendite_condominiali; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'cod, ';
     $sql .= 'descrizione, ';

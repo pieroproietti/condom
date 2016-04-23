@@ -2,6 +2,8 @@
 
 function temp_anteprimaCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/temp_anteprima; \r\n";
+
     $dbstring = 'drop table `temp_anteprima`;';
     echo "Creazione temp_anteprima; \r\n";
     $dd->query($dbstring);
@@ -27,6 +29,8 @@ function temp_anteprimaCreate($ds, $dd)
 
 function temp_anteprimaCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/temp_anteprima; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'nord, ';
     $sql .= 'codice_tiporiga, ';

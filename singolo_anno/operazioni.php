@@ -3,7 +3,8 @@
 function operazioniCreate($ds, $dd)
 {
     $dbstring = 'drop table `operazioni`;';
-    echo "Creazione operazioni; \r\n";
+    echo "Creazione di singolo_anno/operazioni; \r\n";
+
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `operazioni` (
@@ -57,6 +58,8 @@ function operazioniCreate($ds, $dd)
 
 function operazioniCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/operazioni; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'id_operaz, ';
     $sql .= 'n_spe, ';

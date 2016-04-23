@@ -2,6 +2,8 @@
 
 function cre_deb_precedCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/cre_deb_preced; \r\n";
+
     $dbstring = 'drop table `cre_deb_preced`;';
     echo "Creazione cre_deb_preced; \r\n";
     $dd->query($dbstring);
@@ -25,6 +27,8 @@ function cre_deb_precedCreate($ds, $dd)
 
 function cre_deb_precedCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/cre_deb_preced; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'c_d, ';

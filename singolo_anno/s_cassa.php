@@ -2,6 +2,8 @@
 
 function s_cassaCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/s_cassa; \r\n";
+
     $dbstring = 'drop table `s_cassa`;';
     echo "Creazione s_cassa; \r\n";
     $dd->query($dbstring);
@@ -24,6 +26,8 @@ function s_cassaCreate($ds, $dd)
 
 function s_cassaCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/s_cassa; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 's_ordin, ';

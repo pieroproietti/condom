@@ -2,6 +2,8 @@
 
 function foglio_riscossioniCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/riscossioni; \r\n";
+
     $dbstring = 'drop table `foglio_riscossioni`;';
     echo "Creazione foglio_riscossioni; \r\n";
     $dd->query($dbstring);
@@ -33,6 +35,7 @@ function foglio_riscossioniCreate($ds, $dd)
 
 function foglio_riscossioniCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/riscossioni; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_cond, ';
     $sql .= 'cod_cond, ';

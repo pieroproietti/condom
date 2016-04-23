@@ -2,6 +2,8 @@
 
 function sistemaCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/sistema; \r\n";
+
     $dbstring = 'drop table `sistema`;';
     echo "Creazione sistema; \r\n";
     $dd->query($dbstring);
@@ -208,6 +210,8 @@ function sistemaCreate($ds, $dd)
 
 function sistemaCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/sistema; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'nome_amministratore, ';
     $sql .= 'citta, ';

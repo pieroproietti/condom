@@ -2,6 +2,8 @@
 
 function incassiCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/incassi; \r\n";
+
     $dbstring = 'drop table `incassi`;';
     echo "Creazione incassi; \r\n";
     $dd->query($dbstring);
@@ -36,6 +38,8 @@ function incassiCreate($ds, $dd)
 
 function incassiCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/incassi; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'id_incasso, ';
     $sql .= 'cod_cond, ';

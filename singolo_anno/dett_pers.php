@@ -2,6 +2,8 @@
 
 function dett_persCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/dett_pers; \r\n";
+
     $dbstring = 'drop table `dett_pers`;';
     echo "Creazione dett_pers; \r\n";
     $dd->query($dbstring);
@@ -26,6 +28,8 @@ function dett_persCreate($ds, $dd)
 
 function dett_persCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/dett_pers; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'tipo_gestione, ';
     $sql .= 'n_stra, ';

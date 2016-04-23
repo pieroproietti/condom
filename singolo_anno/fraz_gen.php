@@ -2,6 +2,8 @@
 
 function fraz_genCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/fraz_gen; \r\n";
+
     $dbstring = 'drop table `fraz_gen`;';
     echo "Creazione fraz_gen; \r\n";
     $dd->query($dbstring);
@@ -24,6 +26,8 @@ function fraz_genCreate($ds, $dd)
 
 function fraz_genCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/fraz_gen; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'progressivo, ';
     $sql .= 'cod_voce, ';

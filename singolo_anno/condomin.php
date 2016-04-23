@@ -2,6 +2,8 @@
 
 function condominCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/condomin; \r\n";
+
     $dbstring = 'drop table `condomin`;';
     echo "Creazione condomin; \r\n";
     $dd->query($dbstring);
@@ -135,6 +137,7 @@ function condominCreate($ds, $dd)
 
 function condominCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/condomin; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_cond, ';
     $sql .= 'cod_cond, ';

@@ -2,6 +2,8 @@
 
 function preced_pagatoCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/preced_pagato; \r\n";
+
     $dbstring = 'drop table `preced_pagato`;';
     echo "Creazione preced_pagato; \r\n";
     $dd->query($dbstring);
@@ -26,6 +28,8 @@ function preced_pagatoCreate($ds, $dd)
 
 function preced_pagatoCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/preced_pagato; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'n_incasso, ';
     $sql .= 'anno_rif, ';

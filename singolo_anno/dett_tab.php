@@ -2,6 +2,8 @@
 
 function dett_tabCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/dett_tab; \r\n";
+
     $dbstring = 'drop table `dett_tab`;';
     echo "Creazione dett_tab; \r\n";
     $dd->query($dbstring);
@@ -27,6 +29,8 @@ function dett_tabCreate($ds, $dd)
 
 function dett_tabCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/dett_tabCopy; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'cod_tab, ';

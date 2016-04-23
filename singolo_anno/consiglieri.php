@@ -2,6 +2,8 @@
 
 function consiglieriCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/consiglieri; \r\n";
+
     $dbstring = 'drop table `consiglieri`;';
     echo "Creazione consiglieri; \r\n";
     $dd->query($dbstring);
@@ -25,6 +27,7 @@ function consiglieriCreate($ds, $dd)
 
 function consiglieriCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/consiglieri; \r\n";
     $sql = 'SELECT ';
     $sql .= 'scala, ';
     $sql .= 'interno, ';

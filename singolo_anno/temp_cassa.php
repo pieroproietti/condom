@@ -2,6 +2,8 @@
 
 function temp_cassaCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/temp_cassa; \r\n";
+
     $dbstring = 'drop table `temp_cassa`;';
     echo "Creazione temp_cassa; \r\n";
     $dd->query($dbstring);
@@ -29,6 +31,8 @@ function temp_cassaCreate($ds, $dd)
 
 function temp_cassaCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/temp_cassa; \r\n";
+  
     $sql = 'SELECT ';
     $sql .= 'c_tab, ';
     $sql .= 'natura, ';

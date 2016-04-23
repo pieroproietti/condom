@@ -2,6 +2,8 @@
 
 function rate_percentualiCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/rate_percentuali; \r\n";
+
     $dbstring = 'drop table `rate_percentuali`;';
     echo "Creazione rate_percentuali; \r\n";
     $dd->query($dbstring);
@@ -24,6 +26,8 @@ function rate_percentualiCreate($ds, $dd)
 
 function rate_percentualiCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/rate_percentuali; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'n_stra, ';

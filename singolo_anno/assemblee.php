@@ -2,6 +2,8 @@
 
 function assembleeCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/assemblee; \r\n";
+
     $dbstring = 'drop table `assemblee`;';
     echo "Creazione assemblee; \r\n";
     $dd->query($dbstring);
@@ -32,6 +34,7 @@ function assembleeCreate($ds, $dd)
 
 function assembleeCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/assemblee; \r\n";
     $sql = 'SELECT ';
     $sql .= 'num_ass, ';
     $sql .= 'ordin_straord, ';

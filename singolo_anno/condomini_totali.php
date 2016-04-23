@@ -2,6 +2,8 @@
 
 function condomini_totaliCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/condomini_totali; \r\n";
+
     $dbstring = 'drop table `condomini_totali`;';
     echo "Creazione condomini_totali; \r\n";
     $dd->query($dbstring);
@@ -44,6 +46,7 @@ function condomini_totaliCreate($ds, $dd)
 
 function condomini_totaliCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/condomini_totali; \r\n";
     $sql = 'SELECT ';
     $sql .= 'unico, ';
     $sql .= 'id_cond, ';

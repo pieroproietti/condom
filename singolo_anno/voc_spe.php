@@ -2,6 +2,8 @@
 
 function voc_speCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/voce_spe; \r\n";
+
     $dbstring = 'drop table `voc_spe`;';
     echo "Creazione voc_spe; \r\n";
     $dd->query($dbstring);
@@ -39,6 +41,8 @@ function voc_speCreate($ds, $dd)
 
 function voc_speCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/voc_spe; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id_vocspe, ';
     $sql .= 'cod, ';

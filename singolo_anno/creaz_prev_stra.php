@@ -2,6 +2,8 @@
 
 function creaz_prev_straCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/creaz_prev_stra; \r\n";
+
     $dbstring = 'drop table `creaz_prev_stra`;';
     echo "Creazione creaz_prev_stra; \r\n";
     $dd->query($dbstring);
@@ -22,6 +24,8 @@ function creaz_prev_straCreate($ds, $dd)
 
 function creaz_prev_straCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/creaz_prev_stra; \r\n";
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'n_stra, ';

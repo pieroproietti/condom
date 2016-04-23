@@ -2,6 +2,8 @@
 
 function amministratoreCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/amministratore; \r\n";
+
     $dbstring = 'drop table `amministratore`;';
     echo "Creazione amministratore; \r\n";
     $dd->query($dbstring);
@@ -33,6 +35,7 @@ function amministratoreCreate($ds, $dd)
 
 function amministratoreCopy($ds, $dd)
 {
+  echo "importazione da access di: singolo_anno/amministratore; \r\n";
     $sql = 'SELECT ';
     $sql .= 'nome, ';
     $sql .= 'indirizzo, ';
