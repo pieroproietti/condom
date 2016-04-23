@@ -2,8 +2,8 @@
 
 function fattureMultipleDettaglioCrea($dd)
 {
+  echo "Creazione condom\fatture_multiple_dettaglio; \r\n";
     $dbstring = 'drop table `fatture_multiple_dettaglio`;';
-    echo "Creazione fatture_multiple_dettaglio; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fatture_multiple_dettaglio` (

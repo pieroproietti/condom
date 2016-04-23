@@ -55,7 +55,7 @@ function AccessImportazione($dbc)
     if (!file_exists($dbName)) {
         die('Could not find database file. Uffa!');
     } else {
-        echo "$dbName trovato!<br/>";
+        echo "$dbName trovato!\n\r";
     }
     $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
@@ -67,6 +67,8 @@ function AccessImportazione($dbc)
     'password' => $dbc['password'],
     'charset' => 'utf8',
         ]);
+
+    echo "Apro: $dbName\n\r";
 
     affittiCreate($ds, $dd);
     affittiCopy($ds, $dd);
@@ -122,6 +124,10 @@ function AccessImportazione($dbc)
     ut_pCopy($ds, $dd);
     utentiCreate($ds, $dd);
     utentiCopy($ds, $dd);
+
+    echo "Chiudo: $dbName\n\r";
+    $ds=null; // Chiude la connessione Access
+
 }
 /*
 $dbPartiComuni = [

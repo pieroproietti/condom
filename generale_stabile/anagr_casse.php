@@ -3,7 +3,7 @@
 function anagr_casseCreate($ds, $dd)
 {
     $dbstring = 'drop table `anagr_casse`;';
-    echo "Creazione anagr_casse; \r\n";
+    echo "Creazione generale_stabile\anagr_casse; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `anagr_casse` (

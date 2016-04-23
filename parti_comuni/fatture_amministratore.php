@@ -3,7 +3,7 @@
 function fatture_amministratoreCreate($ds, $dd)
 {
     $dbstring = 'drop table `fatture_amministratore`;';
-    echo "Creazione fatture_amministratore; \r\n";
+    echo "Creazione parti_comuni/fatture_amministratore; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fatture_amministratore` (

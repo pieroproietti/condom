@@ -3,7 +3,7 @@
 function fatt_multiple_dettCreate($ds, $dd)
 {
     $dbstring = 'drop table `fatt_multiple_dett`;';
-    echo "Creazione fatt_multiple_dett; \r\n";
+    echo "Creazione parti_comuni/fatt_multiple_dett; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fatt_multiple_dett` (

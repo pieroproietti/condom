@@ -117,8 +117,8 @@ echo '<li>avvio importazione Parti_comuni'.'</li>';
 require 'parti_comuni_import.php';
 partiComuniImport($dbPartiComuni, $dbCondom);
 echo '<li>fine importazione Parti_comuni'.'</li>';
-
 echo '<li>cancellazione Parti_comuni'.'</li>';
+$dbPartiComuni=null; // Chiude connessione a particomuni
 dbDrop($aDbPartiComuni);
 echo '<li>dine cancellazione Parti_comuni'.'</li>';
 
@@ -133,7 +133,7 @@ require_once "stabili/index.php";
 generaleStabileCrea($dbCondom);  // Crea le tabelle: acqua_dettagli, acqua_fatture, acqua_generali, anni, bollette, bollette_det, comunicazioni, destinatari, estratti_conto, nomine e protocolli
 
 foreach ($stabili as &$stabile) {
-  echo "<li>Stabile id=".$stabile['id'] .", uuid=".$stabile['uuid'].", denominazione=".$stabile['denominazione'].", cartella=".$stabile['cartella']."</li>";
+  echo "Stabile id=".$stabile['id'] .", uuid=".$stabile['uuid'].", denominazione=".$stabile['denominazione'].", cartella=".$stabile['cartella']."\n\r";
   dbCreate($aDbGeneraleStabile);
   $dbGeneraleStabile = new medoo([
       'database_type' => 'mysql',
@@ -146,5 +146,6 @@ foreach ($stabili as &$stabile) {
   require_once "../generale_stabile/index.php";
   accessGeneraleStabileImport($dbGeneraleStabile, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
   generaleStabileImport($dbGeneraleStabile, $dbCondom, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
+  $dbGeneraleStabile=null; //Chiude la connessione
   //exit;
 }

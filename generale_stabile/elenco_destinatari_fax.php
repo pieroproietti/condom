@@ -3,7 +3,7 @@
 function elenco_destinatari_faxCreate($ds, $dd)
 {
     $dbstring = 'drop table `elenco_destinatari_fax`;';
-    echo "Creazione elenco_destinatari_fax; \r\n";
+    echo "Creazione generale_stabile\elenco_destinatari_fax; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `elenco_destinatari_fax` (

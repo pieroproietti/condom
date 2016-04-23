@@ -3,7 +3,7 @@
 function fattureCreate($ds, $dd)
 {
     $dbstring = 'drop table `fatture`;';
-    echo "Creazione fatture; \r\n";
+    echo "Creazione parti_comuni/fatture; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fatture` (

@@ -2,8 +2,8 @@
 
 function affittiCreate($ds, $dd)
 {
+  echo "Creazione parti_comuni/affitti; \r\n";
     $dbstring = 'drop table `affitti`;';
-    echo "Creazione affitti; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `affitti` (

@@ -2,6 +2,8 @@
 
 function scadenzeCrea($dd)
 {
+  echo "Creazione condom\scadenze; \r\n";
+
     $sql = '
 CREATE TABLE `scadenze` (
   `id` int(11) DEFAULT 0 NOT NULL,

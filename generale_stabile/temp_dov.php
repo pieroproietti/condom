@@ -3,7 +3,7 @@
 function temp_dovCreate($ds, $dd)
 {
     $dbstring = 'drop table `temp_dov`;';
-    echo "Creazione temp_dov; \r\n";
+    echo "Creazione generale_stabile\\temp_dov; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `temp_dov` (

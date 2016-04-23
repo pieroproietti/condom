@@ -3,7 +3,7 @@
 function anniCreate($ds, $dd)
 {
     $dbstring = 'drop table `anni`;';
-    echo "Creazione anni; \r\n";
+    echo "Creazione generale_stabile\anni; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `anni` (

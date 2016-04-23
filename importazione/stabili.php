@@ -2,6 +2,8 @@
 
 function stabiliCrea($dd)
 {
+  echo "Creazione condom\stabili; \r\n";
+
     $sql = '
 CREATE TABLE `stabili` (
   `id` int(11) NOT NULL,

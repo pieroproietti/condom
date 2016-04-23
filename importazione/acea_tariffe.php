@@ -2,6 +2,9 @@
 
 function aceaTariffeCrea($dd)
 {
+  echo "Creazione condom\acea_tariffe;\n\r";
+
+
     $sql = '
 CREATE TABLE `acea_tariffe` (
   `id` int(11) DEFAULT 0 NOT NULL,

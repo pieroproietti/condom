@@ -3,7 +3,7 @@
 function interventiCreate($ds, $dd)
 {
     $dbstring = 'drop table `interventi`;';
-    echo "Creazione interventi; \r\n";
+    echo "Creazione parti_comuni/interventi; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `interventi` (

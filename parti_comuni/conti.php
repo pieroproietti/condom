@@ -3,7 +3,7 @@
 function contiCreate($ds, $dd)
 {
     $dbstring = 'drop table `conti`;';
-    echo "Creazione conti; \r\n";
+    echo "Creazione parti_comuni/conti; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `conti` (

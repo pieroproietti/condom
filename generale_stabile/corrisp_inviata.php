@@ -3,7 +3,7 @@
 function corrisp_inviataCreate($ds, $dd)
 {
     $dbstring = 'drop table `corrisp_inviata`;';
-    echo "Creazione corrisp_inviata; \r\n";
+    echo "Creazione generale_stabile\corrisp_inviata; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `corrisp_inviata` (

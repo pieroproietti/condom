@@ -3,7 +3,7 @@
 function bonificiCreate($ds, $dd)
 {
     $dbstring = 'drop table `bonifici`;';
-    echo "Creazione bonifici; \r\n";
+    echo "Creazione parti_comuni/bonifici; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `bonifici` (

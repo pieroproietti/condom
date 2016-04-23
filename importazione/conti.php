@@ -2,6 +2,9 @@
 
 function contiCrea($dd)
 {
+  echo "Creazione condom\conti;\r\n";
+
+
     $sql = '
 CREATE TABLE `conti` (
   `id` int(11) DEFAULT NULL,
@@ -33,11 +36,8 @@ CREATE TABLE `conti` (
       $conti = $ds->select($table, $columns);
 
       if (!empty($conti)) {
-          echo 'conti NOT empty';
           foreach ($conti as &$conto) {
               $dd->insert('conti', $conto);
           }
-      } else {
-          echo '$conto=empty';
       }
   }

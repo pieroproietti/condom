@@ -2,6 +2,8 @@
 
 function ff24Crea($dd)
 {
+  echo "Creazione condom\ff24; \r\n";
+
     $sql = '
 CREATE TABLE `ff24` (
   `id` int(11) DEFAULT NULL,

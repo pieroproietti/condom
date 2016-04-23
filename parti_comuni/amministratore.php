@@ -3,7 +3,7 @@
 function amministratoreCreate($ds, $dd)
 {
     $dbstring = 'drop table `amministratore`;';
-    echo "Creazione amministratore; \r\n";
+    echo "Creazione parti_comuni/amministratore; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `amministratore` (

@@ -2,6 +2,8 @@
 
 function aceaContrattiCrea($dd)
 {
+  echo "Creazione condom\acea_contratti;\n\r";
+
     $sql = '
 CREATE TABLE `acea_contratti` (
   `id` int(11) DEFAULT 0 NOT NULL,

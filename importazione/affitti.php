@@ -2,6 +2,8 @@
 
 function affittiCrea($dd)
 {
+  echo "Creazione condom\affitti;\n\r";
+
     $sql = '
 CREATE TABLE `affitti` (
   `id` int(11) DEFAULT 0 NOT NULL,

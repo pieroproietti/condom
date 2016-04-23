@@ -2,8 +2,9 @@
 
 function fattureAmministratoreCrea($dd)
 {
+  echo "Creazione condom\fatture_amministratore;\n\r";
+
     $dbstring = 'drop table `fatture_amministratore`;';
-    echo "Creazione fatture_amministratore; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fatture_amministratore` (

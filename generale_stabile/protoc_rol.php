@@ -3,7 +3,7 @@
 function protoc_rolCreate($ds, $dd)
 {
     $dbstring = 'drop table `protoc_rol`;';
-    echo "Creazione protoc_rol; \r\n";
+    echo "Creazione generale_stabile\protoc_rol; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `protoc_rol` (

@@ -3,7 +3,7 @@
 function sistemaCreate($ds, $dd)
 {
     $dbstring = 'drop table `sistema`;';
-    echo "Creazione sistema; \r\n";
+    echo "Creazione parti_comuni/sistema; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `sistema` (

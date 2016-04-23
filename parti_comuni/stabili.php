@@ -3,7 +3,7 @@
 function stabiliCreate($ds, $dd)
 {
     $dbstring = 'drop table `stabili`;';
-    echo "Creazione stabili; \r\n";
+    echo "Creazione parti_comuni/stabili; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `stabili` (

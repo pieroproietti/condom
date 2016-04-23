@@ -3,7 +3,7 @@
 function fitti_dovutiCreate($ds, $dd)
 {
     $dbstring = 'drop table `fitti_dovuti`;';
-    echo "Creazione fitti_dovuti; \r\n";
+    echo "Creazione parti_comuni/fitti_dovuti; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fitti_dovuti` (

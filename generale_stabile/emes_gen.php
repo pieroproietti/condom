@@ -3,7 +3,7 @@
 function emes_genCreate($ds, $dd)
 {
     $dbstring = 'drop table `emes_gen`;';
-    echo "Creazione emes_gen; \r\n";
+    echo "Creazione generale_stabile\emes_gen; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `emes_gen` (

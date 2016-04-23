@@ -33,12 +33,11 @@ function accessGeneraleStabileImport($dd, $id, $uuid, $denominazione, $folder_st
     $dbName = $dbPath.'\\'.$folder_stabile.'\\'.$dbFile;
 
     if (!file_exists($dbName)) {
-        die("Non riesco a trovare il database: $dbName");
-    } else {
-        echo "$dbName trovato!<br/>";
+        die("Non riesco a trovare il database: $dbName \n\r");
     }
     $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
+    echo "Apro $dbName \n\r";
     acqua_dettCreate($ds, $dd);
     acqua_dettCopy($ds, $dd);
     acqua_dett_parzCreate($ds, $dd);
@@ -85,11 +84,6 @@ function accessGeneraleStabileImport($dd, $id, $uuid, $denominazione, $folder_st
     temp_dovCopy($ds, $dd);
     temp_ricevCreate($ds, $dd);
     temp_ricevCopy($ds, $dd);
-
-/*
-    $anni = $dbCondom->select('anni', ['id_anno (id)', 'nome_dir (cartella)']);
-    foreach ($anni as &$anno) {
-        echo "<li><a href='http://".$aDbGeneraleStabile['server'].':8080/singolo_anno/index.php?id='.$anno['id'].'&cartella='.$anno['cartella'].'&uuid='.$stabile['uuid']."'>".$stabile['denominazione'].'</a></li>'."\n";
-    }
-*/
+    echo "Chiudo $dbName \n\r";
+    $ds=null; // Chiude la connessione Access
 }

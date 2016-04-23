@@ -3,7 +3,7 @@
 function scadenzeCreate($ds, $dd)
 {
     $dbstring = 'drop table `scadenze`;';
-    echo "Creazione scadenze; \r\n";
+    echo "Creazione parti_comuni/scadenze; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `scadenze` (

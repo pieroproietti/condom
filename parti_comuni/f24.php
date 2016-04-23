@@ -3,7 +3,7 @@
 function f24Create($ds, $dd)
 {
     $dbstring = 'drop table `f24`;';
-    echo "Creazione f24; \r\n";
+    echo "Creazione parti_comuni/f24; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `f24` (

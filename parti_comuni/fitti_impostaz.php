@@ -3,7 +3,7 @@
 function fitti_impostazCreate($ds, $dd)
 {
     $dbstring = 'drop table `fitti_impostaz`;';
-    echo "Creazione fitti_impostaz; \r\n";
+    echo "Creazione parti_comuni/fitti_impostaz; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fitti_impostaz` (

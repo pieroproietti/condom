@@ -3,7 +3,7 @@
 function operaz_amminCreate($ds, $dd)
 {
     $dbstring = 'drop table `operaz_ammin`;';
-    echo "Creazione operaz_ammin; \r\n";
+    echo "Creazione parti_comuni/operaz_ammin; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `operaz_ammin` (

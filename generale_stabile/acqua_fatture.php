@@ -3,7 +3,7 @@
 function acqua_fattureCreate($ds, $dd)
 {
     $dbstring = 'drop table `acqua_fatture`;';
-    echo "Creazione acqua_fatture; \r\n";
+    echo "Creazione generale_stabile\acqua_fatture; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `acqua_fatture` (

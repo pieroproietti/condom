@@ -2,6 +2,8 @@
 
 function operazioniCrea($dd)
 {
+  echo "Creazione condom\operazioni; \r\n";
+
     $sql = '
 CREATE TABLE `operazioni` (
   `id` int(11) DEFAULT NULL,

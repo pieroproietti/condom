@@ -2,8 +2,9 @@
 
 function registro_nomina_revoca_ammCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/registro_nomina_revoca_amm; \r\n";
+
     $dbstring = 'drop table `registro_nomina_revoca_amm`;';
-    echo "Creazione registro_nomina_revoca_amm; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `registro_nomina_revoca_amm` (

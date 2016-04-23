@@ -3,7 +3,7 @@
 function protoc_ecCreate($ds, $dd)
 {
     $dbstring = 'drop table `protoc_ec`;';
-    echo "Creazione protoc_ec; \r\n";
+    echo "Creazione generale_stabile\protoc_ec; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `protoc_ec` (

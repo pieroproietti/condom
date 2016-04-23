@@ -2,6 +2,9 @@
 
 function bonificiCrea($dd)
 {
+  echo "Creazione condom\bonifici;\n\r";
+
+
     $sql = '
 CREATE TABLE `bonifici` (
     `id` int(11) DEFAULT NULL,

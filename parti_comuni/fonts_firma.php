@@ -3,7 +3,7 @@
 function fonts_firmaCreate($ds, $dd)
 {
     $dbstring = 'drop table `fonts_firma`;';
-    echo "Creazione fonts_firma; \r\n";
+    echo "Creazione parti_comuni/fonts_firma; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fonts_firma` (

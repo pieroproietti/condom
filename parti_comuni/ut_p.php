@@ -3,7 +3,7 @@
 function ut_pCreate($ds, $dd)
 {
     $dbstring = 'drop table `ut_p`;';
-    echo "Creazione ut_p; \r\n";
+    echo "Creazione parti_comuni/ut_p; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `ut_p` (

@@ -3,7 +3,7 @@
 function elenco_destinatari_rolCreate($ds, $dd)
 {
     $dbstring = 'drop table `elenco_destinatari_rol`;';
-    echo "Creazione elenco_destinatari_rol; \r\n";
+    echo "Creazione generale_stabile\elenco_destinatari_rol; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `elenco_destinatari_rol` (

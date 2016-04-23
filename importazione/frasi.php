@@ -2,6 +2,8 @@
 
 function frasiCrea($dd)
 {
+  echo "Creazione condom\frasi; \r\n";
+
     $sql = '
 CREATE TABLE `frasi` (
   `id` int(11) DEFAULT NULL,

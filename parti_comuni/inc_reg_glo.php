@@ -3,7 +3,7 @@
 function inc_reg_gloCreate($ds, $dd)
 {
     $dbstring = 'drop table `inc_reg_glo`;';
-    echo "Creazione inc_reg_glo; \r\n";
+    echo "Creazione parti_comuni/inc_reg_glo; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `inc_reg_glo` (

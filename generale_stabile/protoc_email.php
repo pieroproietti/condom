@@ -3,7 +3,7 @@
 function protoc_emailCreate($ds, $dd)
 {
     $dbstring = 'drop table `protoc_email`;';
-    echo "Creazione protoc_email; \r\n";
+    echo "Creazione generale_stabile\protoc_email; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `protoc_email` (

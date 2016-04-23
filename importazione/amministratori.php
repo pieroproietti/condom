@@ -2,6 +2,8 @@
 
 function amministratoriCrea($dd)
 {
+  echo "Creazione condom\amministratori;\n\r";
+
     $sql = '
 CREATE TABLE `amministratori` (
   `id` int(11) DEFAULT NULL,

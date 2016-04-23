@@ -3,7 +3,7 @@
 function taiffe_acea_2011Create($ds, $dd)
 {
     $dbstring = 'drop table `taiffe_acea_2011`;';
-    echo "Creazione taiffe_acea_2011; \r\n";
+    echo "Creazione parti_comuni/taiffe_acea_2011; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `taiffe_acea_2011` (

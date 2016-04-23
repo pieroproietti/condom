@@ -3,7 +3,7 @@
 function utentiCreate($ds, $dd)
 {
     $dbstring = 'drop table `utenti`;';
-    echo "Creazione utenti; \r\n";
+    echo "Creazione parti_comuni/utenti; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `utenti` (

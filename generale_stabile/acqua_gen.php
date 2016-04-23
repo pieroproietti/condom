@@ -3,7 +3,7 @@
 function acqua_genCreate($ds, $dd)
 {
     $dbstring = 'drop table `acqua_gen`;';
-    echo "Creazione acqua_gen; \r\n";
+    echo "Creazione generale_stabile\acqua_gen; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `acqua_gen` (

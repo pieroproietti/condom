@@ -3,7 +3,7 @@
 function fitti_pagamentiCreate($ds, $dd)
 {
     $dbstring = 'drop table `fitti_pagamenti`;';
-    echo "Creazione fitti_pagamenti; \r\n";
+    echo "Creazione parti_comuni/fitti_pagamenti; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fitti_pagamenti` (

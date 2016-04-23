@@ -3,7 +3,7 @@
 function elenco_destinatari_emailCreate($ds, $dd)
 {
     $dbstring = 'drop table `elenco_destinatari_email`;';
-    echo "Creazione elenco_destinatari_email; \r\n";
+    echo "Creazione generale_stabile\elenco_destinatari_email; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `elenco_destinatari_email` (

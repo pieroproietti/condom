@@ -3,7 +3,7 @@
 function gruppiCreate($ds, $dd)
 {
     $dbstring = 'drop table `gruppi`;';
-    echo "Creazione gruppi; \r\n";
+    echo "Creazione parti_comuni/gruppi; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `gruppi` (

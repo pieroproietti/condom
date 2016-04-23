@@ -3,7 +3,7 @@
 function inc_da_ecCreate($ds, $dd)
 {
     $dbstring = 'drop table `inc_da_ec`;';
-    echo "Creazione inc_da_ec; \r\n";
+    echo "Creazione generale_stabile\inc_da_ec; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `inc_da_ec` (

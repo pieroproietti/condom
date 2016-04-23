@@ -3,7 +3,7 @@
 function protoc_faxCreate($ds, $dd)
 {
     $dbstring = 'drop table `protoc_fax`;';
-    echo "Creazione protoc_fax; \r\n";
+    echo "Creazione generale_stabile\protoc_fax; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `protoc_fax` (

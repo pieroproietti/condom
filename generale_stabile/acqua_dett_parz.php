@@ -3,7 +3,7 @@
 function acqua_dett_parzCreate($ds, $dd)
 {
     $dbstring = 'drop table `acqua_dett_parz`;';
-    echo "Creazione acqua_dett_parz;";
+    echo "Creazione generale_stabile\acqua_dett_parz;\n\r";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `acqua_dett_parz` (
@@ -35,6 +35,8 @@ function acqua_dett_parzCreate($ds, $dd)
 
 function acqua_dett_parzCopy($ds, $dd)
 {
+    echo "importazione: generale_stabile\acqua_dett_parz;\n\r";
+    
     $sql = 'SELECT ';
     $sql .= 'rif_ute, ';
     $sql .= 'id_cond, ';

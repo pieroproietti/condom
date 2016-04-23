@@ -3,7 +3,7 @@
 function contratti_aceaCreate($ds, $dd)
 {
     $dbstring = 'drop table `contratti_acea`;';
-    echo "Creazione contratti_acea; \r\n";
+    echo "Creazione parti_comuni/contratti_acea; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `contratti_acea` (

@@ -2,6 +2,8 @@
 
 function gruppiCrea($dd)
 {
+  echo "Creazione condom\gruppi; \r\n";
+
     $sql = '
       CREATE TABLE `gruppi` (
         `id` int(11) DEFAULT NULL,

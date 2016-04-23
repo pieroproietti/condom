@@ -3,7 +3,7 @@
 function tariffe_acea_standardCreate($ds, $dd)
 {
     $dbstring = 'drop table `tariffe_acea_standard`;';
-    echo "Creazione tariffe_acea_standard; \r\n";
+    echo "Creazione parti_comuni/tariffe_acea_standard; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `tariffe_acea_standard` (

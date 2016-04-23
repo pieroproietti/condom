@@ -3,7 +3,7 @@
 function fornitoriCreate($ds, $dd)
 {
     $dbstring = 'drop table `fornitori`;';
-    echo "Creazione fornitori; \r\n";
+    echo "Creazione parti_comuni/fornitori; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fornitori` (

@@ -2,8 +2,8 @@
 
 function fattureCrea($dd)
 {
+  echo "Creazione condom\fatture; \r\n";
     $dbstring = 'drop table `fatture`;';
-    echo "Creazione fatture; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fatture` (

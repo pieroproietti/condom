@@ -3,7 +3,7 @@
 function protoc_smsCreate($ds, $dd)
 {
     $dbstring = 'drop table `protoc_sms`;';
-    echo "Creazione protoc_sms; \r\n";
+    echo "Creazione generale_stabile\protoc_sms; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `protoc_sms` (

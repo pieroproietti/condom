@@ -3,7 +3,7 @@
 function elenco_destinatari_smsCreate($ds, $dd)
 {
     $dbstring = 'drop table `elenco_destinatari_sms`;';
-    echo "Creazione elenco_destinatari_sms; \r\n";
+    echo "Creazione generale_stabile\elenco_destinatari_sms; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `elenco_destinatari_sms` (

@@ -3,7 +3,7 @@
 function frasi_pronteCreate($ds, $dd)
 {
     $dbstring = 'drop table `frasi_pronte`;';
-    echo "Creazione frasi_pronte; \r\n";
+    echo "Creazione parti_comuni/frasi_pronte; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `frasi_pronte` (

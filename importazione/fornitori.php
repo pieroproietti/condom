@@ -2,8 +2,9 @@
 
 function fornitoriCrea($dd)
 {
+  echo "Creazione condom\fornitori; \r\n";
+
     $dbstring = 'drop table `fornitori`;';
-    echo "Creazione fornitori; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fornitori` (

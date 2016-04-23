@@ -3,7 +3,7 @@
 function temp_ricevCreate($ds, $dd)
 {
     $dbstring = 'drop table `temp_ricev`;';
-    echo "Creazione temp_ricev; \r\n";
+    echo "Creazione generale_stabile\\temp_ricev; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `temp_ricev` (
