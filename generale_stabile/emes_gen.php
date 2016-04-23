@@ -79,9 +79,6 @@ function emes_genCreate($ds, $dd)
          `ccp_1_2` varchar(1) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function emes_genCopy($ds, $dd)
@@ -159,9 +156,6 @@ function emes_genCopy($ds, $dd)
     $sql .= 'ccp_1_2 ';
     $sql .= 'FROM emes_gen ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('emes_gen', $row);

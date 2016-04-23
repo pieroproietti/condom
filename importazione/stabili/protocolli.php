@@ -1,4 +1,4 @@
-s<?php
+<?php
 function protocolliCrea($dd)
 {
     $sql = '
@@ -8,8 +8,7 @@ function protocolliCrea($dd)
     $sql.=' `stabile_id` int(11) NOT NULL,';
     $sql.=' `stabile_uuid` varchar(36) NOT NULL,';
     $sql.=' `originale_id` int(4) DEFAULT NULL,'; //sms rol fax ec mail
-    $sql.=' `tipologia` varchar(15) DEFAULT NULL,'; //sms rol fax ec mail
-    $sql.=' `protocollo` int(4) DEFAULT NULL,'; //sms rol fax ec mail
+    $sql.=' `protocollo_id` int(11) DEFAULT NULL,'; //sms rol fax ec mail
     $sql.=' `tipo_documento` varchar(100) DEFAULT NULL,'; //sms rol fax ec mail
     $sql.=' `data` datetime DEFAULT NULL,'; //sms rol fax ec mail
     $sql.=' `forn_cond_altro` varchar(50) DEFAULT NULL,'; //sms rol fax ec mail
@@ -59,7 +58,7 @@ function protocolliEcImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     $table = 'protoc_ec';
     $columns = [
       'id_corrisp (originale_id)',
-      'protocollo',  //sms rol fax ec mail
+      'protocollo (protocollo_id)',  //sms rol fax ec mail
       'tipo_documento', //sms rol fax ec mail
       'data',  //sms rol fax ec mail
       'forn_cond_altro',  //sms rol fax ec mail
@@ -93,7 +92,7 @@ function protocolliEcImporta($ds, $dd,  $stabile_id, $stabile_uuid)
   $protocolli = $ds->select($table, $columns);
   if (!empty($protocolli)) {
       foreach ($protocolli as &$protocollo) {
-          $protocollo['tipologia'] = 'estratto_conto';
+          $protocollo['tipo_documento'] = 'Estratto conto';
           $protocollo['stabile_id'] = $stabile_id;
           $protocollo['stabile_uuid'] = $stabile_uuid;
           $dd->insert('protocolli', $protocollo);
@@ -106,7 +105,7 @@ function protocolliEmailmporta($ds, $dd,  $stabile_id, $stabile_uuid)
     $table = 'protoc_email';
     $columns = [
       'id_corrisp (originale_id)',
-      'protocollo',  //sms rol fax ec mail
+      'protocollo (protocollo_id)',  //sms rol fax ec mail
       'tipo_documento', //sms rol fax ec mail
       'data',  //sms rol fax ec mail
       'forn_cond_altro',  //sms rol fax ec mail
@@ -140,7 +139,6 @@ function protocolliEmailmporta($ds, $dd,  $stabile_id, $stabile_uuid)
   $protocolli = $ds->select($table, $columns);
   if (!empty($protocolli)) {
       foreach ($protocolli as &$protocollo) {
-        $protocollo['tipologia'] = 'email';
           $protocollo['stabile_id'] = $stabile_id;
           $protocollo['stabile_uuid'] = $stabile_uuid;
           $dd->insert('protocolli', $protocollo);
@@ -153,7 +151,7 @@ function protocolliFaxImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     $table = 'protoc_fax';
     $columns = [
       'id_corrisp (originale_id)',
-      'protocollo',  //sms rol fax ec mail
+      'protocollo (protocollo_id)',  //sms rol fax ec mail
       'tipo_documento', //sms rol fax ec mail
       'data',  //sms rol fax ec mail
       'forn_cond_altro',  //sms rol fax ec mail
@@ -185,13 +183,8 @@ function protocolliFaxImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     ];
 
   $protocolli = $ds->select($table, $columns);
-  print_r($protocolli);
   if (!empty($protocolli)) {
       foreach ($protocolli as &$protocollo) {
-        echo "<br/>";
-        print_r($protocollo);
-        echo "<br/>";
-        $protocollo['tipologia'] = 'fax';
           $protocollo['stabile_id'] = $stabile_id;
           $protocollo['stabile_uuid'] = $stabile_uuid;
           $dd->insert('protocolli', $protocollo);
@@ -204,7 +197,7 @@ function protocolliRolImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     $table = 'protoc_rol';
     $columns = [
       'id_corrisp (originale_id)',
-      'protocollo',  //sms rol fax ec mail
+      'protocollo (protocollo_id)',  //sms rol fax ec mail
       'tipo_documento', //sms rol fax ec mail
       'data',  //sms rol fax ec mail
       'forn_cond_altro',  //sms rol fax ec mail
@@ -236,13 +229,8 @@ function protocolliRolImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     ];
 
   $protocolli = $ds->select($table, $columns);
-  print_r($protocolli);
   if (!empty($protocolli)) {
       foreach ($protocolli as &$protocollo) {
-        echo "<br/>";
-        print_r($protocollo);
-        echo "<br/>";
-        $protocollo['tipologia'] = 'rol';
           $protocollo['stabile_id'] = $stabile_id;
           $protocollo['stabile_uuid'] = $stabile_uuid;
           $dd->insert('protocolli', $protocollo);
@@ -255,7 +243,7 @@ function protocolliSmsImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     $table = 'protoc_sms';
     $columns = [
       'id_corrisp (originale_id)',
-      'protocollo',  //sms rol fax ec mail
+      'protocollo (protocollo_id)',  //sms rol fax ec mail
       'tipo_documento', //sms rol fax ec mail
       'data',  //sms rol fax ec mail
       'forn_cond_altro',  //sms rol fax ec mail
@@ -287,13 +275,8 @@ function protocolliSmsImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     ];
 
   $protocolli = $ds->select($table, $columns);
-  print_r($protocolli);
   if (!empty($protocolli)) {
       foreach ($protocolli as &$protocollo) {
-        echo "<br/>";
-        print_r($protocollo);
-        echo "<br/>";
-        $protocollo['tipologia'] = 'sms';
           $protocollo['stabile_id'] = $stabile_id;
           $protocollo['stabile_uuid'] = $stabile_uuid;
           $dd->insert('protocolli', $protocollo);

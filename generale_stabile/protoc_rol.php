@@ -27,9 +27,6 @@ function protoc_rolCreate($ds, $dd)
          `nome_documento` varchar(50) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function protoc_rolCopy($ds, $dd)
@@ -55,9 +52,7 @@ function protoc_rolCopy($ds, $dd)
     $sql .= 'nome_documento ';
     $sql .= 'FROM protoc_rol ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
+
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('protoc_rol', $row);

@@ -3,7 +3,7 @@
 function acqua_dettCreate($ds, $dd)
 {
     $dbstring = 'drop table `acqua_dett`;';
-    echo "Creazione acqua_dett; \r\n";
+    echo "Creazione acqua_dett;";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `acqua_dett` (
@@ -55,10 +55,6 @@ function acqua_dettCreate($ds, $dd)
          `quota_letture` int(4) DEFAULT NULL,
          `tipo_lettura` varchar(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
-    $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function acqua_dettCopy($ds, $dd)
@@ -113,9 +109,6 @@ function acqua_dettCopy($ds, $dd)
     $sql .= 'tipo_lettura ';
     $sql .= 'FROM acqua_dett ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('acqua_dett', $row);

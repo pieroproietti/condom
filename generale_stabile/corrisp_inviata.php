@@ -20,9 +20,6 @@ function corrisp_inviataCreate($ds, $dd)
          `id_cond_for` int(4) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function corrisp_inviataCopy($ds, $dd)
@@ -41,9 +38,6 @@ function corrisp_inviataCopy($ds, $dd)
     $sql .= 'id_cond_for ';
     $sql .= 'FROM corrisp_inviata ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('corrisp_inviata', $row);

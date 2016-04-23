@@ -86,8 +86,8 @@ $aDbSingoloAnno = [
 ];
 
 // creazione del database condom
-//tested! dbCreate($aDbPartiComuni);
-//tested! dbCreate($aDbCondom);
+dbCreate($aDbPartiComuni);
+dbCreate($aDbCondom);
 
 // Database di destinazione
 $dbCondom = new medoo([
@@ -110,16 +110,16 @@ $dbPartiComuni = new medoo([
 
 echo '<li>avvio importazione da access: Parti_comuni'.'</li>';
 require "../parti_comuni/index.php";
-//tested! accessImportazione($aDbPartiComuni);
+accessImportazione($aDbPartiComuni);
 echo '<li>fine importazione da access: Parti_comuni'.'</li>';
 
 echo '<li>avvio importazione Parti_comuni'.'</li>';
 require 'parti_comuni_import.php';
-//tested! partiComuniImport($dbPartiComuni, $dbCondom);
+partiComuniImport($dbPartiComuni, $dbCondom);
 echo '<li>fine importazione Parti_comuni'.'</li>';
 
 echo '<li>cancellazione Parti_comuni'.'</li>';
-//tested! dbDrop($aDbPartiComuni);
+dbDrop($aDbPartiComuni);
 echo '<li>dine cancellazione Parti_comuni'.'</li>';
 
 echo '<li>avvio importazione stabili'.'</li>';
@@ -127,9 +127,14 @@ $stabili=$dbCondom->select('stabili', ['id',
                                         'uuid',
                                         'denominazione',
                                         'cartella']);
+
+
+require_once "stabili/index.php";
+generaleStabileCrea($dbCondom);  // Crea le tabelle: acqua_dettagli, acqua_fatture, acqua_generali, anni, bollette, bollette_det, comunicazioni, destinatari, estratti_conto, nomine e protocolli
+
 foreach ($stabili as &$stabile) {
   echo "<li>Stabile id=".$stabile['id'] .", uuid=".$stabile['uuid'].", denominazione=".$stabile['denominazione'].", cartella=".$stabile['cartella']."</li>";
-  //tested! dbCreate($aDbGeneraleStabile);
+  dbCreate($aDbGeneraleStabile);
   $dbGeneraleStabile = new medoo([
       'database_type' => 'mysql',
       'database_name' => $aDbGeneraleStabile['name'],
@@ -139,9 +144,7 @@ foreach ($stabili as &$stabile) {
       'charset' => $aDbGeneraleStabile['charset'],
     ]);
   require_once "../generale_stabile/index.php";
-  //tested! accessGeneraleStabileImport($dbGeneraleStabile, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
-  require_once "stabili/index.php";
-  generaleStabileCrea($dbCondom);
+  accessGeneraleStabileImport($dbGeneraleStabile, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
   generaleStabileImport($dbGeneraleStabile, $dbCondom, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
-  exit;
+  //exit;
 }

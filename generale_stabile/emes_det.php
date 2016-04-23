@@ -26,9 +26,6 @@ function emes_detCreate($ds, $dd)
          `str_orig` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function emes_detCopy($ds, $dd)
@@ -53,9 +50,6 @@ function emes_detCopy($ds, $dd)
     $sql .= 'str_orig ';
     $sql .= 'FROM emes_det ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('emes_det', $row);

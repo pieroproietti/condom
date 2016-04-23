@@ -58,9 +58,6 @@ function anniCreate($ds, $dd)
          `ft_voce_rda` varchar(3) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function anniCopy($ds, $dd)
@@ -117,9 +114,6 @@ function anniCopy($ds, $dd)
     $sql .= 'ft_voce_rda ';
     $sql .= 'FROM anni ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('anni', $row);

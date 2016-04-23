@@ -3,7 +3,7 @@
 function acqua_dett_parzCreate($ds, $dd)
 {
     $dbstring = 'drop table `acqua_dett_parz`;';
-    echo "Creazione acqua_dett_parz; \r\n";
+    echo "Creazione acqua_dett_parz;";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `acqua_dett_parz` (
@@ -31,9 +31,6 @@ function acqua_dett_parzCreate($ds, $dd)
          `alt2_personali_euro` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function acqua_dett_parzCopy($ds, $dd)
@@ -63,9 +60,6 @@ function acqua_dett_parzCopy($ds, $dd)
     $sql .= 'alt2_personali_euro ';
     $sql .= 'FROM acqua_dett_parz ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('acqua_dett_parz', $row);

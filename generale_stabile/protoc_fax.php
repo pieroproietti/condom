@@ -28,9 +28,6 @@ function protoc_faxCreate($ds, $dd)
          `alleg_4` varchar(150) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function protoc_faxCopy($ds, $dd)
@@ -57,9 +54,7 @@ function protoc_faxCopy($ds, $dd)
     $sql .= 'alleg_4 ';
     $sql .= 'FROM protoc_fax ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
+
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('protoc_fax', $row);

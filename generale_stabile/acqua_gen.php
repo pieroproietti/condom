@@ -55,9 +55,6 @@ function acqua_genCreate($ds, $dd)
          `note_acqua` text DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function acqua_genCopy($ds, $dd)
@@ -111,9 +108,6 @@ function acqua_genCopy($ds, $dd)
     $sql .= 'note_acqua ';
     $sql .= 'FROM acqua_gen ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('acqua_gen', $row);

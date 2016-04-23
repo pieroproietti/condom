@@ -16,9 +16,6 @@ function registro_nomina_revoca_ammCreate($ds, $dd)
          `provv_trib_revoca` varchar(100) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function registro_nomina_revoca_ammCopy($ds, $dd)
@@ -33,9 +30,7 @@ function registro_nomina_revoca_ammCopy($ds, $dd)
     $sql .= 'provv_trib_revoca ';
     $sql .= 'FROM registro_nomina_revoca_amm ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
+
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('registro_nomina_revoca_amm', $row);

@@ -24,9 +24,6 @@ function elenco_destinatari_emailCreate($ds, $dd)
          `id_compr` int(4) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function elenco_destinatari_emailCopy($ds, $dd)
@@ -49,9 +46,6 @@ function elenco_destinatari_emailCopy($ds, $dd)
     $sql .= 'id_compr ';
     $sql .= 'FROM elenco_destinatari_email ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('elenco_destinatari_email', $row);

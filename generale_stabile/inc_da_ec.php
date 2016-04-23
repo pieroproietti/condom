@@ -19,9 +19,6 @@ function inc_da_ecCreate($ds, $dd)
          `nome_file_pdf` varchar(50) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function inc_da_ecCopy($ds, $dd)
@@ -39,9 +36,6 @@ function inc_da_ecCopy($ds, $dd)
     $sql .= 'nome_file_pdf ';
     $sql .= 'FROM inc_da_ec ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('inc_da_ec', $row);

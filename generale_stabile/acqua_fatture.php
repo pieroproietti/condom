@@ -12,9 +12,6 @@ function acqua_fattureCreate($ds, $dd)
          `importo_ft` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function acqua_fattureCopy($ds, $dd)
@@ -25,9 +22,6 @@ function acqua_fattureCopy($ds, $dd)
     $sql .= 'importo_ft ';
     $sql .= 'FROM acqua_fatture ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('acqua_fatture', $row);

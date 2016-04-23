@@ -27,9 +27,6 @@ function protoc_smsCreate($ds, $dd)
          `inviata` smallint DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function protoc_smsCopy($ds, $dd)
@@ -55,9 +52,7 @@ function protoc_smsCopy($ds, $dd)
     $sql .= 'inviata ';
     $sql .= 'FROM protoc_sms ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
+
     $rows = $ds->query($sql, PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('protoc_sms', $row);
