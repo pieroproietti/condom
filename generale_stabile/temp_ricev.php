@@ -2,8 +2,8 @@
 
 function temp_ricevCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/temp_ricev; \r\n";
     $dbstring = 'drop table `temp_ricev`;';
-    echo "Creazione generale_stabile\\temp_ricev; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `temp_ricev` (
@@ -15,6 +15,7 @@ function temp_ricevCreate($ds, $dd)
 
 function temp_ricevCopy($ds, $dd)
 {
+  echo "Importazione da access di: temp_ricev in: generale_stabile/temp_ricev; \r\n";
     $sql = 'SELECT ';
     $sql .= 'raggruppamento, ';
     $sql .= 'n_ricevuta ';

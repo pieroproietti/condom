@@ -2,8 +2,8 @@
 
 function anniCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile\anni; \r\n";
     $dbstring = 'drop table `anni`;';
-    echo "Creazione generale_stabile\anni; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `anni` (
@@ -62,6 +62,7 @@ function anniCreate($ds, $dd)
 
 function anniCopy($ds, $dd)
 {
+  echo "Importazione da access di: anni in: generale_stabile\anni; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_anno, ';
     $sql .= 'anno_o, ';

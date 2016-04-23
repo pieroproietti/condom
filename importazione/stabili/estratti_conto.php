@@ -2,6 +2,7 @@
 
 function estrattiContoCrea($dd)
 {
+    echo "Creazione condom/estratti_conto\r\n";
     $sql = '
     DROP TABLE IF EXISTS `estratti_conto`;
     CREATE TABLE `estratti_conto` (
@@ -23,11 +24,12 @@ function estrattiContoCrea($dd)
       ALTER TABLE `estratti_conto` ADD PRIMARY KEY (`id`);
       ALTER TABLE `estratti_conto` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
       ';
-      $dd->query($sql);
+    $dd->query($sql);
 }
 
 function estrattiContoImporta($ds, $dd,  $stabile_id, $stabile_uuid)
 {
+    echo "Importazione di parti_comuni/inc_da_ec in condom/estratti_conto\n\r";
     $table = 'inc_da_ec';
     $columns = [
       'protocollo',
@@ -39,15 +41,15 @@ function estrattiContoImporta($ds, $dd,  $stabile_id, $stabile_uuid)
       'nome_condomino           (condomino_nome)',
       'descrizione_aggiuntiva   (descrizione)',
       'importo',
-      'nome_file_pdf'
+      'nome_file_pdf',
     ];
 
-  $estrattiConto = $ds->select($table, $columns);
-  if (!empty($estrattiConto)) {
-      foreach ($estrattiConto as &$estrattoConto) {
-          $estrattoConto['stabile_id'] = $stabile_id;
-          $estrattoConto['stabile_uuid'] = $stabile_uuid;
-          $dd->insert('estratti_conto', $estrattiConto);
-      }
-  }
+    $estrattiConto = $ds->select($table, $columns);
+    if (!empty($estrattiConto)) {
+        foreach ($estrattiConto as &$estrattoConto) {
+            $estrattoConto['stabile_id'] = $stabile_id;
+            $estrattoConto['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('estratti_conto', $estrattiConto);
+        }
+    }
 }

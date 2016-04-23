@@ -2,8 +2,8 @@
 
 function acqua_dett_parzCreate($ds, $dd)
 {
+    echo "Creazione generale_stabile/acqua_dett_parz;\n\r";
     $dbstring = 'drop table `acqua_dett_parz`;';
-    echo "Creazione generale_stabile\acqua_dett_parz;\n\r";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `acqua_dett_parz` (
@@ -35,8 +35,8 @@ function acqua_dett_parzCreate($ds, $dd)
 
 function acqua_dett_parzCopy($ds, $dd)
 {
-    echo "importazione: generale_stabile\acqua_dett_parz;\n\r";
-    
+    echo "importazione da Access di: generale_stabile/acqua_dett_parz;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'rif_ute, ';
     $sql .= 'id_cond, ';
@@ -68,6 +68,7 @@ function acqua_dett_parzCopy($ds, $dd)
     }
 }
 
-function acqua_dett_parzNormalize($stabile_uuid){
-  $dbstring="ALTER TABLE `acqua_dett` ADD `id` INT(11) NOT NULL AUTO_INCREMENT FIRST, ADD `stabile_id` INT(11) NOT NULL AFTER `id`, ADD `stabile_uuid` VARCHAR(36) NOT NULL AFTER `stabile_id`, ADD PRIMARY KEY (`id`);";
+function acqua_dett_parzNormalize($stabile_uuid)
+{
+    $dbstring = 'ALTER TABLE `acqua_dett` ADD `id` INT(11) NOT NULL AUTO_INCREMENT FIRST, ADD `stabile_id` INT(11) NOT NULL AFTER `id`, ADD `stabile_uuid` VARCHAR(36) NOT NULL AFTER `stabile_id`, ADD PRIMARY KEY (`id`);';
 }

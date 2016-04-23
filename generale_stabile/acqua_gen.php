@@ -2,8 +2,8 @@
 
 function acqua_genCreate($ds, $dd)
 {
+    echo "Creazione generale_stabile/acqua_gen; \r\n";
     $dbstring = 'drop table `acqua_gen`;';
-    echo "Creazione generale_stabile\acqua_gen; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `acqua_gen` (
@@ -59,6 +59,7 @@ function acqua_genCreate($ds, $dd)
 
 function acqua_genCopy($ds, $dd)
 {
+    echo "Importazione da access di: generale_stabile/acqua_gen; \r\n";
     $sql = 'SELECT ';
     $sql .= 'rif_ute, ';
     $sql .= 'rif_anno, ';

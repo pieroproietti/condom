@@ -2,6 +2,8 @@
 
 function anniCrea($dd)
 {
+    echo "Creazione condom/anni\r\n";
+
     $sql = '
     DROP TABLE IF EXISTS `anni`;
     CREATE TABLE `anni` (
@@ -64,10 +66,11 @@ function anniCrea($dd)
     $dd->query($sql);
 }
 
-  function anniImporta($ds, $dd,  $stabile_id, $stabile_uuid)
-  {
-      $table = 'anni';
-      $columns = [
+function anniImporta($ds, $dd,  $stabile_id, $stabile_uuid)
+{
+    echo "Imporazione di: generale_stabile/anni in: condom/anni\r\n";
+    $table = 'anni';
+    $columns = [
           'id_anno      (id)',
           'anno_o',
           'anno_r',
@@ -119,12 +122,12 @@ function anniCrea($dd)
           'ft_voce_rda',
         ];
 
-      $anni = $ds->select($table, $columns);
-      if (!empty($anni)) {
-          foreach ($anni as &$anno) {
-              $anno['stabile_id'] = $stabile_id;
-              $anno['stabile_uuid'] = $stabile_uuid;
-              $dd->insert('anni', $anno);
-          }
-      }
-  }
+    $anni = $ds->select($table, $columns);
+    if (!empty($anni)) {
+        foreach ($anni as &$anno) {
+            $anno['stabile_id'] = $stabile_id;
+            $anno['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('anni', $anno);
+        }
+    }
+}

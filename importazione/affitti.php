@@ -2,42 +2,43 @@
 
 function affittiCrea($dd)
 {
-  echo "Creazione condom\affitti;\n\r";
+    echo "Creazione condom\affitti;\n\r";
 
     $sql = '
-CREATE TABLE `affitti` (
-  `id` int(11) DEFAULT 0 NOT NULL,
-  `stabile_id` int(11) NULL,
-  `stabile_uuid` varchar(36) NULL,
-  `proprietario_nome` varchar(200) DEFAULT NULL,
-  `proprietario_intestazione` varchar(200) DEFAULT NULL,
-  `immobile_descrizione` varchar(50) DEFAULT NULL,
-  `immobile_indirizzo` varchar(50) DEFAULT NULL,
-  `immobile_cap` varchar(5) DEFAULT NULL,
-  `immobile_comune` varchar(50) DEFAULT NULL,
-  `immobile_provincia` varchar(2) DEFAULT NULL,
-  `immobile_rendita_catastale` decimal(10,2) DEFAULT NULL,
-  `immobile_particella` varchar(50) DEFAULT NULL,
-  `immobile_destinazione_uso` varchar(50) DEFAULT NULL,
-  `contratto_inquilino` varchar(50) DEFAULT NULL,
-  `contratto_importo` decimal(10,2) DEFAULT NULL,
-  `contratto_inizio` datetime DEFAULT NULL,
-  `contratto_ultimo_rinnovo` datetime DEFAULT NULL,
-  `contratto_prossima_scadenza` datetime DEFAULT NULL,
-  `contratto_prossima_registrazione` datetime DEFAULT NULL,
-  `contratto_annotazioni` text,
-  `pagamenti_ccp` varchar(100) DEFAULT NULL,
-  `pagamenti_iban` varchar(27) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+    CREATE TABLE `affitti` (
+      `id` int(11) DEFAULT 0 NOT NULL,
+      `stabile_id` int(11) NULL,
+      `stabile_uuid` varchar(36) NULL,
+      `proprietario_nome` varchar(200) DEFAULT NULL,
+      `proprietario_intestazione` varchar(200) DEFAULT NULL,
+      `immobile_descrizione` varchar(50) DEFAULT NULL,
+      `immobile_indirizzo` varchar(50) DEFAULT NULL,
+      `immobile_cap` varchar(5) DEFAULT NULL,
+      `immobile_comune` varchar(50) DEFAULT NULL,
+      `immobile_provincia` varchar(2) DEFAULT NULL,
+      `immobile_rendita_catastale` decimal(10,2) DEFAULT NULL,
+      `immobile_particella` varchar(50) DEFAULT NULL,
+      `immobile_destinazione_uso` varchar(50) DEFAULT NULL,
+      `contratto_inquilino` varchar(50) DEFAULT NULL,
+      `contratto_importo` decimal(10,2) DEFAULT NULL,
+      `contratto_inizio` datetime DEFAULT NULL,
+      `contratto_ultimo_rinnovo` datetime DEFAULT NULL,
+      `contratto_prossima_scadenza` datetime DEFAULT NULL,
+      `contratto_prossima_registrazione` datetime DEFAULT NULL,
+      `contratto_annotazioni` text,
+      `pagamenti_ccp` varchar(100) DEFAULT NULL,
+      `pagamenti_iban` varchar(27) DEFAULT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-ALTER TABLE `affitti` ADD PRIMARY KEY (`id`);
-
+    ALTER TABLE `affitti` ADD PRIMARY KEY (`id`);
 ';
     $dd->query($sql);
 }
 
 function affittiImporta($ds, $dd)
 {
+    echo "Importazione di: parti_comuni/affitti in:  condom\affitti;\n\r";
+
     $table = 'affitti';
     $columns = [
       'cod_appartamento       (id)',

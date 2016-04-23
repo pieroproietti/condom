@@ -32,6 +32,8 @@ function scadenzeCreate($ds, $dd)
 
 function scadenzeCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/scadenze;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_scadenza, ';
     $sql .= 'dt_scadenza, ';

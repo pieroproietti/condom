@@ -2,7 +2,7 @@
 
 function amministratoriCrea($dd)
 {
-  echo "Creazione condom\amministratori;\n\r";
+    echo "Creazione condom\amministratori;\n\r";
 
     $sql = '
 CREATE TABLE `amministratori` (
@@ -41,14 +41,16 @@ CREATE TABLE `amministratori` (
   ALTER TABLE `amministratori` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
   ';
 
-      $dd->query($sql);
+    $dd->query($sql);
       //echo '<br/>'.$sql.'<br/>';
-  }
+}
 
-  function amministratoriImporta($ds, $dd)
-  {
-      $table = 'amministratore';
-      $columns = [
+function amministratoriImporta($ds, $dd)
+{
+    echo "Importazione di: parti_comuni/amministratore in: condom/amministratori;\n\r";
+
+    $table = 'amministratore';
+    $columns = [
         'nome',
         'indirizzo',
         'cap',
@@ -76,13 +78,13 @@ CREATE TABLE `amministratori` (
         'profess_non_regolam',
         'sfondo_su_fatture',
         'applico_rda',
-        'logo_su_fatture'
+        'logo_su_fatture',
       ];
 
-      $amministratori = $ds->select($table, $columns);
-      if (!empty($amministratori)) {
-          foreach ($amministratori as &$amministratore) {
-              $dd->insert('amministratori', $amministratore);
-          }
-      }
-  }
+    $amministratori = $ds->select($table, $columns);
+    if (!empty($amministratori)) {
+        foreach ($amministratori as &$amministratore) {
+            $dd->insert('amministratori', $amministratore);
+        }
+    }
+}

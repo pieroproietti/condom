@@ -1,6 +1,8 @@
 <?php
 function nomineCrea($dd)
 {
+  echo "Creazione condom/nomine\r\n";
+
     $sql = '
     DROP TABLE IF EXISTS `nomine`;
 
@@ -25,7 +27,8 @@ function nomineCrea($dd)
 
 function nomineImporta($ds, $dd,  $stabile_id, $stabile_uuid)
 {
-    $table = 'registro_nomina_revoca.amm';
+  echo "Importazione di parti_comuni/tregistro_nomina_revoca_amm in condom/nomine\n\r";
+    $table = 'registro_nomina_revoca_amm';
     $columns = [
       'dt_inizio              (inizio_del)',
       'modo_inizio            (inizio_note)'.

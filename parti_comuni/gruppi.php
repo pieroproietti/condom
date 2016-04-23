@@ -18,6 +18,8 @@ function gruppiCreate($ds, $dd)
 
 function gruppiCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/gruppi;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'codice, ';

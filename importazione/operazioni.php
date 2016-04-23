@@ -2,7 +2,7 @@
 
 function operazioniCrea($dd)
 {
-  echo "Creazione condom\operazioni; \r\n";
+  echo "Creazione condom/operazioni; \r\n";
 
     $sql = '
 CREATE TABLE `operazioni` (
@@ -28,6 +28,8 @@ CREATE TABLE `operazioni` (
 
 function operazioniImporta($ds, $dd)
 {
+  echo "Importazione di: parti_comuni/operaz_ammin in: condom/operazioni;\n\r";
+
     $table = 'operaz_ammin';
     $columns = [
       'num_operazione   (id)',

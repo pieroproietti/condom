@@ -57,6 +57,8 @@ function fattureCreate($ds, $dd)
 
 function fattureCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fatture;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_fatture, ';
     $sql .= 'id_stabile, ';

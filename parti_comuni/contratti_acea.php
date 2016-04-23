@@ -35,6 +35,8 @@ function contratti_aceaCreate($ds, $dd)
 
 function contratti_aceaCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/contratti_acea;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_contratto, ';
     $sql .= 'codice, ';

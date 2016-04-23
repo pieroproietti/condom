@@ -2,8 +2,8 @@
 
 function inc_da_ecCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/inc_da_ec; \r\n";
     $dbstring = 'drop table `inc_da_ec`;';
-    echo "Creazione generale_stabile\inc_da_ec; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `inc_da_ec` (
@@ -23,6 +23,7 @@ function inc_da_ecCreate($ds, $dd)
 
 function inc_da_ecCopy($ds, $dd)
 {
+  echo "Importazione da access di: inc_da_ec in: generale_stabile/inc_da_ec; \r\n";
     $sql = 'SELECT ';
     $sql .= 'protocollo, ';
     $sql .= 'data_pag, ';

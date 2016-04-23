@@ -36,6 +36,8 @@ function taiffe_acea_2011Create($ds, $dd)
 
 function taiffe_acea_2011Copy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/taiffe_acea_2011;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_contratto, ';
     $sql .= 'codice, ';

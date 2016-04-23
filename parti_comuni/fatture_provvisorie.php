@@ -51,6 +51,8 @@ function fatture_provvisorieCreate($ds, $dd)
 
 function fatture_provvisorieCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fatture_provvisorie;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_fattura, ';
     $sql .= 'id_stabile, ';

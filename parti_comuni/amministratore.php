@@ -41,6 +41,8 @@ function amministratoreCreate($ds, $dd)
 
 function amministratoreCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/amministratore;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'nome, ';
     $sql .= 'indirizzo, ';

@@ -2,8 +2,8 @@
 
 function elenco_destinatari_rolCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/elenco_destinatari_rol; \r\n";
     $dbstring = 'drop table `elenco_destinatari_rol`;';
-    echo "Creazione generale_stabile\elenco_destinatari_rol; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `elenco_destinatari_rol` (
@@ -26,6 +26,7 @@ function elenco_destinatari_rolCreate($ds, $dd)
 
 function elenco_destinatari_rolCopy($ds, $dd)
 {
+  echo "Importazione da access di: elenco_destinatari_rol in:  generale_stabile/elenco_destinatari_rol; \r\n";
     $sql = 'SELECT ';
     $sql .= 'rif_lettera, ';
     $sql .= 'codice, ';

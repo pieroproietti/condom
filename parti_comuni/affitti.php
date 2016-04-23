@@ -37,6 +37,8 @@ function affittiCreate($ds, $dd)
 
 function affittiCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/affitti;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'cod_appartamento, ';
     $sql .= 'cod_stabile, ';

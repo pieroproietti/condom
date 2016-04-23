@@ -2,8 +2,8 @@
 
 function acqua_fattureCreate($ds, $dd)
 {
+    echo "Creazione generale_stabile/acqua_fatture; \r\n";
     $dbstring = 'drop table `acqua_fatture`;';
-    echo "Creazione generale_stabile\acqua_fatture; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `acqua_fatture` (
@@ -16,6 +16,8 @@ function acqua_fattureCreate($ds, $dd)
 
 function acqua_fattureCopy($ds, $dd)
 {
+    echo "importazione da Access di: generale_statile/acqua_fatture;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'rif_ute, ';
     $sql .= 'descriz_ft, ';

@@ -36,6 +36,8 @@ function tariffe_acea_standardCreate($ds, $dd)
 
 function tariffe_acea_standardCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/tariffe_acea_standard;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_contratto, ';
     $sql .= 'codice, ';

@@ -2,8 +2,8 @@
 
 function elenco_destinatari_smsCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/elenco_destinatari_sms; \r\n";
     $dbstring = 'drop table `elenco_destinatari_sms`;';
-    echo "Creazione generale_stabile\elenco_destinatari_sms; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `elenco_destinatari_sms` (
@@ -26,6 +26,7 @@ function elenco_destinatari_smsCreate($ds, $dd)
 
 function elenco_destinatari_smsCopy($ds, $dd)
 {
+  echo "Importazione da access di: elenco_destinatari_sms in: generale_stabile/elenco_destinatari_sms; \r\n";
     $sql = 'SELECT ';
     $sql .= 'rif_lettera, ';
     $sql .= 'codice, ';

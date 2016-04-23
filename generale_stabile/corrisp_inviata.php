@@ -2,8 +2,8 @@
 
 function corrisp_inviataCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/corrisp_inviata; \r\n";
     $dbstring = 'drop table `corrisp_inviata`;';
-    echo "Creazione generale_stabile\corrisp_inviata; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `corrisp_inviata` (
@@ -24,6 +24,7 @@ function corrisp_inviataCreate($ds, $dd)
 
 function corrisp_inviataCopy($ds, $dd)
 {
+  echo "Importazione da access di: corrisp_inviata da: generale_stabile/corrisp_inviata; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_corrisp, ';
     $sql .= 'protocollo, ';

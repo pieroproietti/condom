@@ -24,6 +24,8 @@ function bonificiCreate($ds, $dd)
 
 function bonificiCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/bonifici;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'cod_stabile, ';
     $sql .= 'descriz_stabile, ';

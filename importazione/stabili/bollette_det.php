@@ -2,6 +2,8 @@
 
 function bolletteDetCrea($dd)
 {
+    echo "Creazione condom/bollette_det;\n\r";
+
     $sql = '
     DROP TABLE IF EXISTS `bollette_det`;
     CREATE TABLE `bollette_det` (
@@ -34,9 +36,11 @@ function bolletteDetCrea($dd)
 }
 
 function bolletteDetImporta($ds, $dd,  $stabile_id, $stabile_uuid)
-  {
-      $table = 'emes_det';
-      $columns = [
+{
+    echo "Imporazione di: generale_stabile/emes_det in: condom/bollette_det\r\n";
+
+    $table = 'emes_det';
+    $columns = [
         'cod_cond',
         'cond_inq                       (c_i)',
         'raggruppamento',
@@ -53,7 +57,7 @@ function bolletteDetImporta($ds, $dd,  $stabile_id, $stabile_uuid)
         'anno_gestione',
         'd_e_p',
         'resta_da_compensare',
-        'str_orig'
+        'str_orig',
       ];
 
     $bolletteDet = $ds->select($table, $columns);

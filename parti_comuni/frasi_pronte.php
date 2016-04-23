@@ -19,6 +19,8 @@ function frasi_pronteCreate($ds, $dd)
 
 function frasi_pronteCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/frasi_pronte;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'cod_frase, ';
     $sql .= 'categoria, ';

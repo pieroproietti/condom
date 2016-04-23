@@ -2,8 +2,8 @@
 
 function anagr_casseCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/anagr_casse; \r\n";
     $dbstring = 'drop table `anagr_casse`;';
-    echo "Creazione generale_stabile\anagr_casse; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `anagr_casse` (
@@ -19,6 +19,7 @@ function anagr_casseCreate($ds, $dd)
 
 function anagr_casseCopy($ds, $dd)
 {
+  echo "Importazione da access di: generale_stabile/anagr_casse; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_cassa, ';
     $sql .= 'codice, ';

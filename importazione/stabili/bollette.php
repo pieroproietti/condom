@@ -2,6 +2,8 @@
 
 function bolletteCrea($dd)
 {
+    echo "Creazione condom/bollette_det\r\n";
+
     $sql = '
     DROP TABLE IF EXISTS `bollette`;
 
@@ -90,11 +92,13 @@ function bolletteCrea($dd)
     ALTER TABLE `bollette` ADD PRIMARY KEY (`id`);
     ALTER TABLE `bollette` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
     ';
-  $dd->query($sql);
+    $dd->query($sql);
 }
 
 function bolletteImporta($ds, $dd,  $stabile_id, $stabile_uuid)
 {
+    echo "Imporazione di: generale_stabile/emes_gen in: condom/bollette\r\n";
+
     $table = 'emes_gen';
     $columns = [
     'n_emissione      (id)',
@@ -146,7 +150,6 @@ function bolletteImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     'rata_prec_4      (riga_4_rata_precedente)',
     'voce_4           (riga_4_voce)',
 
-
     'ges_5            (riga_5_gestione)',
     'n_stra_5         (riga_5_staordinaria_nr)',
     'e_anno_5         (riga_5_emissione_anno)',
@@ -174,17 +177,17 @@ function bolletteImporta($ds, $dd,  $stabile_id, $stabile_uuid)
     'note_ccp',
     'stampa_sn        (stampa)',
     'provvisora_definitava (provvisoria_definitiva)',
-    'ccp_1_2'
+    'ccp_1_2',
   ];
 
-$bollette = $ds->select($table, $columns);
-if (!empty($bollette)) {
-    foreach ($bollette as &$bolletta) {
-        $bolletta['stabile_id'] = $stabile_id;
-        $bolletta['stabile_uuid'] = $stabile_uuid;
-        $dd->insert('bollette', $bolletta);
+    $bollette = $ds->select($table, $columns);
+    if (!empty($bollette)) {
+        foreach ($bollette as &$bolletta) {
+            $bolletta['stabile_id'] = $stabile_id;
+            $bolletta['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('bollette', $bolletta);
+        }
+    } else {
+        echo 'bollette empty';
     }
-}else{
-  echo "bollette empty";
-}
 }

@@ -2,7 +2,7 @@
 
 function gruppiCrea($dd)
 {
-  echo "Creazione condom\gruppi; \r\n";
+    echo "Creazione condom/gruppi; \r\n";
 
     $sql = '
       CREATE TABLE `gruppi` (
@@ -17,18 +17,20 @@ function gruppiCrea($dd)
       ALTER TABLE `gruppi` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
       ';
 
-      $dd->query($sql);
+    $dd->query($sql);
 }
 
 function gruppiImporta($ds, $dd)
 {
+  echo "Importazione di: parti_comuni/gruppi in: condom/gruppi;\n\r";
+
     $table = 'gruppi';
     $columns = [
       'id',
       'codice',
       'descrizione',
       'totale',
-      'num_operaz'
+      'num_operaz',
     ];
 
     $gruppi = $ds->select($table, $columns);

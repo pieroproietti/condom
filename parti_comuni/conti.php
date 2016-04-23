@@ -19,6 +19,8 @@ function contiCreate($ds, $dd)
 
 function contiCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/bonifici;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'id_gruppo, ';

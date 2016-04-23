@@ -2,7 +2,7 @@
 
 function fattureAmministratoreCrea($dd)
 {
-  echo "Creazione condom\fatture_amministratore;\n\r";
+    echo "Creazione condom\fatture_amministratore;\n\r";
 
     $dbstring = 'drop table `fatture_amministratore`;';
     $dd->query($dbstring);
@@ -70,6 +70,8 @@ function fattureAmministratoreCrea($dd)
 
 function fattureAmministratoreImporta($ds, $dd)
 {
+    echo "Importazione di: parti_comuni/fatture_amministratore in: condom/fatture_amministratore;\n\r";
+
     $table = 'fatture_amministratore';
     $columns = [
         'id_fattura   (id)',

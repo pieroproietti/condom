@@ -2,6 +2,8 @@
 
 function acquaFattureCrea($dd)
 {
+    echo "Creazione condom/acqua_fatture\r\n";
+
     $sql = '
     DROP TABLE IF EXISTS `acqua_fatture`;
     CREATE TABLE `acqua_fatture` (
@@ -19,21 +21,23 @@ function acquaFattureCrea($dd)
     $dd->query($sql);
 }
 
-  function acquaFattureImporta($ds, $dd,  $stabile_id, $stabile_uuid)
-  {
-      $table = 'acqua_fatture';
-      $columns = [
+function acquaFattureImporta($ds, $dd,  $stabile_id, $stabile_uuid)
+{
+    echo "Imporazione di: generale_stabile/acqua_fatture in: condom/acqua_fatture\r\n";
+
+    $table = 'acqua_fatture';
+    $columns = [
           'rif_ute',
           'descriz_ft',
           'importo_ft',
         ];
 
-      $acquaFatture = $ds->select($table, $columns);
-      if (!empty($acquaFatture)) {
-          foreach ($acquaFatture as &$acquaFattura) {
-              $acquaFattura['stabile_id'] = $stabile_id;
-              $acquaFattura['stabile_uuid'] = $stabile_uuid;
-              $dd->insert('acqua_fatture', $acquaFattura);
-          }
-      }
-  }
+    $acquaFatture = $ds->select($table, $columns);
+    if (!empty($acquaFatture)) {
+        foreach ($acquaFatture as &$acquaFattura) {
+            $acquaFattura['stabile_id'] = $stabile_id;
+            $acquaFattura['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('acqua_fatture', $acquaFattura);
+        }
+    }
+}

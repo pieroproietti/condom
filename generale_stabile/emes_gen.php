@@ -2,8 +2,8 @@
 
 function emes_genCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/emes_gen; \r\n";
     $dbstring = 'drop table `emes_gen`;';
-    echo "Creazione generale_stabile\emes_gen; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `emes_gen` (
@@ -83,6 +83,7 @@ function emes_genCreate($ds, $dd)
 
 function emes_genCopy($ds, $dd)
 {
+  echo "Importazione da access di: emes_gen in:  generale_stabile/emes_gen; \r\n";
     $sql = 'SELECT ';
     $sql .= 'n_emissione, ';
     $sql .= 'dt_emissione, ';

@@ -111,6 +111,8 @@ function fatt_multiple_dettCreate($ds, $dd)
 
 function fatt_multiple_dettCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fatt_multiple_dett;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_fatture, ';
     $sql .= 'id_stabile, ';

@@ -2,7 +2,7 @@
 
 function fattureCrea($dd)
 {
-  echo "Creazione condom\fatture; \r\n";
+    echo "Creazione condom\fatture; \r\n";
     $dbstring = 'drop table `fatture`;';
     $dd->query($dbstring);
     $dbstring = '
@@ -64,6 +64,7 @@ function fattureCrea($dd)
 
 function fattureImporta($ds, $dd)
 {
+  echo "Importazione di: parti_comuni/fatture in: condom/fatture;\n\r";
     $table = 'fatture';
     $columns = [
               'id_fatture     (id)',
@@ -109,7 +110,7 @@ function fattureImporta($ds, $dd)
               'bonifico_diretto',
               'file_bonifico_telematico',
               'etic_axivar',
-              'singola_multipla'
+              'singola_multipla',
             ];
 
     $fatture = $ds->select($table, $columns);

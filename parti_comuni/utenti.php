@@ -15,6 +15,8 @@ function utentiCreate($ds, $dd)
 
 function utentiCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/utenti;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_pc, ';
     $sql .= 'nome_utente_del_pc ';

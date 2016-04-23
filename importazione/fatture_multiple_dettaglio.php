@@ -2,7 +2,7 @@
 
 function fattureMultipleDettaglioCrea($dd)
 {
-  echo "Creazione condom\fatture_multiple_dettaglio; \r\n";
+    echo "Creazione condom\fatture_multiple_dettaglio; \r\n";
     $dbstring = 'drop table `fatture_multiple_dettaglio`;';
     $dd->query($dbstring);
     $dbstring = '
@@ -116,10 +116,12 @@ function fattureMultipleDettaglioCrea($dd)
     //echo '<br/>'.$dbstring.'<br/>';
 }
 
-    function fattureMultipleDettaglioImporta($ds, $dd)
-    {
-        $table = 'fatt_multiple_dett';
-        $columns = [
+function fattureMultipleDettaglioImporta($ds, $dd)
+{
+    echo "Importazione di: parti_comuni/fatt_multiple_dett in: condom/fatture_multiple_dettaglio;\n\r";
+
+    $table = 'fatt_multiple_dett';
+    $columns = [
           'id_fatture       (id)',
           'id_stabile       (stabile_id)',
 //          'stabile_uuid',
@@ -220,7 +222,7 @@ function fattureMultipleDettaglioCrea($dd)
               'descrizione_reg_4',
               'descrizione_reg_5',
             ];
-        $fattureMultipleDettaglio = $ds->select($table, $columns);
+    $fattureMultipleDettaglio = $ds->select($table, $columns);
         //print_r($fattureMultipleDettaglio);
         if (!empty($fattureMultipleDettaglio)) {
             echo 'fatture NOT empty';
@@ -229,4 +231,4 @@ function fattureMultipleDettaglioCrea($dd)
                 $dd->insert('fatture_multiple_dettaglio', $fatturaMultiplaDettaglio);
             }
         }
-    }
+}

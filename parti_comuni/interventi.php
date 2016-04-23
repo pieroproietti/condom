@@ -36,6 +36,8 @@ function interventiCreate($ds, $dd)
 
 function interventiCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/interventi;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_intervento, ';
     $sql .= 'cod_intervento, ';

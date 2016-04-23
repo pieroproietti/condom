@@ -18,6 +18,8 @@ function fonts_firmaCreate($ds, $dd)
 
 function fonts_firmaCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fonts_firma;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'idm, ';
     $sql .= 'font, ';

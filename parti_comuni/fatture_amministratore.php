@@ -62,6 +62,8 @@ function fatture_amministratoreCreate($ds, $dd)
 
 function fatture_amministratoreCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fatture;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_fattura, ';
     $sql .= 'cod_stabile, ';

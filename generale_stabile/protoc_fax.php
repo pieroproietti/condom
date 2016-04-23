@@ -2,8 +2,8 @@
 
 function protoc_faxCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/protoc_fax; \r\n";
     $dbstring = 'drop table `protoc_fax`;';
-    echo "Creazione generale_stabile\protoc_fax; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `protoc_fax` (
@@ -32,6 +32,7 @@ function protoc_faxCreate($ds, $dd)
 
 function protoc_faxCopy($ds, $dd)
 {
+  echo "Importazione da access di: protoc_fax in: generale_stabile/protoc_fax; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_corrisp, ';
     $sql .= 'protocollo, ';

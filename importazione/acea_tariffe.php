@@ -41,6 +41,8 @@ CREATE TABLE `acea_tariffe` (
 
 function aceaTariffeImporta($ds, $dd)
 {
+  echo "Importazione di: parti_comuni/tariffe_acea_standard in: condom/acea_tariffe;\n\r";
+
   $table = 'tariffe_acea_standard';
   $columns = [
     'id_contratto (contratto_id)',

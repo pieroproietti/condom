@@ -2,7 +2,7 @@
 
 function scadenzeCrea($dd)
 {
-  echo "Creazione condom\scadenze; \r\n";
+  echo "Creazione condom/scadenze; \r\n";
 
     $sql = '
 CREATE TABLE `scadenze` (
@@ -35,6 +35,7 @@ CREATE TABLE `scadenze` (
 
 function scadenzeImporta($ds, $dd)
 {
+  echo "Importazione di: parti_comuni/scadenze in: condom/scadenze;\n\r";
     $table = 'scadenze';
     $columns = [
       'id_scadenza        (id)',

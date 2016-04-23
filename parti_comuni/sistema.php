@@ -60,6 +60,8 @@ function sistemaCreate($ds, $dd)
 
 function sistemaCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/sistema;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'acqua, ';
     $sql .= 'licenza_num, ';

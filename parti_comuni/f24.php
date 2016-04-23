@@ -153,6 +153,8 @@ function f24Create($ds, $dd)
 
 function f24Copy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/f24;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_stabile, ';
     $sql .= 'mese, ';

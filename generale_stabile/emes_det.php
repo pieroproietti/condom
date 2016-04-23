@@ -3,7 +3,7 @@
 function emes_detCreate($ds, $dd)
 {
     $dbstring = 'drop table `emes_det`;';
-    echo "Creazione generale_stabile\emes_det; \r\n";
+    echo "Creazione generale_stabile/emes_det; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `emes_det` (
@@ -30,6 +30,7 @@ function emes_detCreate($ds, $dd)
 
 function emes_detCopy($ds, $dd)
 {
+    echo "Importazione da access di: emes_det in: generale_stabile/emes_det; \r\n";
     $sql = 'SELECT ';
     $sql .= 'cod_cond, ';
     $sql .= 'cond_inq, ';

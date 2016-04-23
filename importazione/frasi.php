@@ -2,7 +2,7 @@
 
 function frasiCrea($dd)
 {
-  echo "Creazione condom\frasi; \r\n";
+    echo "Creazione condom/frasi; \r\n";
 
     $sql = '
 CREATE TABLE `frasi` (
@@ -19,12 +19,14 @@ CREATE TABLE `frasi` (
 
 function frasiImporta($ds, $dd)
 {
+    echo "Importazione di: parti_comuni/frasi_pronte in: condom/frasi;\n\r";
+
     $table = 'frasi_pronte';
     $columns = [
         'cod_frase       (id)',
         'categoria',
         'nome',
-        'frase'
+        'frase',
       ];
 
     $frasi = $ds->select($table, $columns);

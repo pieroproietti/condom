@@ -17,6 +17,8 @@ function ut_pCreate($ds, $dd)
 
 function ut_pCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/ut_p;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_utente, ';
     $sql .= 'nome, ';

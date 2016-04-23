@@ -29,6 +29,8 @@ function fitti_pagamentiCreate($ds, $dd)
 
 function fitti_pagamentiCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fitti_pagamenti;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_pagamento, ';
     $sql .= 'cod_appartamento, ';

@@ -149,6 +149,8 @@ function stabiliCreate($ds, $dd)
 
 function stabiliCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/stabili;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_stabile, ';
     $sql .= 'cod_stabile, ';

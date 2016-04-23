@@ -22,6 +22,8 @@ function inc_reg_gloCreate($ds, $dd)
 
 function inc_reg_gloCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/inc_reg_glo;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'protocollo, ';
     $sql .= 'data_pag, ';

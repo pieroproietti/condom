@@ -19,6 +19,8 @@ function fitti_impostazCreate($ds, $dd)
 
 function fitti_impostazCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fitti_impostaz;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'tipo_ccp, ';
     $sql .= 'ccp_parte_da_stampare, ';

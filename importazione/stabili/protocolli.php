@@ -1,6 +1,8 @@
 <?php
 function protocolliCrea($dd)
 {
+  echo "Creazione condom/protocolli\r\n";
+
     $sql = '
     DROP TABLE IF EXISTS `protocolli`;
     CREATE TABLE `protocolli` (';
@@ -47,6 +49,14 @@ function protocolliCrea($dd)
 
 function protocolliImporta($ds, $dd,  $stabile_id, $stabile_uuid)
 {
+  echo "Importazione di\n\r";
+  echo "- parti_comuni/prot_ec\n\r";
+  echo "- parti_comuni/prot_email\n\r";
+  echo "- parti_comuni/prot_fax\n\r";
+  echo "- parti_comuni/prot_rol\n\r";
+  echo "- parti_comuni/prot_sms\n\r";
+  echo "in: condom/estratti_conto\n\r";
+  
   protocolliEcImporta($ds, $dd,  $stabile_id, $stabile_uuid);
   protocolliEmailmporta($ds, $dd,  $stabile_id, $stabile_uuid);
   protocolliFaxImporta($ds, $dd,  $stabile_id, $stabile_uuid);

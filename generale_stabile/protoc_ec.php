@@ -2,8 +2,8 @@
 
 function protoc_ecCreate($ds, $dd)
 {
+    echo "Creazione generale_stabile/protoc_ec; \r\n";
     $dbstring = 'drop table `protoc_ec`;';
-    echo "Creazione generale_stabile\protoc_ec; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `protoc_ec` (
@@ -30,6 +30,7 @@ function protoc_ecCreate($ds, $dd)
 
 function protoc_ecCopy($ds, $dd)
 {
+    echo "Importazione da access di: protoc_ec in: generale_stabile/protoc_ec; \r\n";
     $sql = 'SELECT ';
     $sql .= 'id_corrisp, ';
     $sql .= 'protocollo, ';

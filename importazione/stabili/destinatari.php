@@ -2,9 +2,11 @@
 
 function destinatariCrea($dd)
 {
+  echo "Creazione condom/destinatari\n\r";
+
     $sql = '
     DROP TABLE IF EXISTS `destinatari`;
-    
+
     CREATE TABLE `destinatari` (
       `id` int(11) NOT NULL,
       `stabile_id` int(11) NOT NULL,
@@ -42,6 +44,13 @@ function destinatariCrea($dd)
 
 function destinatariImporta($ds, $dd,  $stabile_id, $stabile_uuid)
 {
+  echo "Importazione di: \r\n";
+  echo "- generale_stabile/elenco_destinatari_email\n\r";
+  echo "- generale_stabile/elenco_destinatari_fax\n\r";
+  echo "- generale_stabile/elenco_destinatari_rol\n\r";
+  echo "- generale_stabile/elenco_destinatari_sms\n\r";
+  echo "in: condom/destinatari\n\r";
+
   destinatariImportaEmail($ds, $dd,  $stabile_id, $stabile_uuid);
   destinatariImportaFax($ds, $dd,  $stabile_id, $stabile_uuid);
   destinatariImportaRol($ds, $dd,  $stabile_id, $stabile_uuid);

@@ -2,7 +2,7 @@
 
 function interventiCrea($dd)
 {
-  echo "Creazione condom\interventi; \r\n";
+    echo "Creazione condom/interventi; \r\n";
 
     $sql = '
 CREATE TABLE `interventi` (
@@ -34,13 +34,15 @@ CREATE TABLE `interventi` (
 
   ALTER TABLE `interventi` ADD PRIMARY KEY (`id`);
   ';
-      $dd->query($sql);
+    $dd->query($sql);
 }
 
 function interventiImporta($ds, $dd)
-  {
-      $table = 'interventi';
-      $columns = [
+{
+  echo "Importazione di: parti_comuni/interventi in: condom/interventi;\n\r";
+
+    $table = 'interventi';
+    $columns = [
         'id_intervento          (id)',
         'segnal_cod_sta         (stabile_id)',
         'cod_intervento         (intervento_codice)',
@@ -63,16 +65,16 @@ function interventiImporta($ds, $dd)
         'segnal_ora',
         'chiamante_cia',
         'chiamante_codice',
-        'costo_intervento      (importo)'
+        'costo_intervento      (importo)',
       ];
 
-      $interventi = $ds->select($table, $columns);
+    $interventi = $ds->select($table, $columns);
 
-      if (!empty($interventi)) {
-          foreach ($interventi as &$intervento) {
-              $stabile_uuid = stabile_uuid($dd, $intervento['stabile_id']);
-              $intervento['stabile_uuid'] = $stabile_uuid;
-              $dd->insert('interventi', $intervento);
-          }
-      }
-  }
+    if (!empty($interventi)) {
+        foreach ($interventi as &$intervento) {
+            $stabile_uuid = stabile_uuid($dd, $intervento['stabile_id']);
+            $intervento['stabile_uuid'] = $stabile_uuid;
+            $dd->insert('interventi', $intervento);
+        }
+    }
+}

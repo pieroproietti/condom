@@ -2,8 +2,8 @@
 
 function temp_dovCreate($ds, $dd)
 {
+    echo "Creazione generale_stabile/temp_dov; \r\n";
     $dbstring = 'drop table `temp_dov`;';
-    echo "Creazione generale_stabile\\temp_dov; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `temp_dov` (
@@ -29,6 +29,7 @@ function temp_dovCreate($ds, $dd)
 
 function temp_dovCopy($ds, $dd)
 {
+    echo "Importazione da access di: temp_dov in: generale_stabile/temp_dov; \r\n";
     $sql = 'SELECT ';
     $sql .= 'cod_cond, ';
     $sql .= 'cond_inq, ';

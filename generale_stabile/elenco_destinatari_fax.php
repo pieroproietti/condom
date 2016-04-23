@@ -2,8 +2,8 @@
 
 function elenco_destinatari_faxCreate($ds, $dd)
 {
+  echo "Creazione generale_stabile/elenco_destinatari_fax; \r\n";
     $dbstring = 'drop table `elenco_destinatari_fax`;';
-    echo "Creazione generale_stabile\elenco_destinatari_fax; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `elenco_destinatari_fax` (
@@ -28,6 +28,7 @@ function elenco_destinatari_faxCreate($ds, $dd)
 
 function elenco_destinatari_faxCopy($ds, $dd)
 {
+  echo "Importazione da access di: elenco_destinatari_fax in  generale_stabile/elenco_destinatari_fax; \r\n";
     $sql = 'SELECT ';
     $sql .= 'rif_lettera, ';
     $sql .= 'codice, ';

@@ -2,7 +2,7 @@
 
 function ff24Crea($dd)
 {
-  echo "Creazione condom\ff24; \r\n";
+    echo "Creazione condom\ff24; \r\n";
 
     $sql = '
 CREATE TABLE `ff24` (
@@ -160,6 +160,8 @@ CREATE TABLE `ff24` (
 
 function ff24Importa($ds, $dd)
 {
+    echo "Importazione di: parti_comuni/f24 in: condom/ff24;\n\r";
+
     $table = 'f24';
     $columns = [
         'id_stabile (stabile_id)',

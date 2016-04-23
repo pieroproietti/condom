@@ -2,6 +2,8 @@
 
 function acquaGeneraliCrea($dd)
 {
+    echo "Creazione condom/acqua_generali\r\n";
+
     $sql = '
     DROP TABLE IF EXISTS `acqua_generali`;
     CREATE TABLE `acqua_generali` (
@@ -64,6 +66,8 @@ function acquaGeneraliCrea($dd)
 
 function acquaGeneraliImporta($ds, $dd,  $stabile_id, $stabile_uuid)
 {
+    echo "Imporazione di: generale_stabile/acqua_gen in: condom/acqua_generali\r\n";
+
     $table = 'acqua_gen';
     $columns = [
         'rif_ute',

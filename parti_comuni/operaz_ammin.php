@@ -23,6 +23,8 @@ function operaz_amminCreate($ds, $dd)
 
 function operaz_amminCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/operaz_ammin;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'num_operazione, ';
     $sql .= 'data_operazione, ';

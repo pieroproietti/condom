@@ -28,6 +28,8 @@ function fitti_dovutiCreate($ds, $dd)
 
 function fitti_dovutiCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fitti_dovuti;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_dovuto, ';
     $sql .= 'cod_appartamento, ';

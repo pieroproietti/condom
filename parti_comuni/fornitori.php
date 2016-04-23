@@ -66,6 +66,8 @@ function fornitoriCreate($ds, $dd)
 
 function fornitoriCopy($ds, $dd)
 {
+  echo "Importazione da access di: parti_comuni/fornitori;\n\r";
+
     $sql = 'SELECT ';
     $sql .= 'id_fornitore, ';
     $sql .= 'cod_forn, ';

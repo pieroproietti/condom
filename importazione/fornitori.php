@@ -2,7 +2,7 @@
 
 function fornitoriCrea($dd)
 {
-  echo "Creazione condom\fornitori; \r\n";
+    echo "Creazione condom/fornitori; \r\n";
 
     $dbstring = 'drop table `fornitori`;';
     $dd->query($dbstring);
@@ -73,6 +73,7 @@ function fornitoriCrea($dd)
 
 function fornitoriImporta($ds, $dd)
 {
+  echo "Importazione di: parti_comuni/fornitori in: condom/fornitori;\n\r";
     $table = 'fornitori';
     $columns = [
               // 'id_fornitore     (id)',

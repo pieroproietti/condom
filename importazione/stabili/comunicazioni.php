@@ -2,6 +2,8 @@
 
 function comunicazioniCrea($dd)
 {
+  echo "Creazione condom/comunicazioni\r\n";
+
     $sql = '
     DROP TABLE IF EXISTS `comunicazioni`;
 
@@ -29,6 +31,8 @@ function comunicazioniCrea($dd)
 
   function comunicazioniImporta($ds, $dd,  $stabile_id, $stabile_uuid)
   {
+    echo "Imporazione di: generale_stabile/corrisp_inviata in: condom/comunicazioni\r\n";
+
       $table = 'corrisp_inviata';
       $columns = [
           'id_corrisp     (id)',
