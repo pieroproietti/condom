@@ -146,6 +146,12 @@ foreach ($stabili as &$stabile) {
   require_once "../generale_stabile/index.php";
   accessGeneraleStabileImport($dbGeneraleStabile, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
   generaleStabileImport($dbGeneraleStabile, $dbCondom, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
+  $anni=$dbCondom->select('anni', ['cartella'],['stabile_id'=>$stabile['id']]);
+  foreach ($anni as &$anno) {
+    condominiImporta($ds, $dd,  $stabile_id, $stabile_uuid, $anno_id)
+    # code...
+  }
+
   $dbGeneraleStabile=null; //Chiude la connessione
   //exit;
 }
