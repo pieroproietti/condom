@@ -6,7 +6,6 @@ function straordinarieCreate($ds, $dd)
   echo "Creazione di singolo_anno/straordinarie; \r\n";
 
     $dbstring = 'drop table `straordinarie`;';
-    echo "Creazione straordinarie; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `straordinarie` (
@@ -59,9 +58,6 @@ function straordinarieCreate($ds, $dd)
          `periodo_al` datetime DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function straordinarieCopy($ds, $dd)
@@ -118,10 +114,8 @@ function straordinarieCopy($ds, $dd)
     $sql .= 'periodo_al ';
     $sql .= 'FROM straordinarie ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('straordinarie', $row);
     }

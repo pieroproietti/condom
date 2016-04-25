@@ -6,7 +6,6 @@ function rendite_condominiali1Create($ds, $dd)
   echo "Creazione di singolo_anno/rendite_condominiali1; \r\n";
 
     $dbstring = 'drop table `rendite_condominiali1`;';
-    echo "Creazione rendite_condominiali1; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `rendite_condominiali1` (
@@ -23,9 +22,6 @@ function rendite_condominiali1Create($ds, $dd)
          `anno_fiscale` int(4) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function rendite_condominiali1Copy($ds, $dd)
@@ -45,10 +41,8 @@ function rendite_condominiali1Copy($ds, $dd)
     $sql .= 'anno_fiscale ';
     $sql .= 'FROM rendite_condominiali1 ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('rendite_condominiali1', $row);
     }

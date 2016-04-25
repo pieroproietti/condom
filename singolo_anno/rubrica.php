@@ -6,7 +6,6 @@ function rubricaCreate($ds, $dd)
   echo "Creazione di singolo_anno/rubrica; \r\n";
 
     $dbstring = 'drop table `rubrica`;';
-    echo "Creazione rubrica; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `rubrica` (
@@ -31,9 +30,6 @@ function rubricaCreate($ds, $dd)
          `note` text DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function rubricaCopy($ds, $dd)
@@ -62,10 +58,8 @@ function rubricaCopy($ds, $dd)
     $sql .= 'note ';
     $sql .= 'FROM rubrica ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('rubrica', $row);
     }

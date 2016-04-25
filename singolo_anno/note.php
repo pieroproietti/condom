@@ -6,7 +6,6 @@ function notesCreate($ds, $dd)
   echo "Creazione di singolo_anno/notes; \r\n";
 
     $dbstring = 'drop table `notes`;';
-    echo "Creazione note; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `notes` (
@@ -25,9 +24,6 @@ function notesCreate($ds, $dd)
          `durata_ec` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function notesCopy($ds, $dd)
@@ -50,10 +46,8 @@ function notesCopy($ds, $dd)
     $sql .= 'durata_ec ';
     $sql .= 'FROM [note] ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('note', $row);
     }

@@ -6,7 +6,6 @@ function cre_deb_precedCreate($ds, $dd)
   echo "Creazione di singolo_anno/cre_deb_preced; \r\n";
 
     $dbstring = 'drop table `cre_deb_preced`;';
-    echo "Creazione cre_deb_preced; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `cre_deb_preced` (
@@ -21,9 +20,6 @@ function cre_deb_precedCreate($ds, $dd)
          `incluso` varchar(1) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function cre_deb_precedCopy($ds, $dd)
@@ -42,10 +38,8 @@ function cre_deb_precedCopy($ds, $dd)
     $sql .= 'incluso ';
     $sql .= 'FROM cre_deb_preced ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('cre_deb_preced', $row);
     }

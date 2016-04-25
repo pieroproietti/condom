@@ -6,7 +6,6 @@ function rendite_condominialiCreate($ds, $dd)
   echo "Creazione di singolo_anno/rendite_condominiali; \r\n";
 
     $dbstring = 'drop table `rendite_condominiali`;';
-    echo "Creazione rendite_condominiali; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `rendite_condominiali` (
@@ -90,9 +89,6 @@ function rendite_condominialiCreate($ds, $dd)
          `eli2_dt_pagam` datetime DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function rendite_condominialiCopy($ds, $dd)
@@ -180,10 +176,8 @@ function rendite_condominialiCopy($ds, $dd)
     $sql .= 'eli2_dt_pagam ';
     $sql .= 'FROM rendite_condominiali ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('rendite_condominiali', $row);
     }

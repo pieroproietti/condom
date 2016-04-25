@@ -6,7 +6,6 @@ function comproprietariCreate($ds, $dd)
   echo "Creazione di singolo_anno/comproprietari; \r\n";
 
     $dbstring = 'drop table `comproprietari`;';
-    echo "Creazione comproprietari; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `comproprietari` (
@@ -37,9 +36,6 @@ function comproprietariCreate($ds, $dd)
          `selez_attuale` varchar(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function comproprietariCopy($ds, $dd)
@@ -73,10 +69,8 @@ function comproprietariCopy($ds, $dd)
     $sql .= 'selez_attuale ';
     $sql .= 'FROM comproprietari ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('comproprietari', $row);
     }

@@ -23,9 +23,6 @@ function pertinenzeCreate($ds, $dd)
          `catasto_rendita` varchar(10) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function pertinenzeCopy($ds, $dd)
@@ -47,10 +44,8 @@ function pertinenzeCopy($ds, $dd)
     $sql .= 'catasto_rendita ';
     $sql .= 'FROM pertinenze ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('pertinenze', $row);
     }

@@ -6,7 +6,6 @@ function voc_speCreate($ds, $dd)
   echo "Creazione di singolo_anno/voce_spe; \r\n";
 
     $dbstring = 'drop table `voc_spe`;';
-    echo "Creazione voc_spe; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `voc_spe` (
@@ -35,10 +34,6 @@ function voc_speCreate($ds, $dd)
          `t_crediti` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
-}
 
 function voc_speCopy($ds, $dd)
 {
@@ -53,6 +48,7 @@ function voc_speCopy($ds, $dd)
     $sql .= 'perc_inquilino, ';
     $sql .= 'imp_propr, ';
     $sql .= 'imp_inquil, ';
+  }
     $sql .= 'importo, ';
     $sql .= 'importo_euro, ';
     $sql .= 'preventivo, ';
@@ -70,10 +66,8 @@ function voc_speCopy($ds, $dd)
     $sql .= 't_crediti ';
     $sql .= 'FROM voc_spe ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('voc_spe', $row);
     }

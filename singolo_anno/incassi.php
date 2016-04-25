@@ -6,7 +6,6 @@ function incassiCreate($ds, $dd)
   echo "Creazione di singolo_anno/incassi; \r\n";
 
     $dbstring = 'drop table `incassi`;';
-    echo "Creazione incassi; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `incassi` (
@@ -32,9 +31,6 @@ function incassiCreate($ds, $dd)
          `str_orig` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function incassiCopy($ds, $dd)
@@ -64,10 +60,8 @@ function incassiCopy($ds, $dd)
     $sql .= 'str_orig ';
     $sql .= 'FROM incassi ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('incassi', $row);
     }

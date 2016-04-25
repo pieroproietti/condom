@@ -6,7 +6,6 @@ function ripartizioneCreate($ds, $dd)
   echo "Creazione di singolo_anno/ripartizione; \r\n";
 
     $dbstring = 'drop table `ripartizione`;';
-    echo "Creazione ripartizione; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `ripartizione` (
@@ -27,9 +26,6 @@ function ripartizioneCreate($ds, $dd)
          `rate_successive` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function ripartizioneCopy($ds, $dd)
@@ -53,10 +49,8 @@ function ripartizioneCopy($ds, $dd)
     $sql .= 'rate_successive ';
     $sql .= 'FROM ripartizione ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('ripartizione', $row);
     }

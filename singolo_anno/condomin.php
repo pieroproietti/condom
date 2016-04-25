@@ -6,7 +6,6 @@ function condominCreate($ds, $dd)
   echo "Creazione di singolo_anno/condomin; \r\n";
 
     $dbstring = 'drop table `condomin`;';
-    echo "Creazione condomin; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `condomin` (
@@ -131,9 +130,6 @@ function condominCreate($ds, $dd)
          `e_lostesso_di` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function condominCopy($ds, $dd)
@@ -261,10 +257,8 @@ function condominCopy($ds, $dd)
     $sql .= 'e_lostesso_di ';
     $sql .= 'FROM condomin ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('condomin', $row);
     }

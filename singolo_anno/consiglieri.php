@@ -6,7 +6,6 @@ function consiglieriCreate($ds, $dd)
   echo "Creazione di singolo_anno/consiglieri; \r\n";
 
     $dbstring = 'drop table `consiglieri`;';
-    echo "Creazione consiglieri; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `consiglieri` (
@@ -21,9 +20,6 @@ function consiglieriCreate($ds, $dd)
          `tel_2` varchar(15) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function consiglieriCopy($ds, $dd)
@@ -41,10 +37,8 @@ function consiglieriCopy($ds, $dd)
     $sql .= 'tel_2 ';
     $sql .= 'FROM consiglieri ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('consiglieri', $row);
     }

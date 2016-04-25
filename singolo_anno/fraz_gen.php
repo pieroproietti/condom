@@ -6,7 +6,6 @@ function fraz_genCreate($ds, $dd)
   echo "Creazione di singolo_anno/fraz_gen; \r\n";
 
     $dbstring = 'drop table `fraz_gen`;';
-    echo "Creazione fraz_gen; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `fraz_gen` (
@@ -20,9 +19,6 @@ function fraz_genCreate($ds, $dd)
          `cre` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function fraz_genCopy($ds, $dd)
@@ -40,10 +36,8 @@ function fraz_genCopy($ds, $dd)
     $sql .= 'cre ';
     $sql .= 'FROM fraz_gen ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('fraz_gen', $row);
     }

@@ -12,8 +12,8 @@
     echo "<li><a href='http://127.0.0.1/phpmyadmin'>Local->phpmyadmin</a></li>";
     echo '<br/>';
     echo "<!-- li><a href='parti_comuni'>Source/parti_comuni</a></li -->";
-    echo "<li><a href='generale_stabile?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007'>Source/generale_stabile?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007</a></li>";
-    echo "<li><a href='singolo_anno?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007&folder_anno=0002'>Source/singolo_anno?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007&folder_anno=0002</a></li>";
+    echo "<!--li><a href='generale_stabile?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007'>Source/generale_stabile?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007</a></li-->";
+    echo "<!--li><a href='singolo_anno?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007&folder_anno=0002'>Source/singolo_anno?id=7&uuid=75489a66-0a48-4f90-a543-f9561f5d9215&folder_stabile=0007&folder_anno=0002</a></li-->";
     echo '<br/>';
     echo "<li><a href='importazione'>Condom/importazione</a></li>";
     echo '<br/>';

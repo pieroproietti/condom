@@ -6,7 +6,6 @@ function rateCreate($ds, $dd)
   echo "Creazione di singolo_anno/rate; \r\n";
 
     $dbstring = 'drop table `rate`;';
-    echo "Creazione rate; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `rate` (
@@ -27,9 +26,6 @@ function rateCreate($ds, $dd)
          `dt2_a` datetime DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function rateCopy($ds, $dd)
@@ -54,10 +50,8 @@ function rateCopy($ds, $dd)
     $sql .= 'dt2_a ';
     $sql .= 'FROM rate ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('rate', $row);
     }

@@ -6,7 +6,6 @@ function dett_tabCreate($ds, $dd)
   echo "Creazione di singolo_anno/dett_tab; \r\n";
 
     $dbstring = 'drop table `dett_tab`;';
-    echo "Creazione dett_tab; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `dett_tab` (
@@ -23,9 +22,6 @@ function dett_tabCreate($ds, $dd)
          `unico` int(4) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function dett_tabCopy($ds, $dd)
@@ -46,10 +42,8 @@ function dett_tabCopy($ds, $dd)
     $sql .= 'unico ';
     $sql .= 'FROM dett_tab ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('dett_tab', $row);
     }

@@ -6,7 +6,6 @@ function temp_cassaCreate($ds, $dd)
   echo "Creazione di singolo_anno/temp_cassa; \r\n";
 
     $dbstring = 'drop table `temp_cassa`;';
-    echo "Creazione temp_cassa; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `temp_cassa` (
@@ -25,9 +24,6 @@ function temp_cassaCreate($ds, $dd)
          `anno` varchar(9) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function temp_cassaCopy($ds, $dd)
@@ -50,10 +46,8 @@ function temp_cassaCopy($ds, $dd)
     $sql .= 'anno ';
     $sql .= 'FROM temp_cassa ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('temp_cassa', $row);
     }

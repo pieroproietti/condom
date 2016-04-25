@@ -3,7 +3,7 @@ namespace SingoloAnno;
 
 
 require_once '../medoo.php';
-//require 'amministratore.php';
+require 'amministratore.php';
 require 'anagr_casse.php';
 require 'assemblee.php';
 require 'comproprietari.php';
@@ -44,7 +44,7 @@ require 'votazioni_dett.php';
 require 'votazioni_gen.php';
 
 
-function accessSingoloAnnoImport($dd, $id, $uuid, $denominazione, $folder_stabile, $folder_anno)
+function accessSingoloAnnoImporta($dd, $id, $uuid, $denominazione, $folder_stabile, $folder_anno)
 {
   $dbPath = 'C:\\gescon';
   $dbFolder = $folder_stabile.'\\'.$folder_anno;
@@ -55,20 +55,10 @@ function accessSingoloAnnoImport($dd, $id, $uuid, $denominazione, $folder_stabil
       echo '<br/>ATTENZIONE:';
       die("Non riesco a trovare il database: $dbName");
   }
-  $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
+  $ds = new \PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
-  // database destinazione
-  $dd = new medoo([
-      'database_type' => 'mysql',
-      'database_name' => $dbc['name'],
-      'server' => $dbc['server'],
-      'username' => $dbc['username'],
-      'password' => $dbc['password'],
-      'charset' => 'utf8',
-          ]);
-
-  //amministratoreCreate($ds, $dd);
-  //amministratoreCopy($ds, $dd);
+  amministratoreCreate($ds, $dd);
+  amministratoreCopy($ds, $dd);
   anagr_casseCreate($ds, $dd);
   anagr_casseCopy($ds, $dd);
   assembleeCreate($ds, $dd);
@@ -144,5 +134,5 @@ function accessSingoloAnnoImport($dd, $id, $uuid, $denominazione, $folder_stabil
   votazioni_dettCreate($ds, $dd);
   votazioni_dettCopy($ds, $dd);
   votazioni_genCreate($ds, $dd);
-votazioni_genCopy($ds, $dd);
+  votazioni_genCopy($ds, $dd);
 }

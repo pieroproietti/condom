@@ -6,7 +6,6 @@ function foglio_riscossioniCreate($ds, $dd)
   echo "Creazione di singolo_anno/riscossioni; \r\n";
 
     $dbstring = 'drop table `foglio_riscossioni`;';
-    echo "Creazione foglio_riscossioni; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `foglio_riscossioni` (
@@ -29,9 +28,6 @@ function foglio_riscossioniCreate($ds, $dd)
          `tipo_riga` varchar(30) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function foglio_riscossioniCopy($ds, $dd)
@@ -57,10 +53,8 @@ function foglio_riscossioniCopy($ds, $dd)
     $sql .= 'tipo_riga ';
     $sql .= 'FROM foglio_riscossioni ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('foglio_riscossioni', $row);
     }

@@ -6,7 +6,6 @@ function votazioni_dettCreate($ds, $dd)
   echo "Creazione di singolo_anno/votazioni_dett; \r\n";
 
     $dbstring = 'drop table `votazioni_dett`;';
-    echo "Creazione votazioni_dett; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `votazioni_dett` (
@@ -23,9 +22,6 @@ function votazioni_dettCreate($ds, $dd)
          `id` int(4) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function votazioni_dettCopy($ds, $dd)
@@ -46,10 +42,8 @@ function votazioni_dettCopy($ds, $dd)
     $sql .= 'id ';
     $sql .= 'FROM votazioni_dett ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('votazioni_dett', $row);
     }

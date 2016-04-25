@@ -6,7 +6,6 @@ function prevent_straordinariCreate($ds, $dd)
   echo "Creazione di singolo_anno/prevent_straordinari; \r\n";
 
     $dbstring = 'drop table `prevent_straordinari`;';
-    echo "Creazione prevent_straordinari; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `prevent_straordinari` (
@@ -17,9 +16,6 @@ function prevent_straordinariCreate($ds, $dd)
          `importo_euro` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function prevent_straordinariCopy($ds, $dd)
@@ -34,10 +30,8 @@ function prevent_straordinariCopy($ds, $dd)
     $sql .= 'importo_euro ';
     $sql .= 'FROM prevent_straordinari ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('prevent_straordinari', $row);
     }

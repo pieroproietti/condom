@@ -6,7 +6,6 @@ function tabelleCreate($ds, $dd)
   echo "Creazione di singolo_anno/tabelle; \r\n";
 
     $dbstring = 'drop table `tabelle`;';
-    echo "Creazione tabelle; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `tabelle` (
@@ -35,9 +34,6 @@ function tabelleCreate($ds, $dd)
          `selezionato` varchar(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function tabelleCopy($ds, $dd)
@@ -70,10 +66,8 @@ function tabelleCopy($ds, $dd)
     $sql .= 'selezionato ';
     $sql .= 'FROM tabelle ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('tabelle', $row);
     }

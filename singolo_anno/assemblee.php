@@ -5,9 +5,7 @@ namespace SingoloAnno;
 function assembleeCreate($ds, $dd)
 {
   echo "Creazione di singolo_anno/assemblee; \r\n";
-
     $dbstring = 'drop table `assemblee`;';
-    echo "Creazione assemblee; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `assemblee` (
@@ -29,9 +27,6 @@ function assembleeCreate($ds, $dd)
          `tabella_usata` varchar(6) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function assembleeCopy($ds, $dd)
@@ -56,10 +51,8 @@ function assembleeCopy($ds, $dd)
     $sql .= 'tabella_usata ';
     $sql .= 'FROM assemblee ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('assemblee', $row);
     }

@@ -6,7 +6,6 @@ function preced_dovutoCreate($ds, $dd)
   echo "Creazione di singolo_anno/preced_dovuto; \r\n";
 
     $dbstring = 'drop table `preced_dovuto`;';
-    echo "Creazione preced_dovuto; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `preced_dovuto` (
@@ -20,9 +19,6 @@ function preced_dovutoCreate($ds, $dd)
          `importo_e` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function preced_dovutoCopy($ds, $dd)
@@ -40,10 +36,8 @@ function preced_dovutoCopy($ds, $dd)
     $sql .= 'importo_e ';
     $sql .= 'FROM preced_dovuto ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('preced_dovuto', $row);
     }

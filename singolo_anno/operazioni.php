@@ -3,10 +3,10 @@ namespace SingoloAnno;
 
 function operazioniCreate($ds, $dd)
 {
+  echo "Creazione di singolo_anno/operazioni; \r\n";
     $dbstring = 'drop table `operazioni`;';
-    echo "Creazione di singolo_anno/operazioni; \r\n";
-
     $dd->query($dbstring);
+
     $dbstring = '
       CREATE TABLE `operazioni` (
          `id_operaz` int(4) DEFAULT NULL,
@@ -52,9 +52,6 @@ function operazioniCreate($ds, $dd)
          `gestione` varchar(1) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function operazioniCopy($ds, $dd)
@@ -105,10 +102,8 @@ function operazioniCopy($ds, $dd)
     $sql .= 'gestione ';
     $sql .= 'FROM operazioni ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('operazioni', $row);
     }

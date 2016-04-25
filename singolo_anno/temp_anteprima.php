@@ -6,7 +6,6 @@ function temp_anteprimaCreate($ds, $dd)
   echo "Creazione di singolo_anno/temp_anteprima; \r\n";
 
     $dbstring = 'drop table `temp_anteprima`;';
-    echo "Creazione temp_anteprima; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `temp_anteprima` (
@@ -23,9 +22,6 @@ function temp_anteprimaCreate($ds, $dd)
          `note` varchar(80) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function temp_anteprimaCopy($ds, $dd)
@@ -46,10 +42,8 @@ function temp_anteprimaCopy($ds, $dd)
     $sql .= 'note ';
     $sql .= 'FROM temp_anteprima ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('temp_anteprima', $row);
     }

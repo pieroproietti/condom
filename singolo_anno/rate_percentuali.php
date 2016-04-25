@@ -6,7 +6,6 @@ function rate_percentualiCreate($ds, $dd)
   echo "Creazione di singolo_anno/rate_percentuali; \r\n";
 
     $dbstring = 'drop table `rate_percentuali`;';
-    echo "Creazione rate_percentuali; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `rate_percentuali` (
@@ -20,9 +19,6 @@ function rate_percentualiCreate($ds, $dd)
          `str_anno` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function rate_percentualiCopy($ds, $dd)
@@ -40,10 +36,8 @@ function rate_percentualiCopy($ds, $dd)
     $sql .= 'str_anno ';
     $sql .= 'FROM rate_percentuali ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('rate_percentuali', $row);
     }

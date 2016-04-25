@@ -6,7 +6,6 @@ function condomini_totaliCreate($ds, $dd)
   echo "Creazione di singolo_anno/condomini_totali; \r\n";
 
     $dbstring = 'drop table `condomini_totali`;';
-    echo "Creazione condomini_totali; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `condomini_totali` (
@@ -40,9 +39,6 @@ function condomini_totaliCreate($ds, $dd)
          `e_lostesso_di` int(2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function condomini_totaliCopy($ds, $dd)
@@ -79,10 +75,8 @@ function condomini_totaliCopy($ds, $dd)
     $sql .= 'e_lostesso_di ';
     $sql .= 'FROM condomini_totali ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('condomini_totali', $row);
     }

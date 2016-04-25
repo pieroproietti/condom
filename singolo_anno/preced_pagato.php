@@ -6,7 +6,6 @@ function preced_pagatoCreate($ds, $dd)
   echo "Creazione di singolo_anno/preced_pagato; \r\n";
 
     $dbstring = 'drop table `preced_pagato`;';
-    echo "Creazione preced_pagato; \r\n";
     $dd->query($dbstring);
     $dbstring = '
       CREATE TABLE `preced_pagato` (
@@ -22,9 +21,6 @@ function preced_pagatoCreate($ds, $dd)
          `importo_e` decimal(10,2) DEFAULT NULL
        ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ';
     $dd->query($dbstring);
-    echo '<br/>';
-    echo $dbstring;
-    echo '<br/>';
 }
 
 function preced_pagatoCopy($ds, $dd)
@@ -44,10 +40,8 @@ function preced_pagatoCopy($ds, $dd)
     $sql .= 'importo_e ';
     $sql .= 'FROM preced_pagato ';
     $sql .= 'WHERE 1';
-    echo '<br/>';
-    echo $sql;
-    echo '<br/>';
-    $rows = $ds->query($sql, PDO::FETCH_ASSOC);
+
+    $rows = $ds->query($sql, \PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
         $dd->insert('preced_pagato', $row);
     }

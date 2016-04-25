@@ -130,6 +130,7 @@ $stabili=$dbCondom->select('stabili', ['id',
 
 
 require_once "stabili/index.php";
+require_once "stabili/anni/index.php";
 generaleStabileCrea($dbCondom);  // Crea le tabelle: acqua_dettagli, acqua_fatture, acqua_generali, anni, bollette, bollette_det, comunicazioni, destinatari, estratti_conto, nomine e protocolli
 
 foreach ($stabili as &$stabile) {
@@ -159,8 +160,9 @@ foreach ($stabili as &$stabile) {
         'password' => $aDbSingoloAnno['password'],
         'charset' => $aDbSingoloAnno['charset'],
       ]);
-    SingoloAnno\accessSingoloAnnoImport($dd, $id, $uuid, $denominazione, $folder_stabile, $anno['cartella']);
-    SingoloAnno\singoloAnnoImporta($dbSingoloAnno, $dd,  $stabile['id'], $stabile['uuid'], $stabile['cartella'], $anno['cartella']);
+    SingoloAnno\accessSingoloAnnoImporta($dbSingoloAnno , $stabile['id'], $stabile['uuid'],$stabile['denominazione'], $stabile['cartella'], $anno['cartella']);
+
+    singoloAnnoImporta($dbSingoloAnno, $dd,  $stabile['id'], $stabile['uuid'], $stabile['cartella'], $anno['cartella']);
     $dbSingoloAnno=null; // Chiude connessione
     dbDrop($aDbSingoloAnno);
   }
