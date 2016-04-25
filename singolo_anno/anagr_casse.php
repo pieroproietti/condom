@@ -1,4 +1,6 @@
 <?php
+namespace SingoloAnno;
+
 
 function anagr_casseCreate($ds, $dd)
 {

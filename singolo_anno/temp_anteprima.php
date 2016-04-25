@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function temp_anteprimaCreate($ds, $dd)
 {

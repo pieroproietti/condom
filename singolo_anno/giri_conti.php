@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function giri_contiCreate($ds, $dd)
 {
@@ -28,7 +29,7 @@ function giri_contiCreate($ds, $dd)
 function giri_contiCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/giri_conti; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'riferimento, ';
     $sql .= 'data_giroconto, ';

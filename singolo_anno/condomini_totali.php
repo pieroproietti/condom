@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function condomini_totaliCreate($ds, $dd)
 {

@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function ripartizioneCreate($ds, $dd)
 {

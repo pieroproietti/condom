@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function temp_cassaCreate($ds, $dd)
 {
@@ -32,7 +33,7 @@ function temp_cassaCreate($ds, $dd)
 function temp_cassaCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/temp_cassa; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'c_tab, ';
     $sql .= 'natura, ';

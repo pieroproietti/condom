@@ -1,4 +1,6 @@
 <?php
+namespace SingoloAnno;
+
 
 function assembleeCreate($ds, $dd)
 {

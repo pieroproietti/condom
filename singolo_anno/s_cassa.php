@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function s_cassaCreate($ds, $dd)
 {

@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function rateCreate($ds, $dd)
 {

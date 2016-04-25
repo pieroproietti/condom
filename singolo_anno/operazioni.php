@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function operazioniCreate($ds, $dd)
 {
@@ -59,7 +60,7 @@ function operazioniCreate($ds, $dd)
 function operazioniCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/operazioni; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'id_operaz, ';
     $sql .= 'n_spe, ';

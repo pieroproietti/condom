@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function creaz_prev_straCreate($ds, $dd)
 {

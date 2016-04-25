@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function foglio_riscossioniCreate($ds, $dd)
 {

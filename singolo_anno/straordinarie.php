@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function straordinarieCreate($ds, $dd)
 {

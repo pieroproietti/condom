@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function rendite_condominialiCreate($ds, $dd)
 {

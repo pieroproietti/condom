@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function dett_persCreate($ds, $dd)
 {
@@ -29,7 +30,7 @@ function dett_persCreate($ds, $dd)
 function dett_persCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/dett_pers; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'tipo_gestione, ';
     $sql .= 'n_stra, ';

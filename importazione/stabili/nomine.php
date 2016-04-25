@@ -27,7 +27,7 @@ function nomineCrea($dd)
 
 function nomineImporta($ds, $dd,  $stabile_id, $stabile_uuid)
 {
-  echo "Importazione di parti_comuni/tregistro_nomina_revoca_amm in condom/nomine\n\r";
+  echo "Importazione di parti_comuni/registro_nomina_revoca_amm in condom/nomine\n\r";
     $table = 'registro_nomina_revoca_amm';
     $columns = [
       'dt_inizio              (inizio_del)',

@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function sistemaCreate($ds, $dd)
 {
@@ -211,7 +212,7 @@ function sistemaCreate($ds, $dd)
 function sistemaCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/sistema; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'nome_amministratore, ';
     $sql .= 'citta, ';

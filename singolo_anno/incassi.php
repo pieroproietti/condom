@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function incassiCreate($ds, $dd)
 {
@@ -39,7 +40,7 @@ function incassiCreate($ds, $dd)
 function incassiCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/incassi; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'id_incasso, ';
     $sql .= 'cod_cond, ';

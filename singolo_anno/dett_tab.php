@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function dett_tabCreate($ds, $dd)
 {

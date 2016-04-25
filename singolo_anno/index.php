@@ -1,7 +1,9 @@
 <?php
+namespace SingoloAnno;
 
-require '../medoo.php';
-require 'amministratore.php';
+
+require_once '../medoo.php';
+//require 'amministratore.php';
 require 'anagr_casse.php';
 require 'assemblee.php';
 require 'comproprietari.php';
@@ -41,172 +43,106 @@ require 'voc_spe.php';
 require 'votazioni_dett.php';
 require 'votazioni_gen.php';
 
-function dbCreate($dbc)
+
+function accessSingoloAnnoImport($dd, $id, $uuid, $denominazione, $folder_stabile, $folder_anno)
 {
-    $db = new mysqli($dbc['server'], $dbc['username'], $dbc['password']);
+  $dbPath = 'C:\\gescon';
+  $dbFolder = $folder_stabile.'\\'.$folder_anno;
+  $dbFile = 'singolo_anno.mdb';
+  $dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
 
-    if ($db->connect_errno) {
-        echo 'Il sito sta avendo problemi...\n';
-        echo "Errore: connessione MySQL fallita: \n";
-        echo 'Errno: '.$db->connect_errno."\n";
-        echo 'Error: '.$db->connect_error."\n";
-        exit;
-    } else {
-        echo 'connessi a: '.$db->host_info."\n";
-        $db->query('DROP DATABASE `'.$dbc['name'].';');
-        $db->query('CREATE DATABASE IF NOT EXISTS `'.$dbc['name'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;');
-        $db->query('USE `'.$dbc['name'].'`;');
-        $db->close();
-    }
-}
+  if (!file_exists($dbName)) {
+      echo '<br/>ATTENZIONE:';
+      die("Non riesco a trovare il database: $dbName");
+  }
+  $ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
-/*
-* main
-*/
-$dbc = [
-  'server' => 'localhost',
-  'username' => 'condom',
-  'password' => 'condom',
-  'name' => 'singolo_anno',
-];
+  // database destinazione
+  $dd = new medoo([
+      'database_type' => 'mysql',
+      'database_name' => $dbc['name'],
+      'server' => $dbc['server'],
+      'username' => $dbc['username'],
+      'password' => $dbc['password'],
+      'charset' => 'utf8',
+          ]);
 
-// creazione del database condom
-dbCreate($dbc);
-
-// in anni nome_dir è la directory per singolo_anno
-$id="";
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-}
-
-$uuid = '';
-if (isset($_GET['uuid'])) {
-    $uuid = $_GET['uuid'];
-}
-$folder_stabile = '';
-if (isset($_GET['folder_stabile'])) {
-    $folder_stabile = $_GET['folder_stabile'];
-}
-$folder_anno = '';
-if (isset($_GET['folder_anno'])) {
-    $folder_anno = $_GET['folder_anno'];
-}
-
-if ($id == '') {
-    echo '<br/>ATTENZIONE:';
-    die($_SERVER['PHP_SELF'].': devi passare il parametro id!');
-}
-if ($uuid == '') {
-    echo '<br/>ATTENZIONE:';
-    die($_SERVER['PHP_SELF'].': devi passare il parametro uuid!');
-}
-if ($folder_stabile == '') {
-    echo '<br/>ATTENZIONE:';
-    die($_SERVER['PHP_SELF'].': devi passare il parametro folder_stabile!');
-}
-if ($folder_anno == '') {
-    echo '<br/>ATTENZIONE:';
-    die($_SERVER['PHP_SELF'].': devi passare il parametro folder_anno!');
-}
-
-$dbPath = 'C:\\gescon';
-$dbFolder = $folder_stabile.'\\'.$folder_anno;
-$dbFile = 'singolo_anno.mdb';
-$dbName = $dbPath.'\\'.$dbFolder.'\\'.$dbFile;
-
-if (!file_exists($dbName)) {
-    echo '<br/>ATTENZIONE:';
-    die("Non riesco a trovare il database: $dbName");
-} else {
-    echo "$dbName trovato!<br/>";
-}
-$ds = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
-
-// database destinazione
-$dd = new medoo([
-    'database_type' => 'mysql',
-    'database_name' => $dbc['name'],
-    'server' => $dbc['server'],
-    'username' => $dbc['username'],
-    'password' => $dbc['password'],
-    'charset' => 'utf8',
-        ]);
-
-amministratoreCreate($ds, $dd);
-amministratoreCopy($ds, $dd);
-anagr_casseCreate($ds, $dd);
-anagr_casseCopy($ds, $dd);
-assembleeCreate($ds, $dd);
-assembleeCopy($ds, $dd);
-comproprietariCreate($ds, $dd);
-comproprietariCopy($ds, $dd);
-condominCreate($ds, $dd);
-condominCopy($ds, $dd);
-condomini_totaliCreate($ds, $dd);
-condomini_totaliCopy($ds, $dd);
-consiglieriCreate($ds, $dd);
-consiglieriCopy($ds, $dd);
-cre_deb_precedCreate($ds, $dd);
-cre_deb_precedCopy($ds, $dd);
-creaz_prev_straCreate($ds, $dd);
-creaz_prev_straCopy($ds, $dd);
-descriz_rateCreate($ds, $dd);
-descriz_rateCopy($ds, $dd);
-dett_persCreate($ds, $dd);
-dett_persCopy($ds, $dd);
-dett_tabCreate($ds, $dd);
-dett_tabCopy($ds, $dd);
-foglio_riscossioniCreate($ds, $dd);
-foglio_riscossioniCopy($ds, $dd);
-fraz_dettCreate($ds, $dd);
-fraz_dettCopy($ds, $dd);
-fraz_genCreate($ds, $dd);
-fraz_genCopy($ds, $dd);
-giri_contiCreate($ds, $dd);
-giri_contiCopy($ds, $dd);
-incassiCreate($ds, $dd);
-incassiCopy($ds, $dd);
-notesCreate($ds, $dd);
-notesCopy($ds, $dd);
-operazioniCreate($ds, $dd);
-operazioniCopy($ds, $dd);
-pertinenzeCreate($ds, $dd);
-pertinenzeCopy($ds, $dd);
-preced_dovutoCreate($ds, $dd);
-preced_dovutoCopy($ds, $dd);
-preced_pagatoCreate($ds, $dd);
-preced_pagatoCopy($ds, $dd);
-pres_assembleeCreate($ds, $dd);
-pres_assembleeCopy($ds, $dd);
-prevent_straordinariCreate($ds, $dd);
-prevent_straordinariCopy($ds, $dd);
-rateCreate($ds, $dd);
-rateCopy($ds, $dd);
-rate_percentualiCreate($ds, $dd);
-rate_percentualiCopy($ds, $dd);
-rendite_condominialiCreate($ds, $dd);
-rendite_condominialiCopy($ds, $dd);
-rendite_condominiali1Create($ds, $dd);
-rendite_condominiali1Copy($ds, $dd);
-ripartizioneCreate($ds, $dd);
-ripartizioneCopy($ds, $dd);
-rubricaCreate($ds, $dd);
-rubricaCopy($ds, $dd);
-s_cassaCreate($ds, $dd);
-s_cassaCopy($ds, $dd);
-sistemaCreate($ds, $dd);
-sistemaCopy($ds, $dd);
-straordinarieCreate($ds, $dd);
-straordinarieCopy($ds, $dd);
-tabelleCreate($ds, $dd);
-tabelleCopy($ds, $dd);
-temp_anteprimaCreate($ds, $dd);
-temp_anteprimaCopy($ds, $dd);
-temp_cassaCreate($ds, $dd);
-temp_cassaCopy($ds, $dd);
-voc_speCreate($ds, $dd);
-voc_speCopy($ds, $dd);
-votazioni_dettCreate($ds, $dd);
-votazioni_dettCopy($ds, $dd);
-votazioni_genCreate($ds, $dd);
+  //amministratoreCreate($ds, $dd);
+  //amministratoreCopy($ds, $dd);
+  anagr_casseCreate($ds, $dd);
+  anagr_casseCopy($ds, $dd);
+  assembleeCreate($ds, $dd);
+  assembleeCopy($ds, $dd);
+  comproprietariCreate($ds, $dd);
+  comproprietariCopy($ds, $dd);
+  condominCreate($ds, $dd);
+  condominCopy($ds, $dd);
+  condomini_totaliCreate($ds, $dd);
+  condomini_totaliCopy($ds, $dd);
+  consiglieriCreate($ds, $dd);
+  consiglieriCopy($ds, $dd);
+  cre_deb_precedCreate($ds, $dd);
+  cre_deb_precedCopy($ds, $dd);
+  creaz_prev_straCreate($ds, $dd);
+  creaz_prev_straCopy($ds, $dd);
+  descriz_rateCreate($ds, $dd);
+  descriz_rateCopy($ds, $dd);
+  dett_persCreate($ds, $dd);
+  dett_persCopy($ds, $dd);
+  dett_tabCreate($ds, $dd);
+  dett_tabCopy($ds, $dd);
+  foglio_riscossioniCreate($ds, $dd);
+  foglio_riscossioniCopy($ds, $dd);
+  fraz_dettCreate($ds, $dd);
+  fraz_dettCopy($ds, $dd);
+  fraz_genCreate($ds, $dd);
+  fraz_genCopy($ds, $dd);
+  giri_contiCreate($ds, $dd);
+  giri_contiCopy($ds, $dd);
+  incassiCreate($ds, $dd);
+  incassiCopy($ds, $dd);
+  notesCreate($ds, $dd);
+  notesCopy($ds, $dd);
+  operazioniCreate($ds, $dd);
+  operazioniCopy($ds, $dd);
+  pertinenzeCreate($ds, $dd);
+  pertinenzeCopy($ds, $dd);
+  preced_dovutoCreate($ds, $dd);
+  preced_dovutoCopy($ds, $dd);
+  preced_pagatoCreate($ds, $dd);
+  preced_pagatoCopy($ds, $dd);
+  pres_assembleeCreate($ds, $dd);
+  pres_assembleeCopy($ds, $dd);
+  prevent_straordinariCreate($ds, $dd);
+  prevent_straordinariCopy($ds, $dd);
+  rateCreate($ds, $dd);
+  rateCopy($ds, $dd);
+  rate_percentualiCreate($ds, $dd);
+  rate_percentualiCopy($ds, $dd);
+  rendite_condominialiCreate($ds, $dd);
+  rendite_condominialiCopy($ds, $dd);
+  rendite_condominiali1Create($ds, $dd);
+  rendite_condominiali1Copy($ds, $dd);
+  ripartizioneCreate($ds, $dd);
+  ripartizioneCopy($ds, $dd);
+  rubricaCreate($ds, $dd);
+  rubricaCopy($ds, $dd);
+  s_cassaCreate($ds, $dd);
+  s_cassaCopy($ds, $dd);
+  sistemaCreate($ds, $dd);
+  sistemaCopy($ds, $dd);
+  straordinarieCreate($ds, $dd);
+  straordinarieCopy($ds, $dd);
+  tabelleCreate($ds, $dd);
+  tabelleCopy($ds, $dd);
+  temp_anteprimaCreate($ds, $dd);
+  temp_anteprimaCopy($ds, $dd);
+  temp_cassaCreate($ds, $dd);
+  temp_cassaCopy($ds, $dd);
+  voc_speCreate($ds, $dd);
+  voc_speCopy($ds, $dd);
+  votazioni_dettCreate($ds, $dd);
+  votazioni_dettCopy($ds, $dd);
+  votazioni_genCreate($ds, $dd);
 votazioni_genCopy($ds, $dd);
+}

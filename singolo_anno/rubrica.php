@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function rubricaCreate($ds, $dd)
 {
@@ -38,7 +39,7 @@ function rubricaCreate($ds, $dd)
 function rubricaCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/rubrica; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'id, ';
     $sql .= 'nome, ';

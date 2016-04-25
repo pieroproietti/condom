@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function prevent_straordinariCreate($ds, $dd)
 {

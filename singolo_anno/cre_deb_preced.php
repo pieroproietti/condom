@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function cre_deb_precedCreate($ds, $dd)
 {

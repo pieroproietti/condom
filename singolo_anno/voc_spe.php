@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function voc_speCreate($ds, $dd)
 {

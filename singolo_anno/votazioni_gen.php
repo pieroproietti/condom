@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function votazioni_genCreate($ds, $dd)
 {
@@ -23,7 +24,7 @@ function votazioni_genCreate($ds, $dd)
 function votazioni_genCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/votazioni_gen; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'id_votazione, ';
     $sql .= 'num_assemblea, ';

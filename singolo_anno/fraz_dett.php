@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function fraz_dettCreate($ds, $dd)
 {

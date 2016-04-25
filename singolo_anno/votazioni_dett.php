@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function votazioni_dettCreate($ds, $dd)
 {

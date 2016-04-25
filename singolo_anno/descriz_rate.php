@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function descriz_rateCreate($ds, $dd)
 {
@@ -22,7 +23,7 @@ function descriz_rateCreate($ds, $dd)
 function descriz_rateCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/descriz_rate; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'mese, ';
     $sql .= 'ordin, ';

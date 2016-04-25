@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function pres_assembleeCreate($ds, $dd)
 {

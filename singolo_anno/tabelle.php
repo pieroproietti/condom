@@ -1,4 +1,5 @@
 <?php
+namespace SingoloAnno;
 
 function tabelleCreate($ds, $dd)
 {
@@ -42,7 +43,7 @@ function tabelleCreate($ds, $dd)
 function tabelleCopy($ds, $dd)
 {
   echo "importazione da access di: singolo_anno/tabelle; \r\n";
-  
+
     $sql = 'SELECT ';
     $sql .= 'id_tabella, ';
     $sql .= 'cod_tab, ';

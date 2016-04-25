@@ -144,14 +144,26 @@ foreach ($stabili as &$stabile) {
       'charset' => $aDbGeneraleStabile['charset'],
     ]);
   require_once "../generale_stabile/index.php";
+  require_once "../singolo_anno/index.php";
   accessGeneraleStabileImport($dbGeneraleStabile, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
   generaleStabileImport($dbGeneraleStabile, $dbCondom, $stabile['id'], $uuid=$stabile['uuid'], $stabile['denominazione'],$stabile['cartella']);
+
   $anni=$dbCondom->select('anni', ['cartella'],['stabile_id'=>$stabile['id']]);
   foreach ($anni as &$anno) {
-    condominiImporta($ds, $dd,  $stabile_id, $stabile_uuid, $anno_id)
-    # code...
+    dbCreate($aDbSingoloAnno);
+    $dbSingoloAnno = new medoo([
+        'database_type' => 'mysql',
+        'database_name' => $aDbSingoloAnno['name'],
+        'server' => $aDbSingoloAnno['server'],
+        'username' => $aDbSingoloAnno['username'],
+        'password' => $aDbSingoloAnno['password'],
+        'charset' => $aDbSingoloAnno['charset'],
+      ]);
+    SingoloAnno\accessSingoloAnnoImport($dd, $id, $uuid, $denominazione, $folder_stabile, $anno['cartella']);
+    SingoloAnno\singoloAnnoImporta($dbSingoloAnno, $dd,  $stabile['id'], $stabile['uuid'], $stabile['cartella'], $anno['cartella']);
+    $dbSingoloAnno=null; // Chiude connessione
+    dbDrop($aDbSingoloAnno);
   }
-
   $dbGeneraleStabile=null; //Chiude la connessione
   //exit;
 }
