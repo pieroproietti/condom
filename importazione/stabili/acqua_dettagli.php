@@ -2,7 +2,7 @@
 
 function acquaDettagliCrea($dd)
 {
-  echo "Creazione condom/acqua_dettagli\r\n";
+    echo "Creazione condom/acqua_dettagli\r\n";
 
     $sql = '
     DROP TABLE IF EXISTS `acqua_dettagli`;
@@ -67,7 +67,7 @@ function acquaDettagliCrea($dd)
 
 function acquaDettagliImporta($ds, $dd,  $stabile_id, $stabile_uuid)
 {
-  echo "Imporazione di: generale_stabile/acqua_dett in: condom/acqua_dettagli\r\n";
+    echo "Imporazione di: generale_stabile/acqua_dett in: condom/acqua_dettagli\r\n";
 
     $table = 'acqua_dett';
     $columns = [

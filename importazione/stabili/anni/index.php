@@ -1,13 +1,13 @@
 <?php
-require 'condomini.php';
 
+require 'condomini.php';
 
 function singoloAnnoCrea($dd)
 {
-  condominiCrea($dd);
+    condominiCrea($dd);
 }
 
-function singoloAnnoImporta($ds, $dd, $id, $uuid, $denominazione, $folder_stabile,$folder_anno)
+function singoloAnnoImporta($ds, $dd, $id, $uuid, $denominazione, $folder_stabile, $folder_anno)
 {
-  condominiImporta($ds, $dd, $id, $uuid);
+    condominiImporta($ds, $dd, $id, $uuid);
 }

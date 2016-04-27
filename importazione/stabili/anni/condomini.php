@@ -2,7 +2,7 @@
 
 function condominiCrea($dd)
 {
-  echo "Creazione condom/condomini\r\n";
+    echo "Creazione condom/condomini\r\n";
 
     $sql = '
     DROP TABLE IF EXISTS `condomini`;
@@ -135,14 +135,14 @@ function condominiCrea($dd)
   ALTER TABLE `condomini` ADD PRIMARY KEY (`id`);
   ALTER TABLE `condomini` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
   ';
-  $dd->query($sql);
+    $dd->query($sql);
 }
 
 function condominiImporta($ds, $dd,  $stabile_id, $stabile_uuid, $anno_id)
 {
-  echo "Imporazione di: singolo_anno/condomin in: condom/condomini\r\n";
-  $table = 'condomin';
-  $columns = [
+    echo "Imporazione di: singolo_anno/condomin in: condom/condomini\r\n";
+    $table = 'condomin';
+    $columns = [
     'anno_id',
     'id_cond',
     'cod_cond',
@@ -262,16 +262,16 @@ function condominiImporta($ds, $dd,  $stabile_id, $stabile_uuid, $anno_id)
     'inquil_cod_fisc',
     'inquil_contratto_dal',
     'note_registro_anagrafe',
-    'e_lostesso_di'
+    'e_lostesso_di',
   ];
 
-  $condomini = $ds->select($table, $columns);
-  if (!empty($condomini)) {
-      foreach ($condomini as &$condominio) {
-        $condominio['stabile_id'] = $stabile_id;
-        $condominio['stabile_uuid'] = $stabile_uuid;
-        $condominio['anno_id'] = $anno_id;
-        $dd->insert('condomin', $condominio);
+    $condomini = $ds->select($table, $columns);
+    if (!empty($condomini)) {
+        foreach ($condomini as &$condominio) {
+            $condominio['stabile_id'] = $stabile_id;
+            $condominio['stabile_uuid'] = $stabile_uuid;
+            $condominio['anno_id'] = $anno_id;
+            $dd->insert('condomin', $condominio);
+        }
     }
-  }
 }
